@@ -1,0 +1,15 @@
+:root {
+    --primary: #D83B01;
+    --primary-dark: #A92E01;
+    --primary-rgb: 216, 59, 1;
+    --secondary: #F5F5F7;
+    --text-main: #1D1D1F;
+    --text-secondary: #86868B;
+    --success: #34C759;
+    --error: #FF3B30;
+    --border: #D2D2D7;
+    --bg-page: #FBFBFD;
+    --bg-selection: #FFF7F0;
+    --bg-payment-selected: linear-gradient(135deg, #FFF7F0 0%, #FFF9F5 100%);
+    --avatar-bg: linear-gradient(135deg, #FFEFD5 0%, #FFE4B5 100%);
+}

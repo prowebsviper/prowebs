@@ -2,7 +2,7 @@
 import '../styles/shared.css';
 import '../styles/fontawesome.css';
 
-const { title, favicon, pageJs, includeSharedJs = true } = Astro.props;
+const { title, favicon, pageJs, includeSharedJs = true, pixelId } = Astro.props;
 ---
 <!DOCTYPE html>
 <html lang="id">
@@ -60,7 +60,7 @@ const { title, favicon, pageJs, includeSharedJs = true } = Astro.props;
     <link rel="dns-prefetch" href="https://connect.facebook.net">
 
     <!-- Meta Pixel Code -->
-    <script type="text/partytown">
+    <script is:inline define:vars={{ pixelId }}>
         !function (f, b, e, v, n, t, s) {
             if (f.fbq) return; n = f.fbq = function () {
                 n.callMethod ?
@@ -72,11 +72,11 @@ const { title, favicon, pageJs, includeSharedJs = true } = Astro.props;
             s.parentNode.insertBefore(t, s)
         }(window, document, 'script',
             'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '630583642253416');
+        fbq('init', pixelId);
         fbq('track', 'PageView');
     </script>
     <noscript><img height="1" width="1" style="display:none"
-            src="https://www.facebook.com/tr?id=630583642253416&ev=PageView&noscript=1" /></noscript>
+            src={`https://www.facebook.com/tr?id=${pixelId}&ev=PageView&noscript=1`} /></noscript>
     <!-- End Meta Pixel Code -->
 </head>
 <body>

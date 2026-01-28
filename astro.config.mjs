@@ -10,7 +10,7 @@ export default defineConfig({
     tailwind(),
     partytown({
       config: {
-        forward: ['fbq'],
+        forward: [],
       },
     }),
   ],

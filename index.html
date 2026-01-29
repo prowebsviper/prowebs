@@ -1,16 +1,12 @@
----
-import '../styles/shared.css';
-import '../styles/fontawesome.css';
-
-const { title, favicon, pageJs, includeSharedJs = true, pixelId } = Astro.props;
----
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>{title}</title>
-    {favicon && <link rel="icon" href={favicon}>}
+    <title></title>
+
+
+    <link rel="stylesheet" href="/styles/styles.css">
 
     <link rel="preload" href="/fonts/inter/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/fonts/inter/inter-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
@@ -60,7 +56,7 @@ const { title, favicon, pageJs, includeSharedJs = true, pixelId } = Astro.props;
     <link rel="dns-prefetch" href="https://connect.facebook.net">
 
     <!-- Meta Pixel Code -->
-    <script is:inline set:html={`
+    <script>
         !function (f, b, e, v, n, t, s) {
             if (f.fbq) return; n = f.fbq = function () {
                 n.callMethod ?
@@ -72,24 +68,24 @@ const { title, favicon, pageJs, includeSharedJs = true, pixelId } = Astro.props;
             s.parentNode.insertBefore(t, s)
         }(window, document, 'script',
             'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '${pixelId}');
+        fbq('init', '');
         fbq('track', 'PageView');
-    `}></script>
+    </script>
     <noscript><img height="1" width="1" style="display:none"
-            src={`https://www.facebook.com/tr?id=${pixelId}&ev=PageView&noscript=1`} /></noscript>
+            src="https://www.facebook.com/tr?id=&ev=PageView&noscript=1" /></noscript>
     <!-- End Meta Pixel Code -->
 </head>
 <body>
-    <slot />
+
 
     <script src="/assets/js/vendor-loader.js" defer></script>
-    {pageJs && <script src={pageJs} defer></script>}
-    {includeSharedJs && <script src="/assets/js/shared.js" defer></script>}
 
-    <script type="text/partytown"
+
+
+    <script type="text/javascript"
         src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015"
         integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ=="
-        data-cf-beacon='{{"version":"2024.11.0","token":"3b87c4a589154f7682d399347d7eccc5","r":1,"server_timing":{{"name":{{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true}},"location_startswith":null}}}}'
+        data-cf-beacon='{"version":"2024.11.0","token":"3b87c4a589154f7682d399347d7eccc5","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}'
         crossorigin="anonymous"></script>
 </body>
 </html>

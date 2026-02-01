@@ -2,368 +2,218 @@
 > html-site@1.0.0 start
 > npx serve
 
-npm warn exec The following package was not found and will be installed: serve@14.2.5
  INFO  Accepting connections at http://localhost:3000
- HTTP  2/1/2026 8:57:44 AM ::1 GET /gdrive/
- HTTP  2/1/2026 8:57:44 AM ::1 Returned 200 in 370 ms
- HTTP  2/1/2026 8:57:45 AM ::1 GET /fonts/inter/inter-latin-400-normal.woff2
- HTTP  2/1/2026 8:57:45 AM ::1 GET /fonts/inter/inter-latin-700-normal.woff2
- HTTP  2/1/2026 8:57:45 AM ::1 Returned 200 in 6 ms
- HTTP  2/1/2026 8:57:45 AM ::1 Returned 200 in 6 ms
- HTTP  2/1/2026 8:57:45 AM ::1 GET /assets/css/fonts.css
- HTTP  2/1/2026 8:57:45 AM ::1 GET /assets/css/common.css
- HTTP  2/1/2026 8:57:45 AM ::1 GET /assets/css/gdrive.css
- HTTP  2/1/2026 8:57:45 AM ::1 GET /fonts/fontawesome/webfonts/fa-brands-400.subset.woff2
- HTTP  2/1/2026 8:57:45 AM ::1 GET /fonts/fontawesome/webfonts/fa-solid-900.subset.woff2
- HTTP  2/1/2026 8:57:45 AM ::1 GET /fonts/fontawesome/webfonts/fa-regular-400.subset.woff2
- HTTP  2/1/2026 8:57:45 AM ::1 Returned 200 in 19 ms
- HTTP  2/1/2026 8:57:45 AM ::1 Returned 200 in 17 ms
- HTTP  2/1/2026 8:57:45 AM ::1 Returned 200 in 18 ms
- HTTP  2/1/2026 8:57:45 AM ::1 Returned 200 in 18 ms
- HTTP  2/1/2026 8:57:45 AM ::1 Returned 200 in 17 ms
- HTTP  2/1/2026 8:57:45 AM ::1 Returned 200 in 17 ms
- HTTP  2/1/2026 8:57:45 AM ::1 GET /assets/images/gdrive.png
- HTTP  2/1/2026 8:57:45 AM ::1 Returned 200 in 3 ms
- HTTP  2/1/2026 8:57:45 AM ::1 GET /assets/js/vendor-loader.js?v=2
- HTTP  2/1/2026 8:57:45 AM ::1 Returned 200 in 2 ms
- HTTP  2/1/2026 8:57:45 AM ::1 GET /assets/js/page-gdrive.js?v=2
- HTTP  2/1/2026 8:57:45 AM ::1 Returned 200 in 2 ms
- HTTP  2/1/2026 8:57:45 AM ::1 GET /assets/js/shared.js?v=2
- HTTP  2/1/2026 8:57:45 AM ::1 Returned 200 in 2 ms
- HTTP  2/1/2026 8:57:46 AM ::1 GET /fonts/inter/inter-latin-500-normal.woff2
- HTTP  2/1/2026 8:57:46 AM ::1 GET /fonts/inter/inter-latin-600-normal.woff2
- HTTP  2/1/2026 8:57:46 AM ::1 Returned 200 in 4 ms
- HTTP  2/1/2026 8:57:46 AM ::1 Returned 200 in 4 ms
- HTTP  2/1/2026 8:57:46 AM ::1 GET /~partytown/partytown-sw.js
- HTTP  2/1/2026 8:57:46 AM ::1 Returned 200 in 13 ms
- HTTP  2/1/2026 8:57:48 AM ::1 GET /~partytown/partytown-sw.js
- HTTP  2/1/2026 8:57:48 AM ::1 Returned 304 in 1 ms
- HTTP  2/1/2026 8:57:49 AM ::1 GET /nfxid/
- HTTP  2/1/2026 8:57:49 AM ::1 Returned 200 in 2 ms
- HTTP  2/1/2026 8:57:49 AM ::1 GET /fonts/inter/inter-latin-400-normal.woff2
- HTTP  2/1/2026 8:57:49 AM ::1 GET /fonts/inter/inter-latin-700-normal.woff2
- HTTP  2/1/2026 8:57:49 AM ::1 GET /fonts/fontawesome/webfonts/fa-brands-400.subset.woff2
- HTTP  2/1/2026 8:57:49 AM ::1 GET /fonts/fontawesome/webfonts/fa-solid-900.subset.woff2
- HTTP  2/1/2026 8:57:49 AM ::1 GET /fonts/fontawesome/webfonts/fa-regular-400.subset.woff2
- HTTP  2/1/2026 8:57:49 AM ::1 Returned 304 in 3 ms
- HTTP  2/1/2026 8:57:49 AM ::1 Returned 304 in 3 ms
- HTTP  2/1/2026 8:57:49 AM ::1 Returned 304 in 4 ms
- HTTP  2/1/2026 8:57:49 AM ::1 Returned 304 in 3 ms
- HTTP  2/1/2026 8:57:49 AM ::1 GET /assets/css/nfxid.css
- HTTP  2/1/2026 8:57:49 AM ::1 Returned 304 in 6 ms
- HTTP  2/1/2026 8:57:49 AM ::1 GET /assets/css/fonts.css
- HTTP  2/1/2026 8:57:49 AM ::1 GET /assets/css/common.css
- HTTP  2/1/2026 8:57:49 AM ::1 Returned 304 in 2 ms
- HTTP  2/1/2026 8:57:49 AM ::1 Returned 304 in 1 ms
- HTTP  2/1/2026 8:57:49 AM ::1 Returned 200 in 3 ms
- HTTP  2/1/2026 8:57:49 AM ::1 GET /assets/images/netflix.webp
- HTTP  2/1/2026 8:57:49 AM ::1 GET /assets/js/page-nfxid.js?v=2
- HTTP  2/1/2026 8:57:49 AM ::1 GET /assets/js/vendor-loader.js?v=2
- HTTP  2/1/2026 8:57:49 AM ::1 GET /assets/js/shared.js?v=2
- HTTP  2/1/2026 8:57:49 AM ::1 Returned 304 in 2 ms
- HTTP  2/1/2026 8:57:49 AM ::1 Returned 304 in 2 ms
- HTTP  2/1/2026 8:57:49 AM ::1 Returned 200 in 4 ms
- HTTP  2/1/2026 8:57:49 AM ::1 Returned 200 in 5 ms
- HTTP  2/1/2026 8:57:51 AM ::1 GET /~partytown/partytown-sw.js
- HTTP  2/1/2026 8:57:51 AM ::1 Returned 304 in 1 ms
- HTTP  2/1/2026 8:57:52 AM ::1 GET /icloud/
- HTTP  2/1/2026 8:57:52 AM ::1 Returned 200 in 2 ms
- HTTP  2/1/2026 8:57:52 AM ::1 GET /assets/css/icloud.css
- HTTP  2/1/2026 8:57:52 AM ::1 GET /fonts/inter/inter-latin-400-normal.woff2
- HTTP  2/1/2026 8:57:52 AM ::1 GET /fonts/inter/inter-latin-700-normal.woff2
- HTTP  2/1/2026 8:57:52 AM ::1 GET /fonts/fontawesome/webfonts/fa-brands-400.subset.woff2
- HTTP  2/1/2026 8:57:52 AM ::1 Returned 304 in 3 ms
- HTTP  2/1/2026 8:57:52 AM ::1 Returned 304 in 2 ms
- HTTP  2/1/2026 8:57:52 AM ::1 GET /fonts/fontawesome/webfonts/fa-solid-900.subset.woff2
- HTTP  2/1/2026 8:57:52 AM ::1 GET /fonts/fontawesome/webfonts/fa-regular-400.subset.woff2
- HTTP  2/1/2026 8:57:52 AM ::1 Returned 304 in 3 ms
- HTTP  2/1/2026 8:57:52 AM ::1 Returned 304 in 2 ms
- HTTP  2/1/2026 8:57:52 AM ::1 GET /assets/css/fonts.css
- HTTP  2/1/2026 8:57:52 AM ::1 GET /assets/css/common.css
- HTTP  2/1/2026 8:57:52 AM ::1 Returned 304 in 2 ms
- HTTP  2/1/2026 8:57:52 AM ::1 Returned 304 in 1 ms
- HTTP  2/1/2026 8:57:52 AM ::1 Returned 304 in 2 ms
- HTTP  2/1/2026 8:57:52 AM ::1 Returned 200 in 8 ms
- HTTP  2/1/2026 8:57:52 AM ::1 GET /assets/images/icloud.webp
- HTTP  2/1/2026 8:57:52 AM ::1 GET /assets/js/vendor-loader.js?v=2
- HTTP  2/1/2026 8:57:52 AM ::1 Returned 304 in 1 ms
- HTTP  2/1/2026 8:57:52 AM ::1 GET /assets/js/page-icloud.js?v=2
- HTTP  2/1/2026 8:57:52 AM ::1 GET /assets/js/shared.js?v=2
- HTTP  2/1/2026 8:57:52 AM ::1 Returned 304 in 1 ms
- HTTP  2/1/2026 8:57:52 AM ::1 Returned 200 in 3 ms
- HTTP  2/1/2026 8:57:52 AM ::1 Returned 200 in 3 ms
- HTTP  2/1/2026 8:57:54 AM ::1 GET /~partytown/partytown-sw.js
- HTTP  2/1/2026 8:57:54 AM ::1 Returned 304 in 1 ms
- HTTP  2/1/2026 8:57:55 AM ::1 GET /adobe/
- HTTP  2/1/2026 8:57:55 AM ::1 Returned 200 in 2 ms
- HTTP  2/1/2026 8:57:55 AM ::1 GET /assets/css/adobe.css
- HTTP  2/1/2026 8:57:55 AM ::1 GET /fonts/inter/inter-latin-400-normal.woff2
- HTTP  2/1/2026 8:57:55 AM ::1 GET /fonts/inter/inter-latin-700-normal.woff2
- HTTP  2/1/2026 8:57:55 AM ::1 GET /fonts/fontawesome/webfonts/fa-brands-400.subset.woff2
- HTTP  2/1/2026 8:57:55 AM ::1 Returned 304 in 3 ms
- HTTP  2/1/2026 8:57:55 AM ::1 Returned 304 in 2 ms
- HTTP  2/1/2026 8:57:55 AM ::1 GET /fonts/fontawesome/webfonts/fa-solid-900.subset.woff2
- HTTP  2/1/2026 8:57:55 AM ::1 GET /fonts/fontawesome/webfonts/fa-regular-400.subset.woff2
- HTTP  2/1/2026 8:57:55 AM ::1 Returned 304 in 5 ms
- HTTP  2/1/2026 8:57:55 AM ::1 GET /assets/css/fonts.css
- HTTP  2/1/2026 8:57:55 AM ::1 GET /assets/css/common.css
- HTTP  2/1/2026 8:57:55 AM ::1 Returned 304 in 6 ms
- HTTP  2/1/2026 8:57:55 AM ::1 Returned 304 in 8 ms
- HTTP  2/1/2026 8:57:55 AM ::1 Returned 304 in 6 ms
- HTTP  2/1/2026 8:57:55 AM ::1 Returned 304 in 8 ms
- HTTP  2/1/2026 8:57:55 AM ::1 Returned 200 in 20 ms
- HTTP  2/1/2026 8:57:55 AM ::1 GET /assets/images/adobe.webp
- HTTP  2/1/2026 8:57:55 AM ::1 GET /assets/js/vendor-loader.js?v=2
- HTTP  2/1/2026 8:57:55 AM ::1 Returned 304 in 2 ms
- HTTP  2/1/2026 8:57:55 AM ::1 GET /assets/js/page-adobe.js?v=2
- HTTP  2/1/2026 8:57:55 AM ::1 GET /assets/js/shared.js?v=2
- HTTP  2/1/2026 8:57:55 AM ::1 Returned 200 in 7 ms
- HTTP  2/1/2026 8:57:55 AM ::1 Returned 304 in 1 ms
- HTTP  2/1/2026 8:57:55 AM ::1 Returned 200 in 5 ms
- HTTP  2/1/2026 8:57:55 AM ::1 GET /assets/images/reviews/budi-santoso.webp
- HTTP  2/1/2026 8:57:55 AM ::1 GET /assets/images/reviews/siti-aminah.webp
- HTTP  2/1/2026 8:57:55 AM ::1 Returned 200 in 3 ms
- HTTP  2/1/2026 8:57:55 AM ::1 Returned 200 in 4 ms
- HTTP  2/1/2026 8:57:56 AM ::1 GET /~partytown/partytown-sw.js
- HTTP  2/1/2026 8:57:56 AM ::1 Returned 304 in 1 ms
- HTTP  2/1/2026 8:57:57 AM ::1 GET /ms365/
- HTTP  2/1/2026 8:57:57 AM ::1 Returned 200 in 2 ms
- HTTP  2/1/2026 8:57:57 AM ::1 GET /assets/css/ms365.css
- HTTP  2/1/2026 8:57:57 AM ::1 GET /fonts/inter/inter-latin-400-normal.woff2
- HTTP  2/1/2026 8:57:57 AM ::1 GET /fonts/inter/inter-latin-700-normal.woff2
- HTTP  2/1/2026 8:57:57 AM ::1 GET /fonts/fontawesome/webfonts/fa-brands-400.subset.woff2
- HTTP  2/1/2026 8:57:57 AM ::1 GET /fonts/fontawesome/webfonts/fa-solid-900.subset.woff2
- HTTP  2/1/2026 8:57:57 AM ::1 GET /fonts/fontawesome/webfonts/fa-regular-400.subset.woff2
- HTTP  2/1/2026 8:57:57 AM ::1 Returned 304 in 3 ms
- HTTP  2/1/2026 8:57:57 AM ::1 Returned 304 in 3 ms
- HTTP  2/1/2026 8:57:57 AM ::1 Returned 304 in 4 ms
- HTTP  2/1/2026 8:57:57 AM ::1 Returned 304 in 3 ms
- HTTP  2/1/2026 8:57:57 AM ::1 Returned 304 in 2 ms
- HTTP  2/1/2026 8:57:57 AM ::1 GET /assets/css/fonts.css
- HTTP  2/1/2026 8:57:57 AM ::1 GET /assets/css/common.css
- HTTP  2/1/2026 8:57:57 AM ::1 Returned 304 in 1 ms
- HTTP  2/1/2026 8:57:57 AM ::1 Returned 304 in 2 ms
- HTTP  2/1/2026 8:57:57 AM ::1 Returned 200 in 8 ms
- HTTP  2/1/2026 8:57:57 AM ::1 GET /assets/images/ms365.webp
- HTTP  2/1/2026 8:57:57 AM ::1 Returned 200 in 11 ms
- HTTP  2/1/2026 8:57:57 AM ::1 GET /assets/js/vendor-loader.js?v=2
- HTTP  2/1/2026 8:57:57 AM ::1 GET /assets/js/page-ms365.js?v=2
- HTTP  2/1/2026 8:57:57 AM ::1 GET /assets/js/shared.js?v=2
- HTTP  2/1/2026 8:57:57 AM ::1 Returned 304 in 1 ms
- HTTP  2/1/2026 8:57:57 AM ::1 Returned 304 in 0 ms
- HTTP  2/1/2026 8:57:57 AM ::1 Returned 200 in 4 ms
- HTTP  2/1/2026 8:57:59 AM ::1 GET /~partytown/partytown-sw.js
- HTTP  2/1/2026 8:57:59 AM ::1 Returned 304 in 2 ms
- HTTP  2/1/2026 8:58:00 AM ::1 GET /kurmer/
- HTTP  2/1/2026 8:58:00 AM ::1 Returned 200 in 2 ms
- HTTP  2/1/2026 8:58:00 AM ::1 GET /fonts/inter/inter-latin-400-normal.woff2
- HTTP  2/1/2026 8:58:00 AM ::1 Returned 304 in 1 ms
- HTTP  2/1/2026 8:58:00 AM ::1 GET /fonts/inter/inter-latin-700-normal.woff2
- HTTP  2/1/2026 8:58:00 AM ::1 GET /assets/css/kurmer.css
- HTTP  2/1/2026 8:58:00 AM ::1 GET /assets/css/fonts.css
- HTTP  2/1/2026 8:58:00 AM ::1 Returned 304 in 1 ms
- HTTP  2/1/2026 8:58:00 AM ::1 Returned 304 in 1 ms
- HTTP  2/1/2026 8:58:00 AM ::1 GET /fonts/fontawesome/webfonts/fa-brands-400.subset.woff2
- HTTP  2/1/2026 8:58:00 AM ::1 Returned 304 in 0 ms
- HTTP  2/1/2026 8:58:00 AM ::1 GET /fonts/fontawesome/webfonts/fa-solid-900.subset.woff2
- HTTP  2/1/2026 8:58:00 AM ::1 GET /fonts/fontawesome/webfonts/fa-regular-400.subset.woff2
- HTTP  2/1/2026 8:58:00 AM ::1 GET /assets/css/common.css
- HTTP  2/1/2026 8:58:00 AM ::1 Returned 304 in 2 ms
- HTTP  2/1/2026 8:58:00 AM ::1 Returned 304 in 3 ms
- HTTP  2/1/2026 8:58:00 AM ::1 Returned 304 in 3 ms
- HTTP  2/1/2026 8:58:00 AM ::1 Returned 200 in 12 ms
- HTTP  2/1/2026 8:58:00 AM ::1 GET /assets/images/kurmer.svg
- HTTP  2/1/2026 8:58:00 AM ::1 Returned 200 in 1 ms
- HTTP  2/1/2026 8:58:00 AM ::1 GET /assets/js/vendor-loader.js?v=2
- HTTP  2/1/2026 8:58:00 AM ::1 GET /assets/js/page-kurmer.js?v=2
- HTTP  2/1/2026 8:58:00 AM ::1 Returned 304 in 2 ms
- HTTP  2/1/2026 8:58:00 AM ::1 GET /assets/js/shared.js?v=2
- HTTP  2/1/2026 8:58:00 AM ::1 Returned 304 in 1 ms
- HTTP  2/1/2026 8:58:00 AM ::1 Returned 200 in 3 ms
- HTTP  2/1/2026 8:58:02 AM ::1 GET /~partytown/partytown-sw.js
- HTTP  2/1/2026 8:58:02 AM ::1 Returned 304 in 2 ms
- HTTP  2/1/2026 8:58:51 AM ::1 GET /gdrive/
- HTTP  2/1/2026 8:58:51 AM ::1 Returned 200 in 1 ms
- HTTP  2/1/2026 8:58:51 AM ::1 GET /fonts/inter/inter-latin-400-normal.woff2
- HTTP  2/1/2026 8:58:51 AM ::1 Returned 200 in 1 ms
- HTTP  2/1/2026 8:58:51 AM ::1 GET /assets/css/fonts.css
- HTTP  2/1/2026 8:58:51 AM ::1 GET /assets/css/common.css
- HTTP  2/1/2026 8:58:51 AM ::1 GET /assets/css/gdrive.css
- HTTP  2/1/2026 8:58:51 AM ::1 GET /fonts/inter/inter-latin-700-normal.woff2
- HTTP  2/1/2026 8:58:51 AM ::1 GET /fonts/fontawesome/webfonts/fa-brands-400.subset.woff2
- HTTP  2/1/2026 8:58:51 AM ::1 GET /fonts/fontawesome/webfonts/fa-solid-900.subset.woff2
- HTTP  2/1/2026 8:58:51 AM ::1 Returned 200 in 3 ms
- HTTP  2/1/2026 8:58:51 AM ::1 Returned 200 in 2 ms
- HTTP  2/1/2026 8:58:51 AM ::1 Returned 200 in 2 ms
- HTTP  2/1/2026 8:58:51 AM ::1 Returned 200 in 3 ms
- HTTP  2/1/2026 8:58:51 AM ::1 Returned 200 in 2 ms
- HTTP  2/1/2026 8:58:51 AM ::1 Returned 200 in 3 ms
- HTTP  2/1/2026 8:58:51 AM ::1 GET /fonts/fontawesome/webfonts/fa-regular-400.subset.woff2
- HTTP  2/1/2026 8:58:51 AM ::1 Returned 200 in 1 ms
- HTTP  2/1/2026 8:58:51 AM ::1 GET /assets/images/gdrive.png
- HTTP  2/1/2026 8:58:51 AM ::1 Returned 200 in 0 ms
- HTTP  2/1/2026 8:58:51 AM ::1 GET /assets/js/vendor-loader.js?v=2
- HTTP  2/1/2026 8:58:51 AM ::1 Returned 200 in 1 ms
- HTTP  2/1/2026 8:58:51 AM ::1 GET /assets/js/page-gdrive.js?v=2
- HTTP  2/1/2026 8:58:51 AM ::1 Returned 200 in 1 ms
- HTTP  2/1/2026 8:58:51 AM ::1 GET /assets/js/shared.js?v=2
- HTTP  2/1/2026 8:58:51 AM ::1 Returned 200 in 1 ms
- HTTP  2/1/2026 8:58:51 AM ::1 GET /fonts/inter/inter-latin-600-normal.woff2
- HTTP  2/1/2026 8:58:51 AM ::1 Returned 200 in 1 ms
- HTTP  2/1/2026 8:58:51 AM ::1 GET /fonts/inter/inter-latin-500-normal.woff2
- HTTP  2/1/2026 8:58:51 AM ::1 Returned 200 in 0 ms
- HTTP  2/1/2026 8:58:51 AM ::1 GET /~partytown/partytown-sw.js
- HTTP  2/1/2026 8:58:51 AM ::1 Returned 200 in 1 ms
- HTTP  2/1/2026 8:58:53 AM ::1 GET /~partytown/partytown-sw.js
- HTTP  2/1/2026 8:58:53 AM ::1 Returned 304 in 1 ms
- HTTP  2/1/2026 8:58:54 AM ::1 GET /nfxid/
- HTTP  2/1/2026 8:58:54 AM ::1 Returned 200 in 1 ms
- HTTP  2/1/2026 8:58:54 AM ::1 GET /fonts/inter/inter-latin-400-normal.woff2
- HTTP  2/1/2026 8:58:54 AM ::1 GET /assets/css/nfxid.css
- HTTP  2/1/2026 8:58:54 AM ::1 GET /fonts/inter/inter-latin-700-normal.woff2
- HTTP  2/1/2026 8:58:54 AM ::1 GET /fonts/fontawesome/webfonts/fa-brands-400.subset.woff2
- HTTP  2/1/2026 8:58:54 AM ::1 GET /fonts/fontawesome/webfonts/fa-solid-900.subset.woff2
- HTTP  2/1/2026 8:58:54 AM ::1 GET /fonts/fontawesome/webfonts/fa-regular-400.subset.woff2
- HTTP  2/1/2026 8:58:54 AM ::1 Returned 304 in 4 ms
- HTTP  2/1/2026 8:58:54 AM ::1 Returned 200 in 4 ms
- HTTP  2/1/2026 8:58:54 AM ::1 Returned 304 in 4 ms
- HTTP  2/1/2026 8:58:54 AM ::1 Returned 304 in 4 ms
- HTTP  2/1/2026 8:58:54 AM ::1 Returned 304 in 6 ms
- HTTP  2/1/2026 8:58:54 AM ::1 Returned 304 in 6 ms
- HTTP  2/1/2026 8:58:54 AM ::1 GET /assets/css/fonts.css
- HTTP  2/1/2026 8:58:54 AM ::1 GET /assets/css/common.css
- HTTP  2/1/2026 8:58:54 AM ::1 Returned 304 in 1 ms
- HTTP  2/1/2026 8:58:54 AM ::1 Returned 304 in 0 ms
- HTTP  2/1/2026 8:58:54 AM ::1 GET /assets/images/netflix.webp
- HTTP  2/1/2026 8:58:54 AM ::1 GET /assets/js/vendor-loader.js?v=2
- HTTP  2/1/2026 8:58:54 AM ::1 Returned 200 in 1 ms
- HTTP  2/1/2026 8:58:54 AM ::1 Returned 304 in 1 ms
- HTTP  2/1/2026 8:58:54 AM ::1 GET /assets/js/page-nfxid.js?v=2
- HTTP  2/1/2026 8:58:54 AM ::1 Returned 200 in 1 ms
- HTTP  2/1/2026 8:58:54 AM ::1 GET /assets/js/shared.js?v=2
- HTTP  2/1/2026 8:58:54 AM ::1 Returned 304 in 1 ms
- HTTP  2/1/2026 8:58:55 AM ::1 GET /~partytown/partytown-sw.js
- HTTP  2/1/2026 8:58:55 AM ::1 Returned 304 in 2 ms
- HTTP  2/1/2026 8:58:56 AM ::1 GET /icloud/
- HTTP  2/1/2026 8:58:56 AM ::1 Returned 200 in 2 ms
- HTTP  2/1/2026 8:58:56 AM ::1 GET /fonts/inter/inter-latin-400-normal.woff2
- HTTP  2/1/2026 8:58:56 AM ::1 GET /assets/css/icloud.css
- HTTP  2/1/2026 8:58:56 AM ::1 GET /fonts/inter/inter-latin-700-normal.woff2
- HTTP  2/1/2026 8:58:56 AM ::1 GET /fonts/fontawesome/webfonts/fa-brands-400.subset.woff2
- HTTP  2/1/2026 8:58:56 AM ::1 GET /fonts/fontawesome/webfonts/fa-solid-900.subset.woff2
- HTTP  2/1/2026 8:58:56 AM ::1 GET /fonts/fontawesome/webfonts/fa-regular-400.subset.woff2
- HTTP  2/1/2026 8:58:56 AM ::1 Returned 304 in 2 ms
- HTTP  2/1/2026 8:58:56 AM ::1 Returned 200 in 2 ms
- HTTP  2/1/2026 8:58:56 AM ::1 Returned 304 in 2 ms
- HTTP  2/1/2026 8:58:56 AM ::1 Returned 304 in 2 ms
- HTTP  2/1/2026 8:58:56 AM ::1 Returned 304 in 2 ms
- HTTP  2/1/2026 8:58:56 AM ::1 Returned 304 in 2 ms
- HTTP  2/1/2026 8:58:56 AM ::1 GET /assets/css/fonts.css
- HTTP  2/1/2026 8:58:56 AM ::1 GET /assets/css/common.css
- HTTP  2/1/2026 8:58:56 AM ::1 Returned 304 in 1 ms
- HTTP  2/1/2026 8:58:56 AM ::1 Returned 304 in 1 ms
- HTTP  2/1/2026 8:58:56 AM ::1 GET /assets/images/icloud.webp
- HTTP  2/1/2026 8:58:56 AM ::1 GET /assets/js/vendor-loader.js?v=2
- HTTP  2/1/2026 8:58:56 AM ::1 Returned 200 in 1 ms
- HTTP  2/1/2026 8:58:56 AM ::1 Returned 304 in 1 ms
- HTTP  2/1/2026 8:58:56 AM ::1 GET /assets/js/page-icloud.js?v=2
- HTTP  2/1/2026 8:58:56 AM ::1 GET /assets/js/shared.js?v=2
- HTTP  2/1/2026 8:58:56 AM ::1 Returned 200 in 1 ms
- HTTP  2/1/2026 8:58:56 AM ::1 Returned 304 in 1 ms
- HTTP  2/1/2026 8:58:58 AM ::1 GET /~partytown/partytown-sw.js
- HTTP  2/1/2026 8:58:58 AM ::1 Returned 304 in 1 ms
- HTTP  2/1/2026 8:58:59 AM ::1 GET /adobe/
- HTTP  2/1/2026 8:58:59 AM ::1 Returned 200 in 1 ms
- HTTP  2/1/2026 8:58:59 AM ::1 GET /assets/css/adobe.css
- HTTP  2/1/2026 8:58:59 AM ::1 GET /fonts/inter/inter-latin-400-normal.woff2
- HTTP  2/1/2026 8:58:59 AM ::1 GET /fonts/inter/inter-latin-700-normal.woff2
- HTTP  2/1/2026 8:58:59 AM ::1 GET /fonts/fontawesome/webfonts/fa-brands-400.subset.woff2
- HTTP  2/1/2026 8:58:59 AM ::1 GET /fonts/fontawesome/webfonts/fa-solid-900.subset.woff2
- HTTP  2/1/2026 8:58:59 AM ::1 GET /fonts/fontawesome/webfonts/fa-regular-400.subset.woff2
- HTTP  2/1/2026 8:58:59 AM ::1 Returned 200 in 4 ms
- HTTP  2/1/2026 8:58:59 AM ::1 Returned 304 in 4 ms
- HTTP  2/1/2026 8:58:59 AM ::1 Returned 304 in 5 ms
- HTTP  2/1/2026 8:58:59 AM ::1 Returned 304 in 5 ms
- HTTP  2/1/2026 8:58:59 AM ::1 Returned 304 in 5 ms
- HTTP  2/1/2026 8:58:59 AM ::1 Returned 304 in 3 ms
- HTTP  2/1/2026 8:58:59 AM ::1 GET /assets/css/fonts.css
- HTTP  2/1/2026 8:58:59 AM ::1 GET /assets/css/common.css
- HTTP  2/1/2026 8:58:59 AM ::1 Returned 304 in 1 ms
- HTTP  2/1/2026 8:58:59 AM ::1 Returned 304 in 1 ms
- HTTP  2/1/2026 8:58:59 AM ::1 GET /assets/images/adobe.webp
- HTTP  2/1/2026 8:58:59 AM ::1 GET /assets/js/vendor-loader.js?v=2
- HTTP  2/1/2026 8:58:59 AM ::1 Returned 200 in 1 ms
- HTTP  2/1/2026 8:58:59 AM ::1 Returned 304 in 0 ms
- HTTP  2/1/2026 8:58:59 AM ::1 GET /assets/js/page-adobe.js?v=2
- HTTP  2/1/2026 8:58:59 AM ::1 Returned 200 in 1 ms
- HTTP  2/1/2026 8:58:59 AM ::1 GET /assets/js/shared.js?v=2
- HTTP  2/1/2026 8:58:59 AM ::1 Returned 304 in 0 ms
- HTTP  2/1/2026 8:58:59 AM ::1 GET /assets/images/reviews/budi-santoso.webp
- HTTP  2/1/2026 8:58:59 AM ::1 GET /assets/images/reviews/siti-aminah.webp
- HTTP  2/1/2026 8:58:59 AM ::1 Returned 200 in 1 ms
- HTTP  2/1/2026 8:58:59 AM ::1 Returned 200 in 1 ms
- HTTP  2/1/2026 8:59:00 AM ::1 GET /~partytown/partytown-sw.js
- HTTP  2/1/2026 8:59:00 AM ::1 Returned 304 in 1 ms
- HTTP  2/1/2026 8:59:01 AM ::1 GET /ms365/
- HTTP  2/1/2026 8:59:01 AM ::1 Returned 200 in 1 ms
- HTTP  2/1/2026 8:59:01 AM ::1 GET /assets/css/ms365.css
- HTTP  2/1/2026 8:59:01 AM ::1 GET /fonts/inter/inter-latin-400-normal.woff2
- HTTP  2/1/2026 8:59:01 AM ::1 GET /fonts/inter/inter-latin-700-normal.woff2
- HTTP  2/1/2026 8:59:01 AM ::1 GET /fonts/fontawesome/webfonts/fa-brands-400.subset.woff2
- HTTP  2/1/2026 8:59:01 AM ::1 GET /fonts/fontawesome/webfonts/fa-solid-900.subset.woff2
- HTTP  2/1/2026 8:59:01 AM ::1 GET /fonts/fontawesome/webfonts/fa-regular-400.subset.woff2
- HTTP  2/1/2026 8:59:01 AM ::1 Returned 200 in 2 ms
- HTTP  2/1/2026 8:59:01 AM ::1 Returned 304 in 2 ms
- HTTP  2/1/2026 8:59:01 AM ::1 Returned 304 in 2 ms
- HTTP  2/1/2026 8:59:01 AM ::1 Returned 304 in 1 ms
- HTTP  2/1/2026 8:59:01 AM ::1 Returned 304 in 2 ms
- HTTP  2/1/2026 8:59:01 AM ::1 Returned 304 in 2 ms
- HTTP  2/1/2026 8:59:01 AM ::1 GET /assets/css/fonts.css
- HTTP  2/1/2026 8:59:01 AM ::1 Returned 304 in 1 ms
- HTTP  2/1/2026 8:59:01 AM ::1 GET /assets/css/common.css
- HTTP  2/1/2026 8:59:01 AM ::1 Returned 304 in 0 ms
- HTTP  2/1/2026 8:59:01 AM ::1 GET /assets/images/ms365.webp
- HTTP  2/1/2026 8:59:01 AM ::1 GET /assets/js/vendor-loader.js?v=2
- HTTP  2/1/2026 8:59:01 AM ::1 Returned 200 in 1 ms
- HTTP  2/1/2026 8:59:01 AM ::1 GET /assets/js/page-ms365.js?v=2
- HTTP  2/1/2026 8:59:01 AM ::1 Returned 304 in 2 ms
- HTTP  2/1/2026 8:59:01 AM ::1 GET /assets/js/shared.js?v=2
- HTTP  2/1/2026 8:59:01 AM ::1 Returned 200 in 1 ms
- HTTP  2/1/2026 8:59:01 AM ::1 Returned 304 in 1 ms
- HTTP  2/1/2026 8:59:03 AM ::1 GET /~partytown/partytown-sw.js
- HTTP  2/1/2026 8:59:03 AM ::1 Returned 304 in 1 ms
- HTTP  2/1/2026 8:59:04 AM ::1 GET /kurmer/
- HTTP  2/1/2026 8:59:04 AM ::1 Returned 200 in 1 ms
- HTTP  2/1/2026 8:59:04 AM ::1 GET /fonts/inter/inter-latin-400-normal.woff2
- HTTP  2/1/2026 8:59:04 AM ::1 GET /assets/css/kurmer.css
- HTTP  2/1/2026 8:59:04 AM ::1 GET /fonts/inter/inter-latin-700-normal.woff2
- HTTP  2/1/2026 8:59:04 AM ::1 GET /fonts/fontawesome/webfonts/fa-brands-400.subset.woff2
- HTTP  2/1/2026 8:59:04 AM ::1 GET /fonts/fontawesome/webfonts/fa-solid-900.subset.woff2
- HTTP  2/1/2026 8:59:04 AM ::1 GET /fonts/fontawesome/webfonts/fa-regular-400.subset.woff2
- HTTP  2/1/2026 8:59:04 AM ::1 Returned 304 in 2 ms
- HTTP  2/1/2026 8:59:04 AM ::1 Returned 200 in 1 ms
- HTTP  2/1/2026 8:59:04 AM ::1 Returned 304 in 1 ms
- HTTP  2/1/2026 8:59:04 AM ::1 Returned 304 in 2 ms
- HTTP  2/1/2026 8:59:04 AM ::1 Returned 304 in 2 ms
- HTTP  2/1/2026 8:59:04 AM ::1 Returned 304 in 2 ms
- HTTP  2/1/2026 8:59:04 AM ::1 GET /assets/css/fonts.css
- HTTP  2/1/2026 8:59:04 AM ::1 Returned 304 in 1 ms
- HTTP  2/1/2026 8:59:04 AM ::1 GET /assets/css/common.css
- HTTP  2/1/2026 8:59:04 AM ::1 Returned 304 in 1 ms
- HTTP  2/1/2026 8:59:04 AM ::1 GET /assets/images/kurmer.svg
- HTTP  2/1/2026 8:59:04 AM ::1 Returned 200 in 2 ms
- HTTP  2/1/2026 8:59:04 AM ::1 GET /assets/js/page-kurmer.js?v=2
- HTTP  2/1/2026 8:59:04 AM ::1 Returned 200 in 0 ms
- HTTP  2/1/2026 8:59:04 AM ::1 GET /assets/js/vendor-loader.js?v=2
- HTTP  2/1/2026 8:59:04 AM ::1 GET /assets/js/shared.js?v=2
- HTTP  2/1/2026 8:59:04 AM ::1 Returned 304 in 1 ms
- HTTP  2/1/2026 8:59:04 AM ::1 Returned 304 in 0 ms
- HTTP  2/1/2026 8:59:05 AM ::1 GET /~partytown/partytown-sw.js
- HTTP  2/1/2026 8:59:05 AM ::1 Returned 304 in 1 ms
+ HTTP  2/1/2026 12:49:10 PM ::1 GET /gdrive/
+ HTTP  2/1/2026 12:49:10 PM ::1 Returned 200 in 49 ms
+ HTTP  2/1/2026 12:49:10 PM ::1 GET /fonts/inter/inter-latin-400-normal.woff2
+ HTTP  2/1/2026 12:49:10 PM ::1 Returned 200 in 5 ms
+ HTTP  2/1/2026 12:49:10 PM ::1 GET /assets/css/fonts.css
+ HTTP  2/1/2026 12:49:10 PM ::1 GET /assets/css/common.css
+ HTTP  2/1/2026 12:49:10 PM ::1 GET /assets/css/gdrive.css
+ HTTP  2/1/2026 12:49:10 PM ::1 GET /fonts/inter/inter-latin-700-normal.woff2
+ HTTP  2/1/2026 12:49:10 PM ::1 GET /fonts/fontawesome/webfonts/fa-brands-400.subset.woff2
+ HTTP  2/1/2026 12:49:10 PM ::1 GET /fonts/fontawesome/webfonts/fa-solid-900.subset.woff2
+ HTTP  2/1/2026 12:49:10 PM ::1 Returned 200 in 22 ms
+ HTTP  2/1/2026 12:49:10 PM ::1 Returned 200 in 18 ms
+ HTTP  2/1/2026 12:49:10 PM ::1 Returned 200 in 17 ms
+ HTTP  2/1/2026 12:49:10 PM ::1 Returned 200 in 17 ms
+ HTTP  2/1/2026 12:49:10 PM ::1 Returned 200 in 16 ms
+ HTTP  2/1/2026 12:49:10 PM ::1 Returned 200 in 17 ms
+ HTTP  2/1/2026 12:49:11 PM ::1 GET /fonts/fontawesome/webfonts/fa-regular-400.subset.woff2
+ HTTP  2/1/2026 12:49:11 PM ::1 Returned 200 in 5 ms
+ HTTP  2/1/2026 12:49:11 PM ::1 GET /assets/images/gdrive.png
+ HTTP  2/1/2026 12:49:11 PM ::1 Returned 200 in 3 ms
+ HTTP  2/1/2026 12:49:11 PM ::1 GET /assets/js/vendor-loader.js?v=2
+ HTTP  2/1/2026 12:49:11 PM ::1 Returned 200 in 1 ms
+ HTTP  2/1/2026 12:49:11 PM ::1 GET /assets/js/page-gdrive.js?v=2
+ HTTP  2/1/2026 12:49:11 PM ::1 Returned 200 in 2 ms
+ HTTP  2/1/2026 12:49:11 PM ::1 GET /assets/js/shared.js?v=2
+ HTTP  2/1/2026 12:49:11 PM ::1 Returned 200 in 2 ms
+ HTTP  2/1/2026 12:49:11 PM ::1 GET /fonts/inter/inter-latin-600-normal.woff2
+ HTTP  2/1/2026 12:49:11 PM ::1 GET /fonts/inter/inter-latin-500-normal.woff2
+ HTTP  2/1/2026 12:49:11 PM ::1 Returned 200 in 8 ms
+ HTTP  2/1/2026 12:49:11 PM ::1 Returned 200 in 8 ms
+ HTTP  2/1/2026 12:49:11 PM ::1 GET /~partytown/partytown-sw.js
+ HTTP  2/1/2026 12:49:11 PM ::1 Returned 200 in 8 ms
+ HTTP  2/1/2026 12:49:13 PM ::1 GET /~partytown/partytown-sw.js
+ HTTP  2/1/2026 12:49:13 PM ::1 Returned 304 in 2 ms
+ HTTP  2/1/2026 1:01:57 PM ::1 GET /gdrive/
+ HTTP  2/1/2026 1:01:57 PM ::1 Returned 200 in 3 ms
+ HTTP  2/1/2026 1:01:57 PM ::1 GET /fonts/inter/inter-latin-400-normal.woff2
+ HTTP  2/1/2026 1:01:57 PM ::1 Returned 200 in 1 ms
+ HTTP  2/1/2026 1:01:57 PM ::1 GET /assets/css/fonts.css
+ HTTP  2/1/2026 1:01:57 PM ::1 GET /assets/css/common.css
+ HTTP  2/1/2026 1:01:57 PM ::1 GET /assets/css/gdrive.css
+ HTTP  2/1/2026 1:01:57 PM ::1 GET /fonts/inter/inter-latin-700-normal.woff2
+ HTTP  2/1/2026 1:01:57 PM ::1 GET /fonts/fontawesome/webfonts/fa-brands-400.subset.woff2
+ HTTP  2/1/2026 1:01:57 PM ::1 GET /fonts/fontawesome/webfonts/fa-solid-900.subset.woff2
+ HTTP  2/1/2026 1:01:57 PM ::1 Returned 200 in 6 ms
+ HTTP  2/1/2026 1:01:57 PM ::1 Returned 200 in 4 ms
+ HTTP  2/1/2026 1:01:57 PM ::1 Returned 200 in 5 ms
+ HTTP  2/1/2026 1:01:57 PM ::1 Returned 200 in 5 ms
+ HTTP  2/1/2026 1:01:57 PM ::1 Returned 200 in 2 ms
+ HTTP  2/1/2026 1:01:57 PM ::1 Returned 200 in 3 ms
+ HTTP  2/1/2026 1:01:57 PM ::1 GET /fonts/fontawesome/webfonts/fa-regular-400.subset.woff2
+ HTTP  2/1/2026 1:01:57 PM ::1 Returned 200 in 1 ms
+ HTTP  2/1/2026 1:01:57 PM ::1 GET /assets/images/gdrive.png
+ HTTP  2/1/2026 1:01:57 PM ::1 Returned 200 in 0 ms
+ HTTP  2/1/2026 1:01:57 PM ::1 GET /assets/js/vendor-loader.js?v=2
+ HTTP  2/1/2026 1:01:57 PM ::1 Returned 200 in 1 ms
+ HTTP  2/1/2026 1:01:57 PM ::1 GET /assets/js/page-gdrive.js?v=2
+ HTTP  2/1/2026 1:01:57 PM ::1 Returned 200 in 0 ms
+ HTTP  2/1/2026 1:01:57 PM ::1 GET /assets/js/shared.js?v=2
+ HTTP  2/1/2026 1:01:57 PM ::1 Returned 200 in 0 ms
+ HTTP  2/1/2026 1:01:57 PM ::1 GET /fonts/inter/inter-latin-600-normal.woff2
+ HTTP  2/1/2026 1:01:57 PM ::1 GET /fonts/inter/inter-latin-500-normal.woff2
+ HTTP  2/1/2026 1:01:57 PM ::1 Returned 200 in 1 ms
+ HTTP  2/1/2026 1:01:57 PM ::1 Returned 200 in 1 ms
+ HTTP  2/1/2026 1:01:57 PM ::1 GET /~partytown/partytown-sw.js
+ HTTP  2/1/2026 1:01:57 PM ::1 Returned 200 in 1 ms
+ HTTP  2/1/2026 1:01:59 PM ::1 GET /~partytown/partytown-sw.js
+ HTTP  2/1/2026 1:01:59 PM ::1 Returned 304 in 1 ms
+ HTTP  2/1/2026 1:02:00 PM ::1 GET /nfxid/
+ HTTP  2/1/2026 1:02:00 PM ::1 Returned 200 in 3 ms
+ HTTP  2/1/2026 1:02:00 PM ::1 GET /assets/css/nfxid.css
+ HTTP  2/1/2026 1:02:00 PM ::1 GET /fonts/inter/inter-latin-400-normal.woff2
+ HTTP  2/1/2026 1:02:00 PM ::1 GET /fonts/inter/inter-latin-700-normal.woff2
+ HTTP  2/1/2026 1:02:00 PM ::1 Returned 304 in 1 ms
+ HTTP  2/1/2026 1:02:00 PM ::1 GET /fonts/fontawesome/webfonts/fa-brands-400.subset.woff2
+ HTTP  2/1/2026 1:02:00 PM ::1 GET /fonts/fontawesome/webfonts/fa-solid-900.subset.woff2
+ HTTP  2/1/2026 1:02:00 PM ::1 GET /fonts/fontawesome/webfonts/fa-regular-400.subset.woff2
+ HTTP  2/1/2026 1:02:00 PM ::1 Returned 304 in 2 ms
+ HTTP  2/1/2026 1:02:00 PM ::1 Returned 304 in 7 ms
+ HTTP  2/1/2026 1:02:00 PM ::1 Returned 304 in 7 ms
+ HTTP  2/1/2026 1:02:00 PM ::1 Returned 304 in 7 ms
+ HTTP  2/1/2026 1:02:00 PM ::1 GET /assets/css/fonts.css
+ HTTP  2/1/2026 1:02:00 PM ::1 GET /assets/css/common.css
+ HTTP  2/1/2026 1:02:00 PM ::1 Returned 304 in 2 ms
+ HTTP  2/1/2026 1:02:00 PM ::1 Returned 304 in 1 ms
+ HTTP  2/1/2026 1:02:00 PM ::1 Returned 200 in 14 ms
+ HTTP  2/1/2026 1:02:00 PM ::1 GET /assets/images/nfxid.webp
+ HTTP  2/1/2026 1:02:00 PM ::1 GET /assets/js/vendor-loader.js?v=2
+ HTTP  2/1/2026 1:02:00 PM ::1 Returned 304 in 1 ms
+ HTTP  2/1/2026 1:02:00 PM ::1 GET /assets/js/page-nfxid.js?v=2
+ HTTP  2/1/2026 1:02:00 PM ::1 GET /assets/js/shared.js?v=2
+ HTTP  2/1/2026 1:02:00 PM ::1 Returned 404 in 5 ms
+ HTTP  2/1/2026 1:02:00 PM ::1 Returned 304 in 1 ms
+ HTTP  2/1/2026 1:02:00 PM ::1 Returned 200 in 6 ms
+ HTTP  2/1/2026 1:02:02 PM ::1 GET /~partytown/partytown-sw.js
+ HTTP  2/1/2026 1:02:02 PM ::1 Returned 304 in 2 ms
+ HTTP  2/1/2026 1:02:03 PM ::1 GET /icloud/
+ HTTP  2/1/2026 1:02:03 PM ::1 Returned 200 in 2 ms
+ HTTP  2/1/2026 1:02:03 PM ::1 GET /fonts/inter/inter-latin-400-normal.woff2
+ HTTP  2/1/2026 1:02:03 PM ::1 GET /fonts/inter/inter-latin-700-normal.woff2
+ HTTP  2/1/2026 1:02:03 PM ::1 GET /fonts/fontawesome/webfonts/fa-brands-400.subset.woff2
+ HTTP  2/1/2026 1:02:03 PM ::1 GET /fonts/fontawesome/webfonts/fa-solid-900.subset.woff2
+ HTTP  2/1/2026 1:02:03 PM ::1 GET /fonts/fontawesome/webfonts/fa-regular-400.subset.woff2
+ HTTP  2/1/2026 1:02:03 PM ::1 GET /assets/css/icloud.css
+ HTTP  2/1/2026 1:02:03 PM ::1 Returned 304 in 2 ms
+ HTTP  2/1/2026 1:02:03 PM ::1 Returned 304 in 2 ms
+ HTTP  2/1/2026 1:02:03 PM ::1 Returned 304 in 3 ms
+ HTTP  2/1/2026 1:02:03 PM ::1 Returned 304 in 2 ms
+ HTTP  2/1/2026 1:02:03 PM ::1 Returned 304 in 3 ms
+ HTTP  2/1/2026 1:02:03 PM ::1 GET /assets/css/fonts.css
+ HTTP  2/1/2026 1:02:03 PM ::1 Returned 304 in 3 ms
+ HTTP  2/1/2026 1:02:03 PM ::1 GET /assets/css/common.css
+ HTTP  2/1/2026 1:02:03 PM ::1 Returned 304 in 1 ms
+ HTTP  2/1/2026 1:02:03 PM ::1 Returned 200 in 10 ms
+ HTTP  2/1/2026 1:02:03 PM ::1 GET /assets/images/icloud.webp
+ HTTP  2/1/2026 1:02:03 PM ::1 GET /assets/js/page-icloud.js?v=2
+ HTTP  2/1/2026 1:02:03 PM ::1 GET /assets/js/vendor-loader.js?v=2
+ HTTP  2/1/2026 1:02:03 PM ::1 GET /assets/js/shared.js?v=2
+ HTTP  2/1/2026 1:02:03 PM ::1 Returned 304 in 1 ms
+ HTTP  2/1/2026 1:02:03 PM ::1 Returned 304 in 2 ms
+ HTTP  2/1/2026 1:02:03 PM ::1 Returned 200 in 4 ms
+ HTTP  2/1/2026 1:02:03 PM ::1 Returned 200 in 4 ms
+ HTTP  2/1/2026 1:02:05 PM ::1 GET /~partytown/partytown-sw.js
+ HTTP  2/1/2026 1:02:05 PM ::1 Returned 304 in 1 ms
+ HTTP  2/1/2026 1:02:05 PM ::1 GET /adobe/
+ HTTP  2/1/2026 1:02:05 PM ::1 Returned 200 in 2 ms
+ HTTP  2/1/2026 1:02:05 PM ::1 GET /fonts/inter/inter-latin-400-normal.woff2
+ HTTP  2/1/2026 1:02:05 PM ::1 Returned 304 in 2 ms
+ HTTP  2/1/2026 1:02:05 PM ::1 GET /assets/css/adobe.css
+ HTTP  2/1/2026 1:02:05 PM ::1 GET /assets/css/fonts.css
+ HTTP  2/1/2026 1:02:05 PM ::1 GET /fonts/inter/inter-latin-700-normal.woff2
+ HTTP  2/1/2026 1:02:05 PM ::1 Returned 304 in 2 ms
+ HTTP  2/1/2026 1:02:05 PM ::1 Returned 304 in 1 ms
+ HTTP  2/1/2026 1:02:06 PM ::1 GET /fonts/fontawesome/webfonts/fa-brands-400.subset.woff2
+ HTTP  2/1/2026 1:02:06 PM ::1 GET /fonts/fontawesome/webfonts/fa-solid-900.subset.woff2
+ HTTP  2/1/2026 1:02:06 PM ::1 GET /fonts/fontawesome/webfonts/fa-regular-400.subset.woff2
+ HTTP  2/1/2026 1:02:06 PM ::1 Returned 304 in 1 ms
+ HTTP  2/1/2026 1:02:06 PM ::1 Returned 304 in 1 ms
+ HTTP  2/1/2026 1:02:06 PM ::1 Returned 304 in 1 ms
+ HTTP  2/1/2026 1:02:06 PM ::1 GET /assets/css/common.css
+ HTTP  2/1/2026 1:02:06 PM ::1 Returned 304 in 0 ms
+ HTTP  2/1/2026 1:02:05 PM ::1 Returned 200 in 12 ms
+ HTTP  2/1/2026 1:02:06 PM ::1 GET /assets/images/adobe.webp
+ HTTP  2/1/2026 1:02:06 PM ::1 GET /assets/js/vendor-loader.js?v=2
+ HTTP  2/1/2026 1:02:06 PM ::1 Returned 304 in 0 ms
+ HTTP  2/1/2026 1:02:06 PM ::1 GET /assets/js/page-adobe.js?v=2
+ HTTP  2/1/2026 1:02:06 PM ::1 GET /assets/js/shared.js?v=2
+ HTTP  2/1/2026 1:02:06 PM ::1 Returned 304 in 1 ms
+ HTTP  2/1/2026 1:02:06 PM ::1 Returned 200 in 4 ms
+ HTTP  2/1/2026 1:02:06 PM ::1 Returned 200 in 2 ms
+ HTTP  2/1/2026 1:02:06 PM ::1 GET /assets/images/reviews/budi-santoso.webp
+ HTTP  2/1/2026 1:02:06 PM ::1 GET /assets/images/reviews/siti-aminah.webp
+ HTTP  2/1/2026 1:02:06 PM ::1 Returned 200 in 5 ms
+ HTTP  2/1/2026 1:02:06 PM ::1 Returned 200 in 5 ms
+ HTTP  2/1/2026 1:02:07 PM ::1 GET /~partytown/partytown-sw.js
+ HTTP  2/1/2026 1:02:07 PM ::1 Returned 304 in 1 ms
+ HTTP  2/1/2026 1:02:08 PM ::1 GET /ms365/
+ HTTP  2/1/2026 1:02:08 PM ::1 Returned 200 in 4 ms
+ HTTP  2/1/2026 1:02:08 PM ::1 GET /fonts/inter/inter-latin-400-normal.woff2
+ HTTP  2/1/2026 1:02:08 PM ::1 GET /fonts/inter/inter-latin-700-normal.woff2
+ HTTP  2/1/2026 1:02:08 PM ::1 GET /fonts/fontawesome/webfonts/fa-brands-400.subset.woff2
+ HTTP  2/1/2026 1:02:08 PM ::1 GET /fonts/fontawesome/webfonts/fa-solid-900.subset.woff2
+ HTTP  2/1/2026 1:02:08 PM ::1 GET /fonts/fontawesome/webfonts/fa-regular-400.subset.woff2
+ HTTP  2/1/2026 1:02:08 PM ::1 GET /assets/css/ms365.css
+ HTTP  2/1/2026 1:02:08 PM ::1 Returned 304 in 4 ms
+ HTTP  2/1/2026 1:02:08 PM ::1 Returned 304 in 4 ms
+ HTTP  2/1/2026 1:02:08 PM ::1 Returned 304 in 4 ms
+ HTTP  2/1/2026 1:02:08 PM ::1 Returned 304 in 4 ms
+ HTTP  2/1/2026 1:02:08 PM ::1 Returned 304 in 4 ms
+ HTTP  2/1/2026 1:02:08 PM ::1 GET /assets/css/fonts.css
+ HTTP  2/1/2026 1:02:08 PM ::1 GET /assets/css/common.css
+ HTTP  2/1/2026 1:02:08 PM ::1 Returned 304 in 1 ms
+ HTTP  2/1/2026 1:02:08 PM ::1 Returned 304 in 1 ms
+ HTTP  2/1/2026 1:02:08 PM ::1 GET /assets/images/ms365.webp
+ HTTP  2/1/2026 1:02:08 PM ::1 Returned 200 in 12 ms
+ HTTP  2/1/2026 1:02:08 PM ::1 Returned 200 in 25 ms
+ HTTP  2/1/2026 1:02:08 PM ::1 GET /assets/js/page-ms365.js?v=2
+ HTTP  2/1/2026 1:02:08 PM ::1 GET /assets/js/vendor-loader.js?v=2
+ HTTP  2/1/2026 1:02:08 PM ::1 Returned 304 in 1 ms
+ HTTP  2/1/2026 1:02:08 PM ::1 GET /assets/js/shared.js?v=2
+ HTTP  2/1/2026 1:02:08 PM ::1 Returned 304 in 1 ms
+ HTTP  2/1/2026 1:02:08 PM ::1 Returned 200 in 3 ms
+ HTTP  2/1/2026 1:02:10 PM ::1 GET /~partytown/partytown-sw.js
+ HTTP  2/1/2026 1:02:10 PM ::1 Returned 304 in 1 ms
+ HTTP  2/1/2026 1:02:11 PM ::1 GET /kurmer/
+ HTTP  2/1/2026 1:02:11 PM ::1 Returned 200 in 2 ms
+ HTTP  2/1/2026 1:02:11 PM ::1 GET /assets/css/kurmer.css
+ HTTP  2/1/2026 1:02:11 PM ::1 GET /fonts/inter/inter-latin-400-normal.woff2
+ HTTP  2/1/2026 1:02:11 PM ::1 GET /fonts/inter/inter-latin-700-normal.woff2
+ HTTP  2/1/2026 1:02:11 PM ::1 GET /fonts/fontawesome/webfonts/fa-brands-400.subset.woff2
+ HTTP  2/1/2026 1:02:11 PM ::1 GET /fonts/fontawesome/webfonts/fa-solid-900.subset.woff2
+ HTTP  2/1/2026 1:02:11 PM ::1 GET /fonts/fontawesome/webfonts/fa-regular-400.subset.woff2
+ HTTP  2/1/2026 1:02:11 PM ::1 Returned 304 in 2 ms
+ HTTP  2/1/2026 1:02:11 PM ::1 Returned 304 in 2 ms
+ HTTP  2/1/2026 1:02:11 PM ::1 Returned 304 in 3 ms
+ HTTP  2/1/2026 1:02:11 PM ::1 Returned 304 in 4 ms
+ HTTP  2/1/2026 1:02:11 PM ::1 Returned 304 in 4 ms
+ HTTP  2/1/2026 1:02:11 PM ::1 GET /assets/css/fonts.css
+ HTTP  2/1/2026 1:02:11 PM ::1 GET /assets/css/common.css
+ HTTP  2/1/2026 1:02:11 PM ::1 Returned 304 in 1 ms
+ HTTP  2/1/2026 1:02:11 PM ::1 Returned 304 in 1 ms
+ HTTP  2/1/2026 1:02:11 PM ::1 Returned 200 in 8 ms
+ HTTP  2/1/2026 1:02:11 PM ::1 GET /assets/images/kurmer.webp
+ HTTP  2/1/2026 1:02:11 PM ::1 GET /assets/js/page-kurmer.js?v=2
+ HTTP  2/1/2026 1:02:11 PM ::1 GET /assets/js/vendor-loader.js?v=2
+ HTTP  2/1/2026 1:02:11 PM ::1 GET /assets/js/shared.js?v=2
+ HTTP  2/1/2026 1:02:11 PM ::1 Returned 304 in 1 ms
+ HTTP  2/1/2026 1:02:11 PM ::1 Returned 304 in 1 ms
+ HTTP  2/1/2026 1:02:11 PM ::1 Returned 200 in 3 ms
+ HTTP  2/1/2026 1:02:11 PM ::1 Returned 404 in 4 ms
+ HTTP  2/1/2026 1:02:13 PM ::1 GET /~partytown/partytown-sw.js
+ HTTP  2/1/2026 1:02:13 PM ::1 Returned 304 in 1 ms
 
  INFO  Gracefully shutting down. Please wait...
-npm notice
-npm notice New minor version of npm available! 11.7.0 -> 11.8.0
-npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.8.0
-npm notice To update run: npm install -g npm@11.8.0
-npm notice

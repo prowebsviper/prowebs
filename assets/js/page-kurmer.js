@@ -1,4 +1,3 @@
-
 // PAGE SPECIFIC DATA & LOGIC
 
 const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbySaAB2WT0D59UlLyZcXliWvNURCnHcRrqz5P8C2LCQbVdk0hn3Qkl1glGiLJSql_Wh/exec';
@@ -171,73 +170,66 @@ function renderPromoCard() {
     const quota = Math.floor(Math.max(2, Math.min(100, p)));
 
     container.innerHTML = `
-        <!-- Product Info Card - Mobile Optimized (Redesigned) -->
-        <article class="relative overflow-hidden rounded-3xl bg-white shadow-xl ring-1 ring-gray-900/5 transition-all hover:shadow-2xl mb-6">
-            <!-- Header: Solid Color -->
-            <div class="bg-[#1a73e8] p-6 text-white relative overflow-hidden">
-                <div class="absolute -right-6 -top-6 h-24 w-24 rounded-full bg-white/10 blur-2xl"></div>
-                <div class="absolute -left-6 -bottom-6 h-24 w-24 rounded-full bg-black/10 blur-2xl"></div>
-
-                <div class="relative z-10 flex items-start justify-between">
-                    <div>
-                        <span class="inline-flex items-center rounded-full bg-white/20 px-2.5 py-1 text-[11px] font-bold text-white backdrop-blur-md border border-white/20 shadow-sm">
-                            <span class="mr-1.5 flex h-2 w-2 relative">
-                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
-                                <span class="relative inline-flex rounded-full h-2 w-2 bg-green-400"></span>
-                            </span>
-                            Stok Tersedia
-                        </span>
-                        <h3 class="mt-3 text-2xl font-black tracking-tight text-white leading-tight">Perangkat Ajar 2026/2027</h3>
-                        <p class="mt-1 text-sm font-medium text-white/90 flex items-center gap-1.5">
-                            <i class="fas fa-check-circle"></i> Update Terbaru (Deep Learning)
-                        </p>
-                    </div>
-                    <!-- Discount Badge -->
-                    <div class="rounded-lg bg-white/10 p-2 backdrop-blur-sm border border-white/20 shadow-inner">
-                        <span class="block text-center text-[10px] font-bold uppercase text-white/80">Diskon</span>
-                        <span class="block text-center text-lg font-black leading-none text-white">66%</span>
-                    </div>
-                </div>
+        <article class="relative overflow-hidden rounded-3xl bg-white border border-gray-200 shadow-sm transition-all hover:shadow-md mb-6">
+            <!-- Badge -->
+            <div class="absolute top-0 right-0 bg-[#1a73e8] text-white text-[10px] font-bold px-3 py-1 rounded-bl-xl z-10 shadow-sm">
+                BEST SELLER
             </div>
 
-            <!-- Pricing Section -->
-            <div class="p-6">
-                <div class="flex items-end gap-2 mb-1">
-                    <span class="text-4xl font-black text-gray-900 tracking-tight">Rp 50rb</span>
-                    <span class="text-lg font-bold text-gray-400 line-through mb-1.5 decoration-2">Rp 175rb</span>
-                </div>
-                <p class="text-xs font-semibold text-green-700 bg-green-50 inline-block px-2 py-1 rounded-md mb-4 border border-green-100">
-                    <i class="fas fa-tags mr-1"></i> Harga Mulai
-                </p>
-
-                <!-- Urgency/Stock -->
-                <div class="rounded-xl bg-orange-50 p-3 border border-orange-100 mb-5">
-                    <div class="flex items-center justify-between mb-2">
-                        <div class="flex items-center gap-2">
-                            <i class="fas fa-fire text-orange-500 animate-pulse"></i>
-                            <span class="text-xs font-bold text-orange-700">Segera Habis!</span>
-                        </div>
-                        <span class="text-xs font-bold text-gray-900">95% Terjual</span>
+            <div class="p-5">
+                <!-- Header -->
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-[#1a73e8]">
+                         <i class="fas fa-book text-xl"></i>
                     </div>
-                    <div class="h-2 w-full bg-white rounded-full overflow-hidden border border-orange-200">
-                        <div class="h-full bg-gradient-to-r from-orange-400 to-red-500 rounded-full transition-all duration-1000" style="width: ${quota}%"></div>
+                    <div>
+                        <h3 class="text-lg font-bold text-gray-900 leading-tight">Perangkat Ajar 2026/2027</h3>
+                        <p class="text-xs text-gray-500 font-medium">Kurikulum Merdeka (Deep Learning)</p>
                     </div>
                 </div>
 
-                <!-- Buttons -->
-                <div class="grid grid-cols-[1fr_auto] gap-3">
-                    <button type="button" onclick="openAddItemModal()" class="h-14 rounded-2xl bg-[#1a73e8] text-white shadow-lg shadow-blue-200 hover:bg-[#1557b0] active:scale-[0.98] transition-all flex items-center justify-center gap-2 font-bold text-[16px] group">
-                        <span>Pilih Jenjang & Mapel</span>
-                        <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
-                    </button>
-                    <button id="btnDetail" type="button" class="h-14 w-14 rounded-2xl border-2 border-gray-100 text-gray-400 hover:border-blue-100 hover:bg-blue-50 hover:text-[#1a73e8] transition-all flex items-center justify-center">
-                        <i class="fas fa-info-circle text-xl"></i>
-                    </button>
+                <!-- Price -->
+                <div class="mb-5">
+                     <div class="flex items-baseline gap-1">
+                        <span class="text-sm text-gray-500 font-medium">Mulai</span>
+                        <span class="text-4xl font-extrabold text-gray-900 tracking-tight">50.000</span>
+                     </div>
+                     <div class="flex items-center gap-2 mt-1">
+                        <span class="text-sm text-gray-400 line-through">Rp 175.000</span>
+                        <span class="text-[10px] font-bold text-green-700 bg-green-50 px-2 py-0.5 rounded-full border border-green-100">Hemat 66%</span>
+                     </div>
                 </div>
 
-                <p class="mt-4 text-center text-xs font-medium text-gray-400 flex items-center justify-center gap-1.5">
-                    <i class="fas fa-shield-alt text-green-500"></i> Garansi Uang Kembali 100%
-                </p>
+                <!-- Key Feature Highlight -->
+                <div class="bg-gray-50 rounded-xl p-3 mb-5 border border-gray-100 flex items-center gap-3">
+                     <div class="w-8 h-8 rounded-full bg-white border border-gray-200 flex items-center justify-center flex-shrink-0 shadow-sm">
+                        <i class="fas fa-check text-[#1a73e8] text-sm"></i>
+                     </div>
+                     <div>
+                         <p class="text-xs font-bold text-gray-900">Lengkap 2 Semester</p>
+                         <p class="text-[10px] text-gray-500">Modul Ajar, CP, ATP, LKPD</p>
+                     </div>
+                </div>
+
+                <!-- Limited Offer / Stock -->
+                <div class="flex items-center gap-2 mb-5">
+                     <div class="flex-1 h-1.5 bg-gray-100 rounded-full overflow-hidden">
+                         <div class="h-full bg-red-500 rounded-full transition-all duration-1000" style="width: ${quota}%"></div>
+                     </div>
+                     <span class="text-[10px] font-bold text-red-500 whitespace-nowrap">Sisa ${Math.max(1, Math.floor(quota/10))} Slot</span>
+                </div>
+
+                <!-- Action -->
+                <div class="grid grid-cols-[1fr_auto] gap-2">
+                    <button type="button" onclick="openAddItemModal()"
+                        class="h-12 bg-[#1a73e8] hover:bg-[#1557b0] text-white font-bold rounded-xl text-sm shadow-lg shadow-blue-200/50 transition-all active:scale-95 flex items-center justify-center gap-2">
+                        Pilih Jenjang & Mapel
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                    <button id="btnDetail" type="button" class="w-12 h-12 border border-gray-200 rounded-xl flex items-center justify-center text-gray-400 hover:text-[#1a73e8] hover:border-blue-200 hover:bg-blue-50 transition-all">
+                        <i class="fas fa-info-circle"></i>
+                    </button>
+                </div>
             </div>
         </article>
     `;

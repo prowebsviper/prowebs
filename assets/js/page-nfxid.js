@@ -58,7 +58,7 @@ const packages = {
         id: 'yearly',
         name: "Netflix Premium 1 Tahun",
         price: 179000,
-        normalPrice: 360000
+        normalPrice: 1790000
     }
 };
 

@@ -144,7 +144,7 @@ function renderPackageCards() {
     const isMonthly = currentPackage === 'monthly';
     const isYearly = currentPackage === 'yearly';
 
-    const btnClassBase = "flex-1 py-2 text-xs font-semibold rounded-lg transition-all duration-200 border";
+    const btnClassBase = "flex-1 py-3 text-xs font-semibold rounded-lg transition-all duration-200 border";
     const btnClassActive = "bg-red-50 text-red-700 border-red-200 shadow-sm ring-1 ring-red-100";
     const btnClassInactive = "bg-white text-gray-500 border-gray-100 hover:text-gray-700 hover:bg-gray-50";
 
@@ -158,85 +158,99 @@ function renderPackageCards() {
     const quota = Math.floor(Math.max(2, Math.min(100, p)));
 
     container.innerHTML = `
-        <article class="relative overflow-hidden rounded-3xl bg-white border border-gray-200 shadow-sm transition-all hover:shadow-md">
-            <!-- Badge -->
-            <div class="absolute top-0 right-0 bg-[#E31E24] text-white text-[10px] font-bold px-3 py-1 rounded-bl-xl z-10 shadow-sm">
-                BEST SELLER
-            </div>
-
-            <div class="p-5">
-                <!-- Header -->
-                <div class="flex items-center gap-3 mb-4">
-                    <div class="w-10 h-10 rounded-full bg-red-50 flex items-center justify-center text-[#E31E24]">
-                         <i class="fab fa-adobe text-xl"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-lg font-bold text-gray-900 leading-tight">Adobe Creative Cloud</h3>
-                        <p class="text-xs text-gray-500 font-medium">All Apps Plan</p>
-                    </div>
+        <div class="relative group">
+            <div class="absolute -inset-0.5 bg-gradient-to-r from-red-600 to-orange-500 rounded-[2rem] opacity-30 blur group-hover:opacity-60 transition duration-500"></div>
+            <article class="relative bg-white rounded-[1.7rem] shadow-xl overflow-hidden">
+                <!-- Top Badge -->
+                <div class="absolute top-4 right-0 bg-[#E31E24] text-white text-[10px] font-bold px-3 py-1 rounded-l-lg shadow-md z-10">
+                    BEST SELLER
                 </div>
 
-                <!-- Package Switcher -->
-                <div class="flex gap-2 mb-5">
-                    <button type="button" onclick="switchPackage('monthly')"
-                        class="${btnClassBase} ${isMonthly ? btnClassActive : btnClassInactive}">
-                        <div class="flex flex-col items-center">
-                            <span class="font-bold">1 Bulan</span>
+                <div class="p-6">
+                    <!-- Brand Header -->
+                    <div class="flex flex-col items-center text-center mb-6">
+                        <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-red-50 to-white border border-red-100 flex items-center justify-center shadow-sm mb-3">
+                             <img src="/assets/images/adobe.webp" alt="Adobe" class="w-10 h-10 object-contain">
                         </div>
-                    </button>
-                    <button type="button" onclick="switchPackage('yearly')"
-                        class="${btnClassBase} ${isYearly ? btnClassActive : btnClassInactive}">
-                        <div class="flex flex-col items-center">
-                            <span class="font-bold">1 Tahun</span>
-                            <span class="text-[10px]">Hemat 86%</span>
+                        <h3 class="text-xl font-black text-gray-900 leading-tight">Adobe Creative Cloud</h3>
+                        <p class="text-sm text-gray-500 font-medium">All Apps Plan • Official</p>
+                    </div>
+
+                    <!-- Package Switcher -->
+                    <div class="flex gap-2 mb-6">
+                        <button type="button" onclick="switchPackage('monthly')"
+                            class="${btnClassBase} ${isMonthly ? btnClassActive : btnClassInactive}">
+                            <div class="flex flex-col items-center">
+                                <span class="font-bold">1 Bulan</span>
+                            </div>
+                        </button>
+                        <button type="button" onclick="switchPackage('yearly')"
+                            class="${btnClassBase} ${isYearly ? btnClassActive : btnClassInactive}">
+                            <div class="flex flex-col items-center">
+                                <span class="font-bold">1 Tahun</span>
+                                <span class="text-[10px]">Hemat 86%</span>
+                            </div>
+                        </button>
+                    </div>
+
+                    <!-- Pricing Display -->
+                    <div class="text-center mb-6">
+                         <div class="inline-flex items-baseline gap-1">
+                            <span class="text-base text-gray-500 font-semibold">Rp</span>
+                            <span class="text-[3.5rem] font-black text-gray-900 leading-none tracking-tight">${pkg.price.toLocaleString('id-ID')}</span>
+                         </div>
+                         <div class="flex items-center justify-center gap-2 mt-2">
+                            <span class="text-sm text-gray-400 line-through decoration-red-400 decoration-2">${formatCurrency(pkg.normalPrice)}</span>
+                            <span class="bg-red-100 text-red-600 text-[10px] font-bold px-2 py-0.5 rounded-full border border-red-100">Hemat ${Math.round((1 - pkg.price / pkg.normalPrice) * 100)}%</span>
+                         </div>
+                    </div>
+
+                    <!-- Features Grid -->
+                    <div class="grid grid-cols-2 gap-3 mb-6">
+                        <div class="bg-gray-50 p-3 rounded-xl border border-gray-100 text-center">
+                            <i class="fas fa-layer-group text-red-600 text-lg mb-1"></i>
+                            <p class="text-xs font-bold text-gray-800">20+ Apps</p>
                         </div>
-                    </button>
-                </div>
+                        <div class="bg-gray-50 p-3 rounded-xl border border-gray-100 text-center">
+                            <i class="fas fa-magic text-purple-600 text-lg mb-1"></i>
+                            <p class="text-xs font-bold text-gray-800">Firefly AI</p>
+                        </div>
+                        <div class="bg-gray-50 p-3 rounded-xl border border-gray-100 text-center">
+                            <i class="fas fa-cloud text-blue-600 text-lg mb-1"></i>
+                            <p class="text-xs font-bold text-gray-800">100GB Cloud</p>
+                        </div>
+                        <div class="bg-gray-50 p-3 rounded-xl border border-gray-100 text-center">
+                            <i class="fas fa-check-circle text-green-600 text-lg mb-1"></i>
+                            <p class="text-xs font-bold text-gray-800">Official</p>
+                        </div>
+                    </div>
 
-                <!-- Price -->
-                <div class="mb-5">
-                     <div class="flex items-baseline gap-1">
-                        <span class="text-sm text-gray-500 font-medium">Rp</span>
-                        <span class="text-4xl font-extrabold text-gray-900 tracking-tight">${pkg.price.toLocaleString('id-ID')}</span>
-                     </div>
-                     <div class="flex items-center gap-2 mt-1">
-                        <span class="text-sm text-gray-400 line-through">${formatCurrency(pkg.normalPrice)}</span>
-                        <span class="text-[10px] font-bold text-green-700 bg-green-50 px-2 py-0.5 rounded-full border border-green-100">Hemat ${Math.round((1 - pkg.price / pkg.normalPrice) * 100)}%</span>
-                     </div>
-                </div>
+                    <!-- Countdown & Stock -->
+                    <div class="flex items-center justify-between mb-6 bg-red-50 p-3 rounded-xl border border-red-100">
+                         <div class="flex items-center gap-2">
+                             <span class="relative flex h-2.5 w-2.5">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-500"></span>
+                             </span>
+                             <span class="text-xs font-bold text-red-600">Sisa Kuota: ${Math.max(1, Math.floor(quota/10))}</span>
+                         </div>
+                         <div class="text-xs font-mono font-bold text-red-600" id="card-countdown">23:59</div>
+                    </div>
 
-                <!-- Key Feature Highlight -->
-                <div class="bg-gray-50 rounded-xl p-3 mb-5 border border-gray-100 flex items-center gap-3">
-                     <div class="w-8 h-8 rounded-full bg-white border border-gray-200 flex items-center justify-center flex-shrink-0 shadow-sm">
-                        <i class="fas fa-magic text-[#E31E24] text-sm"></i>
-                     </div>
-                     <div>
-                         <p class="text-xs font-bold text-gray-900">20+ Apps & Firefly AI</p>
-                         <p class="text-[10px] text-gray-500">Photoshop, Illustrator, dll</p>
-                     </div>
-                </div>
-
-                <!-- Limited Offer / Stock -->
-                <div class="flex items-center gap-2 mb-5">
-                     <div class="flex-1 h-1.5 bg-gray-100 rounded-full overflow-hidden">
-                         <div class="h-full bg-red-500 rounded-full transition-all duration-1000" style="width: ${quota}%"></div>
-                     </div>
-                     <span class="text-[10px] font-bold text-red-500 whitespace-nowrap">Sisa ${Math.max(1, Math.floor(quota/10))} Slot</span>
-                </div>
-
-                <!-- Action -->
-                <div class="grid grid-cols-[1fr_auto] gap-2">
+                    <!-- Action Button -->
                     <button type="button" onclick="document.getElementById('nama').focus()"
-                        class="h-12 bg-[#E31E24] hover:bg-[#C21B20] text-white font-bold rounded-xl text-sm shadow-lg shadow-red-200/50 transition-all active:scale-95 flex items-center justify-center gap-2">
-                        Ambil Promo
-                        <i class="fas fa-arrow-right"></i>
+                        class="w-full h-14 bg-gradient-to-r from-[#E31E24] to-red-500 hover:from-red-600 hover:to-red-500 text-white font-bold rounded-xl text-lg shadow-lg shadow-red-200/50 transition-all active:scale-[0.98] flex items-center justify-center gap-2 relative overflow-hidden group">
+                        <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 skew-y-12"></div>
+                        <span>Ambil Promo</span>
+                        <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
                     </button>
-                    <button id="btnDetail" type="button" class="w-12 h-12 border border-gray-200 rounded-xl flex items-center justify-center text-gray-400 hover:text-[#E31E24] hover:border-red-200 hover:bg-red-50 transition-all">
-                        <i class="fas fa-info-circle"></i>
+
+                    <button id="btnDetail" type="button" class="mt-3 w-full text-xs text-gray-400 hover:text-gray-600 font-medium flex items-center justify-center gap-1">
+                        <i class="fas fa-info-circle"></i> Lihat detail lengkap
                     </button>
                 </div>
-            </div>
-        </article>
+            </article>
+        </div>
     `;
 
     // Re-init sheet logic after render

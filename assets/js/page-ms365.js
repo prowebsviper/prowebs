@@ -131,68 +131,82 @@ function renderPackageCards() {
     const quota = Math.floor(Math.max(2, Math.min(100, p)));
 
     container.innerHTML = `
-        <article class="relative overflow-hidden rounded-3xl bg-white border border-gray-200 shadow-sm transition-all hover:shadow-md">
-            <!-- Badge -->
-            <div class="absolute top-0 right-0 bg-[#D83B01] text-white text-[10px] font-bold px-3 py-1 rounded-bl-xl z-10 shadow-sm">
-                BEST SELLER
-            </div>
+        <div class="relative group">
+            <div class="absolute -inset-0.5 bg-gradient-to-r from-orange-600 to-amber-500 rounded-[2rem] opacity-30 blur group-hover:opacity-60 transition duration-500"></div>
+            <article class="relative bg-white rounded-[1.7rem] shadow-xl overflow-hidden">
+                <!-- Top Badge -->
+                <div class="absolute top-4 right-0 bg-[#D83B01] text-white text-[10px] font-bold px-3 py-1 rounded-l-lg shadow-md z-10">
+                    BEST SELLER
+                </div>
 
-            <div class="p-5">
-                <!-- Header -->
-                <div class="flex items-center gap-3 mb-4">
-                    <div class="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center text-[#D83B01]">
-                         <i class="fab fa-microsoft text-xl"></i>
+                <div class="p-6">
+                    <!-- Brand Header -->
+                    <div class="flex flex-col items-center text-center mb-6">
+                        <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-orange-50 to-white border border-orange-100 flex items-center justify-center shadow-sm mb-3">
+                                <img src="/assets/images/ms365.webp" alt="Microsoft 365" class="w-10 h-10 object-contain">
+                        </div>
+                        <h3 class="text-xl font-black text-gray-900 leading-tight">Microsoft 365</h3>
+                        <p class="text-sm text-gray-500 font-medium">Lifetime License • Official</p>
                     </div>
-                    <div>
-                        <h3 class="text-lg font-bold text-gray-900 leading-tight">Microsoft 365</h3>
-                        <p class="text-xs text-gray-500 font-medium">Lifetime License</p>
+
+                    <!-- Pricing Display -->
+                    <div class="text-center mb-6">
+                            <div class="inline-flex items-baseline gap-1">
+                            <span class="text-base text-gray-500 font-semibold">Rp</span>
+                            <span class="text-[3.5rem] font-black text-gray-900 leading-none tracking-tight">${lifetime.price.toLocaleString('id-ID')}</span>
+                            </div>
+                            <div class="flex items-center justify-center gap-2 mt-2">
+                            <span class="text-sm text-gray-400 line-through decoration-red-400 decoration-2">Rp ${lifetime.normalPrice.toLocaleString('id-ID')}</span>
+                            <span class="bg-red-100 text-red-600 text-[10px] font-bold px-2 py-0.5 rounded-full border border-red-100">Hemat ${discount}%</span>
+                            </div>
                     </div>
-                </div>
 
-                <!-- Price -->
-                <div class="mb-5">
-                     <div class="flex items-baseline gap-1">
-                        <span class="text-sm text-gray-500 font-medium">Rp</span>
-                        <span class="text-4xl font-extrabold text-gray-900 tracking-tight">${lifetime.price.toLocaleString('id-ID')}</span>
-                     </div>
-                     <div class="flex items-center gap-2 mt-1">
-                        <span class="text-sm text-gray-400 line-through">${formatCurrency(lifetime.normalPrice)}</span>
-                        <span class="text-[10px] font-bold text-green-700 bg-green-50 px-2 py-0.5 rounded-full border border-green-100">Hemat ${discount}%</span>
-                     </div>
-                </div>
+                    <!-- Features Grid -->
+                    <div class="grid grid-cols-2 gap-3 mb-6">
+                        <div class="bg-gray-50 p-3 rounded-xl border border-gray-100 text-center">
+                            <i class="fas fa-cloud text-orange-600 text-lg mb-1"></i>
+                            <p class="text-xs font-bold text-gray-800">5TB Cloud</p>
+                        </div>
+                        <div class="bg-gray-50 p-3 rounded-xl border border-gray-100 text-center">
+                            <i class="fas fa-file-word text-blue-600 text-lg mb-1"></i>
+                            <p class="text-xs font-bold text-gray-800">Office Apps</p>
+                        </div>
+                        <div class="bg-gray-50 p-3 rounded-xl border border-gray-100 text-center">
+                            <i class="fas fa-infinity text-purple-600 text-lg mb-1"></i>
+                            <p class="text-xs font-bold text-gray-800">Lifetime</p>
+                        </div>
+                        <div class="bg-gray-50 p-3 rounded-xl border border-gray-100 text-center">
+                            <i class="fas fa-check-circle text-green-600 text-lg mb-1"></i>
+                            <p class="text-xs font-bold text-gray-800">Official</p>
+                        </div>
+                    </div>
 
-                <!-- Key Feature Highlight -->
-                <div class="bg-gray-50 rounded-xl p-3 mb-5 border border-gray-100 flex items-center gap-3">
-                     <div class="w-8 h-8 rounded-full bg-white border border-gray-200 flex items-center justify-center flex-shrink-0 shadow-sm">
-                        <i class="fas fa-cloud text-[#D83B01] text-sm"></i>
-                     </div>
-                     <div>
-                         <p class="text-xs font-bold text-gray-900">5TB OneDrive</p>
-                         <p class="text-[10px] text-gray-500">Official Storage</p>
-                     </div>
-                </div>
+                    <!-- Countdown & Stock -->
+                    <div class="flex items-center justify-between mb-6 bg-red-50 p-3 rounded-xl border border-red-100">
+                            <div class="flex items-center gap-2">
+                                <span class="relative flex h-2.5 w-2.5">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-500"></span>
+                                </span>
+                                <span class="text-xs font-bold text-red-600">Sisa Kuota: ${Math.max(1, Math.floor(quota/10))}</span>
+                            </div>
+                            <div class="text-xs font-mono font-bold text-red-600" id="card-countdown">23:59</div>
+                    </div>
 
-                <!-- Limited Offer / Stock -->
-                <div class="flex items-center gap-2 mb-5">
-                     <div class="flex-1 h-1.5 bg-gray-100 rounded-full overflow-hidden">
-                         <div class="h-full bg-red-500 rounded-full transition-all duration-1000" style="width: ${quota}%"></div>
-                     </div>
-                     <span class="text-[10px] font-bold text-red-500 whitespace-nowrap">Sisa ${Math.max(1, Math.floor(quota/10))} Slot</span>
-                </div>
-
-                <!-- Action -->
-                <div class="grid grid-cols-[1fr_auto] gap-2">
+                    <!-- Action Button -->
                     <button type="button" onclick="document.getElementById('nama').focus()"
-                        class="h-12 bg-[#D83B01] hover:bg-[#A92E01] text-white font-bold rounded-xl text-sm shadow-lg shadow-orange-200/50 transition-all active:scale-95 flex items-center justify-center gap-2">
-                        Ambil Promo
-                        <i class="fas fa-arrow-right"></i>
+                        class="w-full h-14 bg-gradient-to-r from-[#D83B01] to-orange-500 hover:from-orange-600 hover:to-orange-500 text-white font-bold rounded-xl text-lg shadow-lg shadow-orange-200/50 transition-all active:scale-[0.98] flex items-center justify-center gap-2 relative overflow-hidden group">
+                        <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 skew-y-12"></div>
+                        <span>Ambil Promo</span>
+                        <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
                     </button>
-                    <button id="btnDetail" type="button" class="w-12 h-12 border border-gray-200 rounded-xl flex items-center justify-center text-gray-400 hover:text-[#D83B01] hover:border-orange-200 hover:bg-orange-50 transition-all">
-                        <i class="fas fa-info-circle"></i>
+
+                    <button id="btnDetail" type="button" class="mt-3 w-full text-xs text-gray-400 hover:text-gray-600 font-medium flex items-center justify-center gap-1">
+                        <i class="fas fa-info-circle"></i> Lihat detail lengkap
                     </button>
                 </div>
-            </div>
-        </article>
+            </article>
+        </div>
     `;
 
     if (typeof initSheetLogic === 'function') initSheetLogic();

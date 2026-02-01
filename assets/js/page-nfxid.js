@@ -123,10 +123,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // --- RENDER FUNCTIONS (Page Specific) ---
 function renderPackageCards() {
-    const container = document.getElementById('package-selection-container');
+    const container = document.getElementById('package-list');
     if (!container) return;
-
-    const formatCurrency = (amount) => `Rp ${amount.toLocaleString('id-ID')}`;
 
     const yearly = packages.yearly;
     const discount = Math.round(((yearly.normalPrice - yearly.price) / yearly.normalPrice) * 100);
@@ -141,83 +139,76 @@ function renderPackageCards() {
     const quota = Math.floor(Math.max(2, Math.min(100, p)));
 
     container.innerHTML = `
-        <div class="relative group">
-            <div class="absolute -inset-0.5 bg-gradient-to-r from-red-600 to-rose-600 rounded-[2rem] opacity-30 blur group-hover:opacity-60 transition duration-500"></div>
-            <article class="relative bg-white rounded-[1.7rem] shadow-xl overflow-hidden">
-                <!-- Top Badge -->
-                <div class="absolute top-4 right-0 bg-[#E50914] text-white text-[10px] font-bold px-3 py-1 rounded-l-lg shadow-md z-10">
-                    BEST SELLER
+        <article class="relative bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
+            <!-- Top Badge -->
+            <div class="absolute top-0 right-0 bg-[#E50914] text-white text-[10px] font-bold px-3 py-1 rounded-bl-xl z-10">
+                BEST SELLER
+            </div>
+
+            <div class="p-5">
+                <!-- Header -->
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="w-12 h-12 rounded-xl bg-red-50 flex items-center justify-center border border-red-100 shrink-0">
+                            <span class="text-[#E50914] font-black text-2xl">N</span>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-gray-900 leading-tight">Netflix Premium</h3>
+                        <p class="text-xs text-gray-500 font-medium">Private Account • 1 Tahun</p>
+                    </div>
                 </div>
 
-                <div class="p-6">
-                    <!-- Brand Header -->
-                    <div class="flex flex-col items-center text-center mb-6">
-                        <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-red-50 to-white border border-red-100 flex items-center justify-center shadow-sm mb-3">
-                                <span class="text-[#E50914] font-black text-3xl">N</span>
+                <!-- Pricing Display -->
+                <div class="mb-5">
+                        <div class="flex items-baseline gap-1">
+                        <span class="text-sm text-gray-500 font-semibold">Rp</span>
+                        <span class="text-4xl font-extrabold text-gray-900 tracking-tight">${yearly.price.toLocaleString('id-ID')}</span>
                         </div>
-                        <h3 class="text-xl font-black text-gray-900 leading-tight">Netflix Premium</h3>
-                        <p class="text-sm text-gray-500 font-medium">Private Account • 1 Tahun</p>
-                    </div>
-
-                    <!-- Pricing Display -->
-                    <div class="text-center mb-6">
-                            <div class="inline-flex items-baseline gap-1">
-                            <span class="text-base text-gray-500 font-semibold">Rp</span>
-                            <span class="text-[3.5rem] font-black text-gray-900 leading-none tracking-tight">${yearly.price.toLocaleString('id-ID')}</span>
-                            </div>
-                            <div class="flex items-center justify-center gap-2 mt-2">
-                            <span class="text-sm text-gray-400 line-through decoration-red-400 decoration-2">Rp ${yearly.normalPrice.toLocaleString('id-ID')}</span>
-                            <span class="bg-red-100 text-red-600 text-[10px] font-bold px-2 py-0.5 rounded-full border border-red-100">Hemat ${discount}%</span>
-                            </div>
-                    </div>
-
-                    <!-- Features Grid -->
-                    <div class="grid grid-cols-2 gap-3 mb-6">
-                        <div class="bg-gray-50 p-3 rounded-xl border border-gray-100 text-center">
-                            <i class="fas fa-tv text-red-600 text-lg mb-1"></i>
-                            <p class="text-xs font-bold text-gray-800">4K UHD</p>
+                        <div class="flex items-center gap-2 mt-1">
+                        <span class="text-xs text-gray-400 line-through">Rp ${yearly.normalPrice.toLocaleString('id-ID')}</span>
+                        <span class="bg-red-100 text-red-600 text-[10px] font-bold px-2 py-0.5 rounded-full border border-red-100">Hemat ${discount}%</span>
                         </div>
-                        <div class="bg-gray-50 p-3 rounded-xl border border-gray-100 text-center">
-                            <i class="fas fa-user-lock text-gray-600 text-lg mb-1"></i>
-                            <p class="text-xs font-bold text-gray-800">Private</p>
-                        </div>
-                        <div class="bg-gray-50 p-3 rounded-xl border border-gray-100 text-center">
-                            <i class="fas fa-mobile-alt text-blue-600 text-lg mb-1"></i>
-                            <p class="text-xs font-bold text-gray-800">All Devices</p>
-                        </div>
-                        <div class="bg-gray-50 p-3 rounded-xl border border-gray-100 text-center">
-                            <i class="fas fa-shield-alt text-green-600 text-lg mb-1"></i>
-                            <p class="text-xs font-bold text-gray-800">Garansi</p>
-                        </div>
-                    </div>
-
-                    <!-- Countdown & Stock -->
-                    <div class="flex items-center justify-between mb-6 bg-red-50 p-3 rounded-xl border border-red-100">
-                            <div class="flex items-center gap-2">
-                                <span class="relative flex h-2.5 w-2.5">
-                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-                                <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-500"></span>
-                                </span>
-                                <span class="text-xs font-bold text-red-600">Sisa Kuota: ${Math.max(1, Math.floor(quota/10))}</span>
-                            </div>
-                            <div class="text-xs font-mono font-bold text-red-600" id="card-countdown">23:59</div>
-                    </div>
-
-                    <!-- Action Button -->
-                    <button type="button" onclick="document.getElementById('nama').focus()"
-                        class="w-full h-14 bg-gradient-to-r from-[#E50914] to-red-600 hover:from-red-600 hover:to-red-500 text-white font-bold rounded-xl text-lg shadow-lg shadow-red-200/50 transition-all active:scale-[0.98] flex items-center justify-center gap-2 relative overflow-hidden group">
-                        <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 skew-y-12"></div>
-                        <span>Ambil Promo</span>
-                        <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
-                    </button>
-
-                    <button id="btnDetail" type="button" class="mt-3 w-full text-xs text-gray-400 hover:text-gray-600 font-medium flex items-center justify-center gap-1">
-                        <i class="fas fa-info-circle"></i> Lihat detail lengkap
-                    </button>
                 </div>
-            </article>
-        </div>
+
+                <!-- Features Grid -->
+                <div class="space-y-2 mb-5">
+                    <div class="flex items-center gap-2 text-sm text-gray-700">
+                        <i class="fas fa-check-circle text-red-500"></i>
+                        <span>4K Ultra HD & HDR</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-sm text-gray-700">
+                        <i class="fas fa-check-circle text-red-500"></i>
+                        <span>Akun Private (No Sharing)</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-sm text-gray-700">
+                        <i class="fas fa-check-circle text-red-500"></i>
+                        <span>Garansi Full 1 Tahun</span>
+                    </div>
+                </div>
+
+                <!-- Stock Bar -->
+                <div class="bg-gray-50 rounded-lg p-2.5 mb-5 flex items-center justify-between border border-gray-100">
+                        <div class="flex items-center gap-2">
+                            <div class="relative flex h-2 w-2">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
+                            </div>
+                            <span class="text-xs font-bold text-red-600">Sisa ${Math.max(1, Math.floor(quota/10))} Slot</span>
+                        </div>
+                        <span class="text-xs font-mono font-bold text-gray-500" id="card-countdown">23:59</span>
+                </div>
+
+                <!-- Action Button -->
+                <button type="button" onclick="document.getElementById('nama').focus()"
+                    class="w-full h-12 bg-[#E50914] hover:bg-red-700 text-white font-bold rounded-xl text-base shadow-lg shadow-red-100 transition-all active:scale-[0.98] flex items-center justify-center gap-2 relative overflow-hidden group">
+                    <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 skew-y-12"></div>
+                    <span>Ambil Promo</span>
+                    <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                </button>
+            </div>
+        </article>
     `;
+
+    document.getElementById('selectedPackage').value = 'yearly';
 
     if (typeof initSheetLogic === 'function') initSheetLogic();
 }
@@ -240,24 +231,14 @@ function validateForm() {
     const name = nameInput.value.trim();
     const waInput = document.getElementById('whatsapp');
     const wa = waInput.value.trim();
-    const emailInput = document.getElementById('email');
-    const email = emailInput.value.trim();
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    // Email not required for Netflix as we provide the account
 
     if (!name) return { valid: false, msg: 'Nama wajib diisi', element: nameInput };
 
     const phoneValidationResult = validatePhoneNumber(wa);
     if (!phoneValidationResult.isValid) {
         return { valid: false, msg: phoneValidationResult.message, element: waInput };
-    }
-
-    if (!email || !emailRegex.test(email)) {
-        return { valid: false, msg: 'Email tidak valid', element: emailInput };
-    }
-
-    const domain = email.split('@')[1];
-    if (!allowedEmailDomains.includes(domain)) {
-        return { valid: false, msg: 'Domain email tidak diizinkan. Harap gunakan email pribadi.', element: emailInput };
     }
 
     return { valid: true };
@@ -296,7 +277,7 @@ async function handleFormSubmit() {
     const dataToSend = {
         nama: formData.get('nama'),
         whatsapp: formData.get('whatsapp'),
-        email: formData.get('email'),
+        email: 'Provided by Admin', // Netflix doesn't need user email
         paket: pkg.name,
         metodePembayaran: payment.name,
         totalTransfer: `Rp${totalPrice.toLocaleString('id-ID')}`,
@@ -361,7 +342,7 @@ function showPaymentPage(data, paymentMethod, amount) {
     // Generate WA Link
     const waMsg = `Halo, saya sudah transfer untuk pesanan:\n` +
         `No Invoice: ${data.idPembayaran}\n` +
-        `Email: ${data.email}\n` +
+        `Paket: ${data.paket}\n` +
         `Total: ${data.totalTransfer}\n\n` +
         `Mohon segera diproses.`;
     document.getElementById('wa-confirm-btn').href = `https://wa.me/6285602152097?text=${encodeURIComponent(waMsg)}`;

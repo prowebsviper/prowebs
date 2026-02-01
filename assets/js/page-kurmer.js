@@ -53,6 +53,12 @@ const educationalData = {
     }
 };
 
+const testimonialData = [
+    { name: "Bu Rina", text: "Sangat membantu untuk persiapan mengajar. Formatnya rapi dan mudah diedit.", rating: 5, img: "https://randomuser.me/api/portraits/women/1.jpg" },
+    { name: "Pak Budi", text: "Admin fast respon, file langsung dikirim setelah transfer. Recommended!", rating: 5, img: "https://randomuser.me/api/portraits/men/2.jpg" },
+    { name: "Bu Siti", text: "Lengkap banget, dari ATP sampai modul ajar ada semua. Terima kasih.", rating: 5, img: "https://randomuser.me/api/portraits/women/3.jpg" }
+];
+
 const paymentMethods = [
     { id: 'qris', name: 'QRIS', desc: 'Scan & bayar pakai app apapun', logo: 'https://pixvid.org/images/2026/01/16/CmB6A.png', type: 'qr', category: 'qris', number: '00020101021126610016ID.CO.SHOPEE.WWW01189360091800223157700208223157700303UMI51440014ID.CO.QRIS.WWW0215ID10254270621910303UMI5204481453033605802ID5904Epay6013JAKARTA PUSAT61051061062070703A0163042F15' },
     { id: 'bri', name: 'BRI', desc: 'Transfer via ATM/Mobile Banking', logo: 'https://pixvid.org/images/2026/01/16/CmNqe.png', type: 'bank', category: 'bank', number: '30135085184808548', holder: 'GP-085184808548' },
@@ -63,64 +69,20 @@ const paymentMethods = [
     { id: 'ovo', name: 'OVO', desc: 'Transfer ke nomor OVO', logo: 'https://pixvid.org/images/2026/01/16/CmNNQ.png', type: 'ewallet', category: 'ewallet', number: '085184808548', holder: 'Epay' }
 ];
 
-const kelengkapanList = [
-    "Modul Ajar Terintegrasi Deep Learning (2 Semester)",
-    "Capaian Pembelajaran (CP)",
-    "Alur Tujuan Pembelajaran (ATP)",
-    "Lembar Kerja Peserta Didik (LKPD)",
-    "Asesmen (Diagnostik, Formatif, Sumatif)",
-    "Program Tahunan (PROTA)",
-    "Program Semester (PROMES)",
-    "Alokasi Waktu Pembelajaran",
-    "Administrasi Wali Kelas Lengkap",
-    "Daftar Nilai & Jurnal Harian",
-    "Analisis Penilaian Kurikulum Nasional",
-    "Bonus: Media Ajar & Materi Presentasi"
-];
-
-const testimonialImages = [
-    "https://pixvid.org/images/2026/01/20/C7Scs.webp",
-    "https://pixvid.org/images/2026/01/20/C7aWL.webp",
-    "https://pixvid.org/images/2026/01/20/C7aYU.webp",
-    "https://pixvid.org/images/2026/01/20/C7aAZ.webp",
-    "https://pixvid.org/images/2026/01/20/C7aLr.webp",
-    "https://pixvid.org/images/2026/01/20/C7bzw.webp",
-    "https://pixvid.org/images/2026/01/20/C7buE.webp",
-    "https://pixvid.org/images/2026/01/20/C7bG9.webp",
-    "https://pixvid.org/images/2026/01/20/C7bfS.webp",
-    "https://pixvid.org/images/2026/01/20/C74H2.webp",
-    "https://pixvid.org/images/2026/01/20/C74KV.webp",
-    "https://pixvid.org/images/2026/01/20/C74bk.webp",
-    "https://pixvid.org/images/2026/01/20/C7Xeg.webp",
-    "https://pixvid.org/images/2026/01/20/C7XrO.webp",
-    "https://pixvid.org/images/2026/01/20/C7XoF.webp"
-];
-
 const faqList = [
     { q: "Apa itu Perangkat Ajar Deep Learning?", a: "Kumpulan lengkap dokumen administrasi mengajar siap pakai (Word/Docx) yang disusun berdasarkan Kurikulum Nasional terbaru." },
     { q: "Apakah sudah sesuai Kurikulum Nasional?", a: "Ya, 100%. Komponen CP, TP, ATP, hingga Asesmen sesuai panduan Kemendikbudristek." },
     { q: "Untuk jenjang apa saja?", a: "Tersedia untuk SD, SMP, SMA, dan SMK. Pilih jenjang dan mapel saat pemesanan." },
-    { q: "Bagaimana cara pengirimannya?", a: "Link unduhan Google Drive dikirim otomatis ke WhatsApp & Email Anda setelah pembayaran." },
-    { q: "Apakah file bisa diedit?", a: "Tentu saja! Semua dokumen berformat Microsoft Word (.docx) sehingga mudah diedit sesuai kebutuhan sekolah Anda." },
-    { q: "Apakah ini pembayaran sekali saja?", a: "Betul. Cukup sekali bayar, Anda mendapatkan akses file selamanya tanpa biaya bulanan atau tahunan." },
-    { q: "Berapa lama proses pengiriman file?", a: "Sistem kami bekerja otomatis 24 jam. File akan terkirim dalam hitungan detik setelah pembayaran terverifikasi." },
-    { q: "Bagaimana jika file tidak masuk?", a: "Jangan khawatir. Tim support kami siap membantu via WhatsApp jika ada kendala pengiriman. Garansi file pasti sampai." },
-    { q: "Apakah bisa dibuka di HP?", a: "Bisa. File tersimpan di Google Drive, jadi bisa diakses dan diunduh lewat HP, Tablet, Laptop, atau Komputer." },
-    { q: "Apakah ada bonus pembelian?", a: "Ada! Setiap pembelian paket lengkap akan mendapatkan bonus Modul Projek P5, Aplikasi Rapor, dan materi presentasi (PPT)." },
-    { q: "Apakah ada garansi uang kembali?", a: "Kami memberikan garansi uang kembali 100% jika file yang diterima tidak sesuai dengan deskripsi atau tidak bisa dibuka." }
+    { q: "Bagaimana cara pengirimannya?", a: "Link unduhan Google Drive dikirim otomatis ke WhatsApp & Email Anda setelah pembayaran." }
 ];
 
-const operatorPrefixes = {
-    'Telkomsel': ['0811', '0812', '0813', '0821', '0822', '0823', '0851', '0852', '0853'], 'by.U': ['0851'], 'Indosat Ooredoo': ['0814', '0815', '0816', '0855', '0856', '0857', '0858'], 'Tri (3)': ['0895', '0896', '0897', '0898', '0899'], 'XL Axiata': ['0817', '0818', '0819', '0859', '0877', '0878', '0879'], 'Live.On': ['0859'], 'Axis': ['0831', '0832', '0833', '0838'], 'Smartfren': ['0881', '0882', '0883', '0884', '0885', '0886', '0887', '0888', '0889']
-};
-const blacklistedNumbers = ['081234567890'];
 const allowedEmailDomains = [
     'gmail.com', 'googlemail.com', 'outlook.com', 'hotmail.com',
     'hotmail.co.uk', 'live.com', 'msn.com', 'yahoo.com', 'yahoo.co.id',
     'yahoo.co.uk', 'ymail.com', 'rocketmail.com', 'icloud.com', 'me.com',
     'mac.com', 'aol.com', 'zoho.com', 'proton.me', 'protonmail.com',
     'tutanota.com', 'gmx.com', 'gmx.de', 'mail.com', 'yandex.ru',
-    'yandex.com', 'fastmail.com', 'hey.com'
+    'yandex.com', 'fastmail.com', 'hey.com', 'belajar.id', 'guru.belajar.id'
 ];
 
 let cart = [];
@@ -131,8 +93,7 @@ let currentOrderDetails = {};
 
 // --- INIT ---
 document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('currentYear').textContent = new Date().getFullYear();
-    renderPromoCard();
+    renderPackageCards();
 
     // Lazy load non-critical sections
     runWhenVisible('payment-grid', renderPaymentMethods);
@@ -140,223 +101,160 @@ document.addEventListener('DOMContentLoaded', () => {
     runWhenVisible('faq-container', renderFAQ);
 
     initNotifications();
-    renderJenjangOptions();
-    initSheetLogic();
-    updatePromoQuota();
 
     const whatsappInput = document.getElementById('whatsapp');
     whatsappInput.addEventListener('input', (e) => {
         e.target.value = e.target.value.replace(/[^0-9]/g, '');
     });
-
-    // Widget Event Listeners
-    document.getElementById('confirm-add-item').addEventListener('click', handleConfirmAddItem);
-    document.getElementById('jurusan-select').addEventListener('change', handleJurusanChange);
-    document.getElementById('mapel-select').addEventListener('change', handleMapelChange);
 });
 
-// --- RENDER FUNCTIONS ---
-function renderPromoCard() {
-    const container = document.getElementById('promo-card-container');
+// --- RENDER FUNCTIONS (Page Specific) ---
+function renderPackageCards() {
+    const container = document.getElementById('package-list');
     if (!container) return;
 
-    const now = new Date();
-    let start = new Date();
-    start.setHours(3, 0, 0, 0);
-    if (now < start) start.setDate(start.getDate() - 1);
-    const elapsed = now - start;
-    const duration = 23 * 60 * 60 * 1000;
-    let p = 100 - (elapsed / duration) * 98;
-    const quota = Math.floor(Math.max(2, Math.min(100, p)));
+    const jenjangList = ["SD/MI", "SMP/MTS", "SMA/MAN", "SMK/MAK"];
 
-    container.innerHTML = `
-        <article class="relative overflow-hidden rounded-3xl bg-white border border-gray-200 shadow-sm transition-all hover:shadow-md mb-6">
-            <!-- Badge -->
-            <div class="absolute top-0 right-0 bg-[#1a73e8] text-white text-[10px] font-bold px-3 py-1 rounded-bl-xl z-10 shadow-sm">
-                BEST SELLER
-            </div>
+    container.innerHTML = jenjangList.map(jenjang => {
+        let price = (typeof pricing[jenjang] === 'object') ? pricing[jenjang].umum : pricing[jenjang];
+        let normalPrice = price * 2;
+        let discount = 50;
 
-            <div class="p-5">
-                <!-- Header -->
-                <div class="flex items-center gap-3 mb-4">
-                    <div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-[#1a73e8]">
-                         <i class="fas fa-book text-xl"></i>
+        return `
+        <article class="relative bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden cursor-pointer hover:border-blue-300 transition-colors" onclick="openSelectionSheet('${jenjang}')">
+            <div class="p-4 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-blue-600">
+                        <i class="fas fa-graduation-cap"></i>
                     </div>
                     <div>
-                        <h3 class="text-lg font-bold text-gray-900 leading-tight">Perangkat Ajar 2026/2027</h3>
-                        <p class="text-xs text-gray-500 font-medium">Kurikulum Merdeka (Deep Learning)</p>
+                        <h3 class="font-bold text-gray-900">${jenjang}</h3>
+                        <p class="text-xs text-gray-500">Mulai Rp ${price.toLocaleString('id-ID')}</p>
                     </div>
                 </div>
-
-                <!-- Price -->
-                <div class="mb-5">
-                     <div class="flex items-baseline gap-1">
-                        <span class="text-sm text-gray-500 font-medium">Mulai</span>
-                        <span class="text-4xl font-extrabold text-gray-900 tracking-tight">50.000</span>
-                     </div>
-                     <div class="flex items-center gap-2 mt-1">
-                        <span class="text-sm text-gray-400 line-through">Rp 175.000</span>
-                        <span class="text-[10px] font-bold text-green-700 bg-green-50 px-2 py-0.5 rounded-full border border-green-100">Hemat 66%</span>
-                     </div>
-                </div>
-
-                <!-- Key Feature Highlight -->
-                <div class="bg-gray-50 rounded-xl p-3 mb-5 border border-gray-100 flex items-center gap-3">
-                     <div class="w-8 h-8 rounded-full bg-white border border-gray-200 flex items-center justify-center flex-shrink-0 shadow-sm">
-                        <i class="fas fa-check text-[#1a73e8] text-sm"></i>
-                     </div>
-                     <div>
-                         <p class="text-xs font-bold text-gray-900">Lengkap 2 Semester</p>
-                         <p class="text-[10px] text-gray-500">Modul Ajar, CP, ATP, LKPD</p>
-                     </div>
-                </div>
-
-                <!-- Limited Offer / Stock -->
-                <div class="flex items-center gap-2 mb-5">
-                     <div class="flex-1 h-1.5 bg-gray-100 rounded-full overflow-hidden">
-                         <div class="h-full bg-red-500 rounded-full transition-all duration-1000" style="width: ${quota}%"></div>
-                     </div>
-                     <span class="text-[10px] font-bold text-red-500 whitespace-nowrap">Sisa ${Math.max(1, Math.floor(quota/10))} Slot</span>
-                </div>
-
-                <!-- Action -->
-                <div class="grid grid-cols-[1fr_auto] gap-2">
-                    <button type="button" onclick="openAddItemModal()"
-                        class="h-12 bg-[#1a73e8] hover:bg-[#1557b0] text-white font-bold rounded-xl text-sm shadow-lg shadow-blue-200/50 transition-all active:scale-95 flex items-center justify-center gap-2">
-                        Pilih Jenjang & Mapel
-                        <i class="fas fa-arrow-right"></i>
-                    </button>
-                    <button id="btnDetail" type="button" class="w-12 h-12 border border-gray-200 rounded-xl flex items-center justify-center text-gray-400 hover:text-[#1a73e8] hover:border-blue-200 hover:bg-blue-50 transition-all">
-                        <i class="fas fa-info-circle"></i>
-                    </button>
+                <div class="bg-blue-600 text-white rounded-lg px-3 py-1.5 text-xs font-bold">
+                    Pilih <i class="fas fa-chevron-right ml-1"></i>
                 </div>
             </div>
         </article>
+        `;
+    }).join('');
+
+    // Cart Container (Injected)
+    if (!document.getElementById('cart-container')) {
+        const cartHtml = `
+            <div id="cart-container" class="mt-4 hidden animate-fade-in">
+                <h3 class="font-bold text-gray-800 text-sm mb-2">Keranjang Belanja</h3>
+                <div id="cart-items" class="space-y-2 mb-3"></div>
+                <div class="bg-blue-50 p-3 rounded-lg flex justify-between items-center">
+                    <span class="text-sm text-blue-800 font-semibold">Total</span>
+                    <span class="text-lg font-bold text-blue-600" id="cart-total-display">Rp 0</span>
+                </div>
+            </div>
+        `;
+        document.getElementById('package-list').insertAdjacentHTML('afterend', cartHtml);
+    }
+}
+
+function openSelectionSheet(jenjang) {
+    const sheet = document.getElementById('sheet');
+    const sheetTitle = document.getElementById('sheetTitle');
+    const sheetContent = document.getElementById('sheet-features-list'); // Reusing this container
+    const btnOk = document.getElementById('btnOk'); // Reusing this button
+
+    // Reset Sheet Content Structure for Selection
+    sheetTitle.innerText = `Pilih Mapel ${jenjang}`;
+
+    // Create Selection UI inside Sheet
+    let html = `
+        <div class="space-y-4 pt-2">
+            <!-- Jurusan (Only for SMK) -->
+            ${jenjang === 'SMK/MAK' ? `
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Jurusan</label>
+                <select id="sheet-jurusan" class="w-full p-2.5 rounded-xl border border-gray-300 bg-white text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none" onchange="handleSheetJurusanChange('${jenjang}')">
+                    <option value="">-- Pilih Jurusan --</option>
+                    ${Object.keys(educationalData['SMK/MAK']).map(j => `<option value="${j}">${j}</option>`).join('')}
+                </select>
+            </div>
+            ` : ''}
+
+            <!-- Kelas -->
+            <div id="sheet-kelas-container" class="${jenjang === 'SMK/MAK' ? 'opacity-50 pointer-events-none' : ''}">
+                <label class="block text-sm font-medium text-gray-700 mb-1">Kelas</label>
+                <div class="grid grid-cols-3 gap-2" id="sheet-kelas-options">
+                    ${jenjang !== 'SMK/MAK' ? Object.keys(educationalData[jenjang]).map(kelas => `
+                        <label class="cursor-pointer">
+                            <input type="radio" name="sheet-kelas" value="${kelas}" class="peer sr-only" onchange="handleSheetKelasChange('${jenjang}')">
+                            <div class="py-2 px-1 text-center border border-gray-200 rounded-lg peer-checked:bg-blue-50 peer-checked:border-blue-500 peer-checked:text-blue-700 text-xs font-medium transition">
+                                ${kelas}
+                            </div>
+                        </label>
+                    `).join('') : '<p class="text-xs text-gray-400 col-span-3">Pilih Jurusan dulu</p>'}
+                </div>
+            </div>
+
+            <!-- Mapel -->
+            <div id="sheet-mapel-container" class="opacity-50 pointer-events-none">
+                <label class="block text-sm font-medium text-gray-700 mb-1">Mata Pelajaran</label>
+                <select id="sheet-mapel" class="w-full p-2.5 rounded-xl border border-gray-300 bg-white text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none" onchange="handleSheetMapelChange('${jenjang}')">
+                    <option value="">-- Pilih Kelas Dulu --</option>
+                </select>
+            </div>
+
+            <!-- Price Preview -->
+            <div id="sheet-price-preview" class="hidden bg-gray-50 p-3 rounded-lg flex justify-between items-center">
+                <span class="text-xs text-gray-500">Harga per Mapel</span>
+                <span class="text-base font-bold text-blue-600" id="sheet-price-display">Rp 0</span>
+            </div>
+        </div>
     `;
+
+    sheetContent.innerHTML = html; // Inject UI
+    sheetContent.classList.remove('space-y-2', 'text-slate-700'); // Remove list styles if any
+
+    // Configure Button
+    btnOk.innerText = "Tambahkan ke Keranjang";
+    btnOk.className = "mt-4 h-12 w-full rounded-xl bg-gray-300 text-sm font-bold text-white cursor-not-allowed";
+    btnOk.onclick = null; // Reset click handler
+
+    openSheet();
 }
 
-function updatePromoQuota() {
-    // Logic inside renderPromoCard but also as standalone for intervals if needed
-}
+// Global functions for Sheet Logic
+window.handleSheetJurusanChange = function(jenjang) {
+    const jurusan = document.getElementById('sheet-jurusan').value;
+    const kelasContainer = document.getElementById('sheet-kelas-container');
+    const kelasOptions = document.getElementById('sheet-kelas-options');
 
-// --- WIDGET LOGIC ---
+    // Reset lower fields
+    kelasOptions.innerHTML = '';
+    document.getElementById('sheet-mapel').innerHTML = '<option value="">-- Pilih Kelas Dulu --</option>';
+    document.getElementById('sheet-mapel-container').classList.add('opacity-50', 'pointer-events-none');
 
-function openAddItemModal() {
-    document.getElementById('add-item-modal').classList.add('active');
-    resetModalSelection();
-}
+    if (jurusan) {
+        kelasContainer.classList.remove('opacity-50', 'pointer-events-none');
+        const classes = Object.keys(educationalData[jenjang][jurusan]);
 
-function closeAddItemModal() {
-    document.getElementById('add-item-modal').classList.remove('active');
-}
-
-function resetModalSelection() {
-    document.querySelectorAll('input[name="modal-jenjang"]').forEach(el => el.checked = false);
-
-    const jurusanContainer = document.getElementById('jurusan-container');
-    const kelasContainer = document.getElementById('kelas-container');
-    const mapelContainer = document.getElementById('mapel-container');
-    const pricePreview = document.getElementById('item-price-preview');
-    const confirmBtn = document.getElementById('confirm-add-item');
-
-    jurusanContainer.classList.add('hidden');
-    kelasContainer.classList.add('opacity-50', 'pointer-events-none');
-    mapelContainer.classList.add('opacity-50', 'pointer-events-none');
-    pricePreview.classList.add('hidden');
-    confirmBtn.disabled = true;
-
-    document.getElementById('jurusan-select').innerHTML = '<option value="">-- Pilih Jurusan --</option>';
-    document.getElementById('kelas-options').innerHTML = '';
-    document.getElementById('mapel-select').innerHTML = '<option value="">-- Pilih Kelas Dulu --</option>';
-}
-
-function renderJenjangOptions() {
-    const container = document.getElementById('jenjang-options');
-    if (!container) return;
-    let html = '';
-    Object.keys(educationalData).forEach(jenjang => {
-        html += `
+        kelasOptions.innerHTML = classes.map(kelas => `
             <label class="cursor-pointer">
-                <input type="radio" name="modal-jenjang" value="${jenjang}" class="peer sr-only" onchange="handleJenjangSelect(this.value)">
-                <div class="p-3 text-center border border-slate-200 rounded-xl peer-checked:bg-blue-50 peer-checked:border-blue-500 peer-checked:text-blue-700 transition hover:bg-slate-50 text-sm font-medium">
-                    ${jenjang}
+                <input type="radio" name="sheet-kelas" value="${kelas}" class="peer sr-only" onchange="handleSheetKelasChange('${jenjang}')">
+                <div class="py-2 px-1 text-center border border-gray-200 rounded-lg peer-checked:bg-blue-50 peer-checked:border-blue-500 peer-checked:text-blue-700 text-xs font-medium transition">
+                    ${kelas}
                 </div>
             </label>
-        `;
-    });
-    container.innerHTML = html;
-}
-
-window.handleJenjangSelect = function(jenjang) {
-    const jurusanContainer = document.getElementById('jurusan-container');
-    const kelasContainer = document.getElementById('kelas-container');
-    const kelasOptions = document.getElementById('kelas-options');
-
-    document.getElementById('jurusan-select').value = '';
-    kelasOptions.innerHTML = '';
-    document.getElementById('mapel-select').innerHTML = '<option value="">-- Pilih Kelas Dulu --</option>';
-    document.getElementById('mapel-container').classList.add('opacity-50', 'pointer-events-none');
-    document.getElementById('confirm-add-item').disabled = true;
-    document.getElementById('item-price-preview').classList.add('hidden');
-
-    if (jenjang === 'SMK/MAK') {
-        jurusanContainer.classList.remove('hidden');
-        const jurusanSelect = document.getElementById('jurusan-select');
-        jurusanSelect.innerHTML = '<option value="">-- Pilih Jurusan --</option>';
-        Object.keys(educationalData[jenjang]).forEach(j => {
-            const opt = document.createElement('option');
-            opt.value = j;
-            opt.textContent = j;
-            jurusanSelect.appendChild(opt);
-        });
-        kelasContainer.classList.add('opacity-50', 'pointer-events-none');
+        `).join('');
     } else {
-        jurusanContainer.classList.add('hidden');
-        kelasContainer.classList.remove('opacity-50', 'pointer-events-none');
-
-        Object.keys(educationalData[jenjang]).forEach(kelas => {
-            kelasOptions.innerHTML += `
-                <label class="cursor-pointer">
-                    <input type="radio" name="modal-kelas" value="${kelas}" class="peer sr-only" onchange="handleKelasSelect(this.value)">
-                    <div class="p-2 text-center border border-slate-200 rounded-lg peer-checked:bg-blue-50 peer-checked:border-blue-500 peer-checked:text-blue-700 transition text-xs font-medium">
-                        ${kelas}
-                    </div>
-                </label>
-            `;
-        });
+        kelasContainer.classList.add('opacity-50', 'pointer-events-none');
+        kelasOptions.innerHTML = '<p class="text-xs text-gray-400 col-span-3">Pilih Jurusan dulu</p>';
     }
 }
 
-function handleJurusanChange(e) {
-    const jurusan = e.target.value;
-    const jenjang = document.querySelector('input[name="modal-jenjang"]:checked')?.value;
-    const kelasContainer = document.getElementById('kelas-container');
-    const kelasOptions = document.getElementById('kelas-options');
-
-    kelasOptions.innerHTML = '';
-    document.getElementById('mapel-select').innerHTML = '<option value="">-- Pilih Kelas Dulu --</option>';
-    document.getElementById('mapel-container').classList.add('opacity-50', 'pointer-events-none');
-
-    if (jurusan && jenjang === 'SMK/MAK') {
-        kelasContainer.classList.remove('opacity-50', 'pointer-events-none');
-        Object.keys(educationalData[jenjang][jurusan]).forEach(kelas => {
-            kelasOptions.innerHTML += `
-                <label class="cursor-pointer">
-                    <input type="radio" name="modal-kelas" value="${kelas}" class="peer sr-only" onchange="handleKelasSelect(this.value)">
-                    <div class="p-2 text-center border border-slate-200 rounded-lg peer-checked:bg-blue-50 peer-checked:border-blue-500 peer-checked:text-blue-700 transition text-xs font-medium">
-                        ${kelas}
-                    </div>
-                </label>
-            `;
-        });
-    }
-}
-
-window.handleKelasSelect = function(kelas) {
-    const jenjang = document.querySelector('input[name="modal-jenjang"]:checked').value;
-    const jurusan = document.getElementById('jurusan-select').value;
-    const mapelSelect = document.getElementById('mapel-select');
-    const mapelContainer = document.getElementById('mapel-container');
+window.handleSheetKelasChange = function(jenjang) {
+    const kelas = document.querySelector('input[name="sheet-kelas"]:checked').value;
+    const jurusan = document.getElementById('sheet-jurusan') ? document.getElementById('sheet-jurusan').value : null;
+    const mapelSelect = document.getElementById('sheet-mapel');
+    const mapelContainer = document.getElementById('sheet-mapel-container');
 
     mapelContainer.classList.remove('opacity-50', 'pointer-events-none');
     mapelSelect.innerHTML = '<option value="">-- Pilih Mata Pelajaran --</option>';
@@ -381,10 +279,11 @@ window.handleKelasSelect = function(kelas) {
         const kejuruanGroup = document.createElement('optgroup'); kejuruanGroup.label = 'Mapel Kejuruan';
         let allKejuruan = [];
         const classes = educationalData[jenjang][jurusan];
+        // We only want kejuruan mapels that are NOT in umum
         for (let c in classes) { allKejuruan.push(...classes[c].filter(m => !mapelSMKUmum.includes(m))); }
+        // Filter unique and sort
         [...new Set(allKejuruan)].sort().forEach(m => addOption(m, kejuruanGroup));
         mapelSelect.appendChild(kejuruanGroup);
-
     } else {
         const agamaGroup = document.createElement('optgroup'); agamaGroup.label = 'Mapel Agama Islam';
         mapelAgama.forEach(m => addOption(m, agamaGroup));
@@ -396,17 +295,13 @@ window.handleKelasSelect = function(kelas) {
     }
 }
 
-function handleMapelChange(e) {
-    const mapel = e.target.value;
-    const jenjang = document.querySelector('input[name="modal-jenjang"]:checked').value;
-    const confirmBtn = document.getElementById('confirm-add-item');
-    const pricePreview = document.getElementById('item-price-preview');
-    const priceDisplay = document.getElementById('modal-price-display');
-
-    const formatCurrency = (val) => `Rp ${val.toLocaleString('id-ID')}`;
+window.handleSheetMapelChange = function(jenjang) {
+    const mapel = document.getElementById('sheet-mapel').value;
+    const btnOk = document.getElementById('btnOk');
+    const pricePreview = document.getElementById('sheet-price-preview');
+    const priceDisplay = document.getElementById('sheet-price-display');
 
     if (mapel) {
-        confirmBtn.disabled = false;
         let price = 0;
         if (jenjang === 'SMK/MAK') {
             const isUmum = mapelSMKUmum.includes(mapel) || mapelAgama.includes(mapel);
@@ -414,141 +309,106 @@ function handleMapelChange(e) {
         } else {
             price = pricing[jenjang];
         }
-        priceDisplay.textContent = formatCurrency(price);
+
+        priceDisplay.textContent = `Rp ${price.toLocaleString('id-ID')}`;
         pricePreview.classList.remove('hidden');
+
+        btnOk.className = "mt-4 h-12 w-full rounded-xl bg-blue-600 hover:bg-blue-700 text-sm font-bold text-white shadow-lg shadow-blue-200 transition-all";
+        btnOk.style.cursor = "pointer";
+        btnOk.onclick = () => addToCart(jenjang, price);
     } else {
-        confirmBtn.disabled = true;
         pricePreview.classList.add('hidden');
+        btnOk.className = "mt-4 h-12 w-full rounded-xl bg-gray-300 text-sm font-bold text-white cursor-not-allowed";
+        btnOk.onclick = null;
     }
 }
 
-function handleConfirmAddItem() {
-    const jenjang = document.querySelector('input[name="modal-jenjang"]:checked').value;
-    const jurusan = document.getElementById('jurusan-select').value;
-    const kelas = document.querySelector('input[name="modal-kelas"]:checked').value;
-    const mapel = document.getElementById('mapel-select').value;
+function addToCart(jenjang, price) {
+    const jurusan = document.getElementById('sheet-jurusan') ? document.getElementById('sheet-jurusan').value : '';
+    const kelas = document.querySelector('input[name="sheet-kelas"]:checked').value;
+    const mapel = document.getElementById('sheet-mapel').value;
 
-    cart.push({
+    const item = {
         id: Date.now(),
         jenjang,
-        jurusan: jurusan || '',
+        jurusan,
         kelas,
-        mapel
-    });
+        mapel,
+        price
+    };
 
-    updateCartUI();
-    closeAddItemModal();
-    showModal('Berhasil', 'Perangkat ajar ditambahkan.');
+    cart.push(item);
+    renderCart();
+    closeSheet();
+    showToast(`${mapel} ditambahkan`);
 }
 
-window.removeItem = function (id) {
-    cart = cart.filter(item => item.id !== id);
-    updateCartUI();
-}
-
-function updateCartUI() {
-    const container = document.getElementById('cart-items-container');
-    const emptyState = document.getElementById('empty-cart-state');
-    const totalContainer = document.getElementById('total-container');
+function renderCart() {
+    const container = document.getElementById('cart-container');
+    const itemsContainer = document.getElementById('cart-items');
+    const totalDisplay = document.getElementById('cart-total-display');
     const bottomBarTotal = document.getElementById('total-price-display');
-
-    const formatCurrency = (val) => `Rp ${val.toLocaleString('id-ID')}`;
 
     if (cart.length === 0) {
         container.classList.add('hidden');
-        emptyState.classList.remove('hidden');
-        totalContainer.classList.add('hidden');
-        bottomBarTotal.textContent = formatCurrency(0);
-    } else {
-        container.classList.remove('hidden');
-        emptyState.classList.add('hidden');
-        totalContainer.classList.remove('hidden');
+        bottomBarTotal.textContent = `Rp 0`;
+        return;
+    }
 
-        let html = '';
-        let subtotal = 0;
+    container.classList.remove('hidden');
+    let total = 0;
 
-        cart.forEach(item => {
-            let price = 0;
-            if (item.jenjang === 'SMK/MAK') {
-                const isUmum = mapelSMKUmum.includes(item.mapel) || mapelAgama.includes(item.mapel);
-                price = isUmum ? pricing['SMK/MAK'].umum : pricing['SMK/MAK'].kejuruan;
-            } else {
-                price = pricing[item.jenjang];
-            }
-            subtotal += price;
-
-            html += `
-                <div class="flex items-start justify-between bg-slate-50 p-3 rounded-xl border border-slate-100 animate-[fadeIn_0.3s]">
-                    <div>
-                        <div class="text-sm font-bold text-slate-800">${item.mapel}</div>
-                        <div class="text-xs text-slate-500">${item.jenjang} ${item.jurusan ? `(${item.jurusan})` : ''} &bull; ${item.kelas}</div>
-                    </div>
-                    <div class="flex flex-col items-end gap-1">
-                        <div class="text-sm font-semibold text-blue-600">${formatCurrency(price)}</div>
-                        <button type="button" onclick="removeItem(${item.id})" class="text-xs text-red-500 hover:text-red-700 font-medium">Hapus</button>
-                    </div>
+    itemsContainer.innerHTML = cart.map(item => {
+        total += item.price;
+        return `
+            <div class="flex items-start justify-between bg-white p-2 rounded-lg border border-gray-100 shadow-sm text-sm">
+                <div>
+                    <div class="font-bold text-gray-800">${item.mapel}</div>
+                    <div class="text-xs text-gray-500">${item.jenjang} ${item.jurusan ? `(${item.jurusan})` : ''} - ${item.kelas}</div>
                 </div>
-            `;
-        });
-        container.innerHTML = html;
+                <div class="flex flex-col items-end gap-1">
+                    <span class="font-semibold text-blue-600 text-xs">Rp ${item.price.toLocaleString('id-ID')}</span>
+                    <button type="button" onclick="removeFromCart(${item.id})" class="text-red-500 text-[10px] hover:text-red-700">Hapus</button>
+                </div>
+            </div>
+        `;
+    }).join('');
 
-        const total = subtotal + uniqueCode;
-        document.getElementById('widget-total-display').textContent = formatCurrency(total);
-        bottomBarTotal.textContent = formatCurrency(total);
-    }
+    const finalTotal = total + uniqueCode;
+    totalDisplay.textContent = `Rp ${total.toLocaleString('id-ID')}`;
+    bottomBarTotal.textContent = `Rp ${finalTotal.toLocaleString('id-ID')}`;
 }
 
-// --- FORM & PAYMENT ---
-
-function isInvalidPattern(nomor) {
-    if (typeof blacklistedNumbers !== 'undefined' && blacklistedNumbers.includes(nomor)) return true;
-    const numberPart = nomor.substring(2);
-    if (/(\d)\1{4,}/.test(numberPart)) return true;
-    for (let i = 0; i < numberPart.length - 4; i++) {
-        const sub = numberPart.substring(i, i + 5);
-        const isAscending = '0123456789'.includes(sub);
-        const isDescending = '9876543210'.includes(sub);
-        if (isAscending || isDescending) return true;
-    }
-    const uniqueDigits = new Set(numberPart.split(''));
-    if (uniqueDigits.size < 4) return true;
-    if (/(..)\1\1/.test(numberPart)) return true;
-    return false;
+window.removeFromCart = function(id) {
+    cart = cart.filter(i => i.id !== id);
+    renderCart();
 }
 
-function getOperatorFromNumber(nomor) {
-    if (typeof operatorPrefixes === 'undefined') return null;
-    const prefix = nomor.substring(0, 4);
-    for (const operator in operatorPrefixes) {
-        if (operatorPrefixes[operator].includes(prefix)) {
-            return operator;
-        }
-    }
-    return null;
-}
+function validateForm() {
+    const nameInput = document.getElementById('nama');
+    const name = nameInput.value.trim();
+    const waInput = document.getElementById('whatsapp');
+    const wa = waInput.value.trim();
+    const emailInput = document.getElementById('email');
+    const email = emailInput.value.trim();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-function validatePhoneNumber(nomorHp) {
-    const genericError = { isValid: false, message: 'Silahkan isi dengan nomor yang benar' };
+    if (!name) return { valid: false, msg: 'Nama wajib diisi', element: nameInput };
 
-    if (nomorHp.length < 10) {
-        return genericError;
+    if (!wa || wa.length < 10) {
+        return { valid: false, msg: 'Nomor WhatsApp tidak valid', element: waInput };
     }
 
-    const operator = getOperatorFromNumber(nomorHp);
-    if (!operator) {
-        return genericError;
+    if (!email || !emailRegex.test(email)) {
+        return { valid: false, msg: 'Email tidak valid', element: emailInput };
     }
 
-    const maxLength = operator === 'Tri (3)' ? 13 : 12;
-    if (nomorHp.length > maxLength) {
-        return genericError;
+    const domain = email.split('@')[1];
+    if (!allowedEmailDomains.includes(domain)) {
+        return { valid: false, msg: 'Gunakan email pribadi (Gmail/Yahoo)', element: emailInput };
     }
 
-    if (isInvalidPattern(nomorHp)) {
-        return genericError;
-    }
-
-    return { isValid: true, message: 'Nomor valid.' };
+    return { valid: true };
 }
 
 async function handleFormSubmit() {
@@ -563,104 +423,92 @@ async function handleFormSubmit() {
     }
 
     if (cart.length === 0) {
-        showModal('Pesanan Kosong', 'Silakan pilih minimal satu perangkat ajar.');
-        const emptyState = document.getElementById('empty-cart-state');
-        if (emptyState) {
-            emptyState.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
+        showModal('Keranjang Kosong', 'Silakan pilih minimal satu mata pelajaran.');
+        document.getElementById('package-list').scrollIntoView({ behavior: 'smooth', block: 'center' });
         return;
     }
-
-    const formData = new FormData(document.getElementById('orderForm'));
-    const nama = formData.get('nama').trim();
-    const whatsapp = formData.get('whatsapp').trim();
-    const email = formData.get('email').trim();
-    const paymentMethodKey = formData.get('payment-method');
 
     const btn = document.getElementById('submit-btn');
     btn.disabled = true;
     btn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Memproses...';
 
-    // Calculate Totals
+    // Prepare Data
+    const formData = new FormData(document.getElementById('orderForm'));
+    const payment = paymentMethods.find(p => p.id === currentPayment);
+
     let subtotal = 0;
-    cart.forEach(item => {
-        let price = 0;
-        if (item.jenjang === 'SMK/MAK') {
-            const isUmum = mapelSMKUmum.includes(item.mapel) || mapelAgama.includes(item.mapel);
-            price = isUmum ? pricing['SMK/MAK'].umum : pricing['SMK/MAK'].kejuruan;
-        } else {
-            price = pricing[item.jenjang];
-        }
-        subtotal += price;
-    });
+    cart.forEach(i => subtotal += i.price);
     const totalPrice = subtotal + uniqueCode;
+
+    const now = new Date();
+    const dateStr = `${now.getFullYear().toString().slice(-2)}${String(now.getMonth() + 1).padStart(2, '0')}${String(now.getDate()).padStart(2, '0')}`;
+    const randomSuffix = Math.floor(1000 + Math.random() * 9000);
+    const paymentId = `INV-PA-${dateStr}-${randomSuffix}`;
 
     const orderDetailsString = cart.map(item => `\n- ${item.jenjang} ${item.jurusan ? `(${item.jurusan})` : ''} - ${item.kelas} : ${item.mapel}`).join('');
 
-    const paymentAccount = paymentMethods.find(p => p.id === paymentMethodKey);
-    const now = new Date();
-
-    const year = String(now.getFullYear()).slice(-2);
-    const month = String(now.getMonth() + 1).padStart(2, '0');
-    const day = String(now.getDate()).padStart(2, '0');
-    const randomChar = () => String.fromCharCode(65 + Math.floor(Math.random() * 26));
-    const randomDigit = () => Math.floor(Math.random() * 10);
-
-    const paymentId = `INV-PA-${year}${month}${day}-${randomChar()}${randomDigit()}${randomChar()}${randomDigit()}`;
-
-    const formatCurrency = (val) => `Rp ${val.toLocaleString('id-ID')}`;
-
     const dataToSend = {
-        nama, whatsapp, email,
+        nama: formData.get('nama'),
+        whatsapp: formData.get('whatsapp'),
+        email: formData.get('email'),
         paket: orderDetailsString,
-        metodePembayaran: paymentAccount.name,
-        totalTransfer: formatCurrency(totalPrice),
+        metodePembayaran: payment.name,
+        totalTransfer: `Rp${totalPrice.toLocaleString('id-ID')}`,
         idPembayaran: paymentId,
-        nomorRekening: paymentAccount.number || '-',
+        nomorRekening: payment.number || '-',
         sheetName: formData.get('sheetName')
     };
 
     try {
         await fetch(SCRIPT_URL, {
-            method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' },
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(dataToSend)
         });
 
-        showPaymentPage(dataToSend, paymentAccount, totalPrice, subtotal);
+        // Show Payment Page
+        showPaymentPage(dataToSend, payment, totalPrice);
 
     } catch (error) {
-        console.error(error);
-        showModal('Gagal', 'Terjadi kesalahan jaringan. Coba lagi.');
+        console.error('Error:', error);
+        showModal('Error', 'Gagal memproses pesanan. Silakan coba lagi.');
     } finally {
         btn.disabled = false;
-        btn.innerHTML = 'Pesan Sekarang <i class="fas fa-arrow-right"></i>';
+        btn.innerHTML = 'Beli Sekarang <i class="fas fa-arrow-right"></i>';
     }
 }
 
-function showPaymentPage(data, paymentMethod, amount, subtotal) {
-    currentOrderDetails = {
-        pkg: "Perangkat Ajar",
-        totalPrice: amount,
-        price: subtotal,
-        paymentId: data.idPembayaran,
-        nama: data.nama,
-        whatsapp: data.whatsapp,
-        email: data.email,
-        orderDetails: data.paket,
-        sheetName: data.sheetName
-    };
-
+function showPaymentPage(data, paymentMethod, amount) {
+    // Hide Form, Show Payment
     document.getElementById('view-form').classList.add('hidden');
     document.getElementById('view-payment').classList.remove('hidden');
     window.scrollTo(0, 0);
 
+    // Set Timer (24 hours)
     expiryTime = new Date().getTime() + (24 * 60 * 60 * 1000);
     startCountdown();
 
-    const formatCurrency = (val) => `Rp ${val.toLocaleString('id-ID')}`;
-
-    document.getElementById('payment-amount').innerText = formatCurrency(amount);
+    // Populate Data
+    document.getElementById('payment-amount').innerText = `Rp ${amount.toLocaleString('id-ID')}`;
     document.getElementById('payment-logo-result').src = paymentMethod.logo;
+
+    // Populate invoice summary
+    document.getElementById('invoice-details-summary').innerHTML = `
+        <span>No. Invoice: <strong>${data.idPembayaran}</strong></span>
+        <a href="#" onclick="showDetailsModal(event)" class="font-semibold text-blue-600">Lihat detail</a>
+    `;
+
+    // Generate WA Link
+    const waMsg = `Halo, saya sudah transfer untuk pesanan Perangkat Ajar:\n` +
+        `No Invoice: ${data.idPembayaran}\n` +
+        `Total: ${data.totalTransfer}\n\n` +
+        `Mohon segera diproses.`;
+    document.getElementById('wa-confirm-btn').href = `https://wa.me/6285602152097?text=${encodeURIComponent(waMsg)}`;
+
+    // Render Payment Details
+    const detailsContainer = document.getElementById('payment-details-content');
+    const instructionsContainer = document.getElementById('instruction-steps');
 
     // Raw amount for copy
     const rawAmountInputCheck = document.getElementById('payment-amount-raw');
@@ -674,22 +522,8 @@ function showPaymentPage(data, paymentMethod, amount, subtotal) {
         document.body.appendChild(rawAmountInput);
     }
 
-    document.getElementById('invoice-details-summary').innerHTML = `
-        <span>No. Invoice: <strong>${data.idPembayaran}</strong></span>
-        <a href="#" onclick="showDetailsModal(event)" class="font-semibold text-blue-600">Lihat detail</a>
-    `;
-
-    // WA Link
-    const waMsg = `Halo, saya sudah transfer untuk pesanan Perangkat Ajar:\n` +
-        `No Invoice: ${data.idPembayaran}\n` +
-        `Total: ${data.totalTransfer}\n\n` +
-        `Mohon segera diproses.`;
-    document.getElementById('wa-confirm-btn').href = `https://wa.me/6285602152097?text=${encodeURIComponent(waMsg)}`;
-
-    const detailsContainer = document.getElementById('payment-details-content');
-    const instructionsContainer = document.getElementById('instruction-steps');
-
     if (paymentMethod.type === 'qr') {
+        // Generate QRIS
         try {
             const qrisStatic = paymentMethod.number;
             const qrisDynamic = createDynamicQris(qrisStatic, amount);
@@ -713,19 +547,22 @@ function showPaymentPage(data, paymentMethod, amount, subtotal) {
                             qrContainer.innerHTML = '';
                             const canvas = document.createElement('canvas');
                             QRCode.toCanvas(canvas, qrisDynamic, { width: 200, margin: 1 }, (err) => {
-                                if (!err) {
-                                    qrContainer.appendChild(canvas);
-                                    const dlBtn = document.getElementById('download-qris-btn');
-                                    if (dlBtn) {
-                                        dlBtn.addEventListener('click', () => {
-                                            const link = document.createElement('a');
-                                            link.download = `QRIS-${data.idPembayaran}.png`;
-                                            link.href = canvas.toDataURL('image/png');
-                                            link.click();
-                                        });
-                                    }
+                                if (err) {
+                                    console.error(err);
+                                    return;
                                 }
-                            });
+                                qrContainer.appendChild(canvas);
+
+                                const dlBtn = document.getElementById('download-qris-btn');
+                                if (dlBtn) {
+                                    dlBtn.addEventListener('click', () => {
+                                        const link = document.createElement('a');
+                                        link.download = `QRIS-Pembayaran-${data.idPembayaran}.png`;
+                                        link.href = canvas.toDataURL('image/png');
+                                        link.click();
+                                    });
+                                }
+                    });
                         })
                         .catch(e => {
                             console.error("Failed to load QRCode library", e);
@@ -733,13 +570,18 @@ function showPaymentPage(data, paymentMethod, amount, subtotal) {
                 });
 
             instructionsContainer.innerHTML = `
-                <div class="instruction-step"><div class="step-number">1</div><p class="text-sm">Buka aplikasi e-wallet atau m-banking.</p></div>
-                <div class="instruction-step"><div class="step-number">2</div><p class="text-sm">Scan QRIS di atas.</p></div>
-                <div class="instruction-step"><div class="step-number">3</div><p class="text-sm">Cek nominal <strong>${formatCurrency(amount)}</strong>.</p></div>
-                <div class="instruction-step"><div class="step-number">4</div><p class="text-sm">Bayar dan simpan bukti.</p></div>
+                <div class="instruction-step"><div class="step-number">1</div><p class="text-sm">Buka aplikasi e-wallet (GoPay/OVO/Dana) atau Mobile Banking.</p></div>
+                <div class="instruction-step"><div class="step-number">2</div><p class="text-sm">Pilih menu Scan / Bayar.</p></div>
+                <div class="instruction-step"><div class="step-number">3</div><p class="text-sm">Scan QR Code yang muncul di layar.</p></div>
+                <div class="instruction-step"><div class="step-number">4</div><p class="text-sm">Cek nominal (pastikan sama) dan selesaikan pembayaran.</p></div>
             `;
-        } catch (e) { detailsContainer.innerHTML = '<p class="text-red-500">QRIS Error</p>'; }
+
+        } catch (e) {
+            detailsContainer.innerHTML = '<p class="text-red-500">Gagal memuat QRIS.</p>';
+        }
+
     } else {
+        // Bank / E-Wallet Number
         detailsContainer.innerHTML = `
             <div class="bg-gray-50 p-4 rounded-lg flex items-center justify-between">
                 <div>
@@ -752,39 +594,12 @@ function showPaymentPage(data, paymentMethod, amount, subtotal) {
                 </button>
             </div>
         `;
+
         instructionsContainer.innerHTML = `
-                <div class="instruction-step"><div class="step-number">1</div><p class="text-sm">Buka aplikasi bank Anda.</p></div>
-                <div class="instruction-step"><div class="step-number">2</div><p class="text-sm">Transfer ke <strong>${paymentMethod.name}</strong>.</p></div>
-                <div class="instruction-step"><div class="step-number">3</div><p class="text-sm">No. Rek: <strong>${paymentMethod.number}</strong></p></div>
-                <div class="instruction-step"><div class="step-number">4</div><p class="text-sm">Nominal: <strong>${formatCurrency(amount)}</strong> (Wajib Tepat).</p></div>
-        `;
+                <div class="instruction-step"><div class="step-number">1</div><p class="text-sm">Buka aplikasi bank atau e-wallet Anda.</p></div>
+                <div class="instruction-step"><div class="step-number">2</div><p class="text-sm">Pilih menu Transfer ke ${paymentMethod.name}.</p></div>
+                <div class="instruction-step"><div class="step-number">3</div><p class="text-sm">Masukkan nomor rekening: <strong>${paymentMethod.number}</strong></p></div>
+                <div class="instruction-step"><div class="step-number">4</div><p class="text-sm">Masukkan nominal <strong>Rp ${amount.toLocaleString('id-ID')}</strong> (harus tepat).</p></div>
+            `;
     }
-}
-
-function validateForm() {
-    const nameInput = document.getElementById('nama');
-    const name = nameInput.value.trim();
-    const waInput = document.getElementById('whatsapp');
-    const wa = waInput.value.trim();
-    const emailInput = document.getElementById('email');
-    const email = emailInput.value.trim();
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    if (!name) return { valid: false, msg: 'Nama wajib diisi', element: nameInput };
-
-    const phoneValidationResult = validatePhoneNumber(wa);
-    if (!phoneValidationResult.isValid) {
-        return { valid: false, msg: phoneValidationResult.message, element: waInput };
-    }
-
-    if (!email || !emailRegex.test(email)) {
-        return { valid: false, msg: 'Email tidak valid', element: emailInput };
-    }
-
-    const domain = email.split('@')[1];
-    if (!allowedEmailDomains.includes(domain)) {
-        return { valid: false, msg: 'Domain email tidak diizinkan. Harap gunakan email pribadi.', element: emailInput };
-    }
-
-    return { valid: true };
 }

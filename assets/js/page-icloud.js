@@ -362,20 +362,22 @@ async function handleFormSubmit() {
     };
 
     // Send to Google Script
-    try {
-        await fetch(SCRIPT_URL, {
-            method: 'POST',
-            mode: 'no-cors',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(dataToSend)
-        });
+    fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(dataToSend)
+    }).catch(error => {
+        console.error('Error logging to sheet:', error);
+    });
 
+    try {
         // Show Payment Page
         showPaymentPage(dataToSend, payment, totalPrice);
 
     } catch (error) {
-        console.error('Error:', error);
-        showModal('Error', 'Gagal memproses pesanan. Silakan coba lagi.');
+        console.error('Error showing payment page:', error);
+        showModal('Error', 'Gagal menampilkan halaman pembayaran.');
     } finally {
         btn.disabled = false;
         btn.innerHTML = 'Beli Sekarang <i class="fas fa-arrow-right"></i>';

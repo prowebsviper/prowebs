@@ -87,100 +87,85 @@ const t={preserveBehavior:!1},e=e=>{if("string"==typeof e)return[e,t];const[n,r=
                     <!-- Package Selection -->
                     <div class="space-y-3 animate-fade-in" style="animation-delay: 0.1s">
                         <div id="package-selection-container" class="space-y-3">
-                            <!-- Product Info Card - Mobile Optimized (Adapted from Adobe Design) -->
-                            <article class="relative overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm">
-
-                                <!-- Product Header -->
-                                <div class="bg-gradient-to-br from-blue-50 via-white to-cyan-50 p-4 pb-3 border-b border-gray-100">
-                                    <div class="flex items-start justify-between mb-2">
-                                        <div class="flex items-center gap-2">
-                                            <span class="inline-flex items-center gap-1 rounded-full bg-blue-100 px-2 py-0.5 text-[11px] font-bold text-blue-700">
-                                                <span class="relative flex h-1.5 w-1.5">
-                                                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-500 opacity-75"></span>
-                                                    <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-blue-600"></span>
-                                                </span>
-                                                Stok Tersedia
-                                            </span>
-                                        </div>
-                                        <span class="rounded-md bg-black px-2 py-0.5 text-[10px] font-bold text-white uppercase tracking-wide">Terlaris</span>
-                                    </div>
-
-                                    <h3 class="text-[19px] font-extrabold text-gray-900 leading-tight mb-1">Google Drive 2TB</h3>
-                                    <p class="text-[13px] text-gray-600 font-medium flex items-center gap-1">
-                                        <i class="fas fa-check-circle text-green-600 text-xs"></i>
-                                        Original Lifetime License (Seumur Hidup)
-                                    </p>
-                                </div>
-
-                                <!-- Pricing Section -->
-                                <div class="p-4">
-                                    <div class="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl p-3 border border-blue-100">
-                                        <div class="flex items-center justify-between mb-1">
-                                            <div>
-                                                <p class="text-[11px] font-semibold text-gray-500 mb-0.5">Harga Promo Hari Ini</p>
-                                                <div class="flex items-baseline gap-2">
-                                                    <span class="text-[28px] font-black text-blue-600 leading-none tracking-tight">Rp 250.000</span>
-                                                </div>
-                                            </div>
-                                            <div class="text-right">
-                                                <p class="text-[10px] text-gray-500 mb-0.5">Normal</p>
-                                                <span class="text-[13px] font-bold text-gray-400 line-through">Rp 1.579.000</span>
-                                                <p class="text-[11px] font-bold text-green-600 mt-0.5">Hemat 84%</p>
-                                            </div>
+                            <div class="relative overflow-hidden rounded-3xl border border-gray-100 bg-white p-5 shadow-lg mb-4">
+                                <div class="flex items-start justify-between mb-4">
+                                    <div class="flex gap-4">
+                                        <img src="/assets/images/gdrive.png" class="w-12 h-12" alt="Google Drive" />
+                                        <div>
+                                            <h3 class="font-bold text-gray-900 text-lg leading-tight">Bundling 2TB: Drive, Photos, Gmail</h3>
+                                            <p class="text-sm text-gray-500">Official Upgrade</p>
                                         </div>
                                     </div>
+                                    <span class="bg-red-50 text-red-600 text-xs font-bold px-2 py-1 rounded-lg">-84%</span>
                                 </div>
 
-                                <!-- Urgency Section -->
-                                <div class="px-4 pb-4">
-                                    <div class="bg-orange-50 rounded-xl p-3 border border-orange-200">
-                                        <div class="flex items-center justify-between mb-2.5">
-                                            <div class="flex items-center gap-2">
-                                                <div class="w-7 h-7 rounded-full bg-orange-100 flex items-center justify-center">
-                                                    <i class="fas fa-fire text-orange-600 text-sm animate-pulse"></i>
-                                                </div>
-                                                <div>
-                                                    <p class="text-[11px] font-bold text-orange-700 leading-none mb-0.5">Promo Terbatas!</p>
-                                                    <p class="text-[13px] font-black text-gray-900 leading-none">92% Kuota Tersisa</p>
-                                                </div>
-                                            </div>
-                                            <div class="text-right">
-                                                <p class="text-[10px] text-gray-600 mb-0.5">Berakhir</p>
-                                                <div class="bg-white px-2 py-1 rounded-md border border-orange-200">
-                                                    <span class="text-[12px] font-bold text-gray-900">23:59</span>
-                                                </div>
-                                            </div>
-                                        </div>
+                                <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                                    Kapasitas 2TB untuk Drive, Photos, dan Gmail seumur hidup.
+                                </p>
 
-                                        <div class="relative h-2 w-full bg-white rounded-full overflow-hidden border border-orange-200/50">
-                                            <div class="h-full bg-gradient-to-r from-orange-400 via-red-500 to-red-600 rounded-full transition-all duration-1000" style="width: 92%">
-                                                <div class="absolute inset-0 bg-white/20 animate-[shimmer_1.5s_infinite]"></div>
-                                            </div>
-                                        </div>
+                                <hr class="border-gray-100 mb-4" />
+
+                                <div class="flex items-end justify-between">
+                                    <div>
+                                        <p class="text-xs text-gray-400 mb-0.5">Harga Normal</p>
+                                        <p class="text-sm text-gray-400 line-through decoration-red-400">Rp 1.579.000</p>
+                                    </div>
+                                    <div class="text-right">
+                                        <p class="text-3xl font-bold text-blue-600 leading-none">Rp 250.000</p>
+                                        <p class="text-[10px] text-gray-500 mt-1">Sekali Bayar Seumur Hidup</p>
                                     </div>
                                 </div>
+                            </div>
 
-                                <!-- Action Buttons -->
-                                <div class="px-4 pb-4">
-                                    <div class="flex gap-2">
-                                        <button type="button" onclick="document.getElementById('nama').focus()" class="flex-1 h-12 rounded-xl bg-[#1a73e8] text-white shadow-lg shadow-blue-200 active:scale-[0.98] transition-all hover:bg-[#1557b0] group">
-                                            <div class="flex items-center justify-center gap-2 font-bold text-[15px]">
-                                                <span>Ambil Promo Sekarang</span>
-                                                <i class="fas fa-arrow-right text-sm opacity-80 group-hover:translate-x-1 transition-transform"></i>
-                                            </div>
-                                        </button>
-
-                                        <button id="btnDetail" type="button" class="h-12 w-12 rounded-xl border-2 border-gray-200 bg-white text-gray-600 flex items-center justify-center active:scale-[0.95] hover:bg-gray-50 hover:border-blue-200 transition-all" aria-label="Lihat Detail Lengkap">
-                                            <i class="fas fa-info-circle text-[17px]"></i>
-                                        </button>
+                            <div class="flex gap-2 mb-6">
+                                <button type="button" onclick="document.getElementById('nama').focus()" class="flex-1 h-12 rounded-xl bg-[#1a73e8] text-white shadow-lg shadow-blue-200 active:scale-[0.98] transition-all hover:bg-[#1557b0] group">
+                                    <div class="flex items-center justify-center gap-2 font-bold text-[15px]">
+                                        <span>Ambil Promo Sekarang</span>
+                                        <i class="fas fa-arrow-right text-sm opacity-80 group-hover:translate-x-1 transition-transform"></i>
                                     </div>
+                                </button>
 
-                                    <p class="mt-2.5 text-center text-[11px] text-gray-500 flex items-center justify-center gap-1">
-                                        <i class="fas fa-shield-alt text-green-600 text-xs"></i>
-                                        <span class="font-medium">Garansi 100% uang kembali</span>
-                                    </p>
+                                <button id="btnDetail" type="button" onclick="document.querySelector('#detail-deskripsi-content').classList.toggle('hidden'); document.querySelector('#detail-deskripsi-icon').classList.toggle('rotate-180')" class="h-12 w-12 rounded-xl border-2 border-gray-200 bg-white text-gray-600 flex items-center justify-center active:scale-[0.95] hover:bg-gray-50 hover:border-blue-200 transition-all" aria-label="Lihat Detail Lengkap">
+                                    <i class="fas fa-info-circle text-[17px]"></i>
+                                </button>
+                            </div>
+
+                            <!-- Detail Deskripsi Accordion -->
+                            <div class="border-b border-gray-100 py-3">
+                                <button type="button" class="w-full flex items-center justify-between text-left font-semibold text-gray-900" onclick="const c = document.getElementById('detail-deskripsi-content'); const i = document.getElementById('detail-deskripsi-icon'); c.classList.toggle('hidden'); i.classList.toggle('rotate-180');">
+                                    <span>Detail Deskripsi</span>
+                                    <i id="detail-deskripsi-icon" class="fas fa-chevron-down text-gray-400 transition-transform duration-200"></i>
+                                </button>
+                                <div id="detail-deskripsi-content" class="hidden mt-3 animate-fade-in">
+                                    <ul class="list-none p-0 m-0">
+                                        <li class="flex items-start gap-2 text-sm text-gray-600 mb-2"><i class="fas fa-check-circle text-green-500 mt-1 flex-shrink-0"></i><span><strong>Kapasitas 2TB:</strong> Nikmati penyimpanan raksasa 2TB yang terbagi untuk Google Drive, Google Photos, dan Gmail.</span></li>
+                                        <li class="flex items-start gap-2 text-sm text-gray-600 mb-2"><i class="fas fa-check-circle text-green-500 mt-1 flex-shrink-0"></i><span><strong>Akses File Di Mana Saja:</strong> Buka dan edit file Anda dari komputer, tablet, atau smartphone.</span></li>
+                                        <li class="flex items-start gap-2 text-sm text-gray-600 mb-2"><i class="fas fa-check-circle text-green-500 mt-1 flex-shrink-0"></i><span><strong>Satu Solusi Terintegrasi:</strong> Semua kebutuhan penyimpanan Anda dalam satu paket hemat.</span></li>
+                                        <li class="flex items-start gap-2 text-sm text-gray-600 mb-2"><i class="fas fa-check-circle text-green-500 mt-1 flex-shrink-0"></i><span><strong>Keamanan Kelas Dunia:</strong> File Anda dilindungi oleh infrastruktur keamanan canggih dari Google.</span></li>
+                                        <li class="flex items-start gap-2 text-sm text-gray-600 mb-2"><i class="fas fa-check-circle text-green-500 mt-1 flex-shrink-0"></i><span><strong>Berbagi & Kolaborasi Mudah:</strong> Bagikan file dan folder dengan mudah, serta bekerja bersama secara real-time.</span></li>
+                                        <li class="flex items-start gap-2 text-sm text-gray-600 mb-2"><i class="fas fa-check-circle text-green-500 mt-1 flex-shrink-0"></i><span><strong>Sekali Bayar Seumur Hidup:</strong> Tanpa biaya langganan bulanan atau tahunan.</span></li>
+                                        <li class="flex items-start gap-2 text-sm text-gray-600 mb-2"><i class="fas fa-check-circle text-green-500 mt-1 flex-shrink-0"></i><span><strong>Gunakan Akun Pribadi Anda:</strong> Upgrade dilakukan langsung pada akun Google yang sudah Anda miliki.</span></li>
+                                        <li class="flex items-start gap-2 text-sm text-gray-600 mb-2"><i class="fas fa-check-circle text-green-500 mt-1 flex-shrink-0"></i><span><strong>100% Aman & Bergaransi:</strong> Produk asli dengan jaminan privasi penuh.</span></li>
+                                    </ul>
                                 </div>
-                            </article>
+                            </div>
+
+                            <!-- Informasi Penting Accordion -->
+                            <div class="border-b border-gray-100 py-3 mb-6">
+                                <button type="button" class="w-full flex items-center justify-between text-left font-semibold text-gray-900" onclick="const c = document.getElementById('informasi-penting-content'); const i = document.getElementById('informasi-penting-icon'); c.classList.toggle('hidden'); i.classList.toggle('rotate-180');">
+                                    <span>Informasi Penting</span>
+                                    <i id="informasi-penting-icon" class="fas fa-chevron-down text-gray-400 transition-transform duration-200"></i>
+                                </button>
+                                <div id="informasi-penting-content" class="hidden mt-3 text-sm text-gray-600 leading-relaxed animate-fade-in">
+                                    <p class="mb-2">Dengan menggunakan layanan ini, Anda setuju untuk terikat pada S&K kami. Layanan ini adalah pembayaran satu kali untuk manfaat seumur hidup, tunduk pada kebijakan Google yang berlaku.</p>
+                                    <ul class="list-disc pl-5 space-y-1">
+                                        <li>Layanan untuk penggunaan wajar dan tidak melanggar hukum.</li>
+                                        <li>Garansi penuh jika upgrade gagal karena kesalahan kami.</li>
+                                        <li>Garansi tidak mencakup pemblokiran akun akibat pelanggaran oleh pengguna.</li>
+                                        <li>Perubahan kebijakan Google di masa depan berada di luar kendali kami.</li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                         <input type="hidden" id="selectedPackage" name="package" value="lifetime">
                     </div>

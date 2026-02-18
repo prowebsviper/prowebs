@@ -331,24 +331,21 @@ async function handleFormSubmit() {
         sheetName: formData.get('sheetName')
     };
 
-    try {
-        await fetch(SCRIPT_URL, {
-            method: 'POST',
-            mode: 'no-cors',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(dataToSend)
-        });
+    // Fire and forget fetch
+    fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(dataToSend)
+    }).catch(error => console.error('Error:', error));
 
+    // Simulate loading for 1.5 seconds
+    setTimeout(() => {
         // Show Payment Page
         showPaymentPage(dataToSend, payment, totalPrice);
-
-    } catch (error) {
-        console.error('Error:', error);
-        showModal('Error', 'Gagal memproses pesanan. Silakan coba lagi.');
-    } finally {
         btn.disabled = false;
         btn.innerHTML = 'Beli Sekarang <i class="fas fa-arrow-right"></i>';
-    }
+    }, 1500);
 }
 
 function showPaymentPage(data, paymentMethod, amount) {

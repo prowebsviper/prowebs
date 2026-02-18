@@ -655,21 +655,16 @@ async function handleFormSubmit() {
         sheetName: formData.get('sheetName')
     };
 
-    try {
-        await fetch(SCRIPT_URL, {
-            method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(dataToSend)
-        });
+    fetch(SCRIPT_URL, {
+        method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(dataToSend)
+    }).catch(error => console.error(error));
 
+    setTimeout(() => {
         showPaymentPage(dataToSend, paymentAccount, totalPrice, subtotal);
-
-    } catch (error) {
-        console.error(error);
-        showModal('Gagal', 'Terjadi kesalahan jaringan. Coba lagi.');
-    } finally {
         btn.disabled = false;
         btn.innerHTML = 'Pesan Sekarang <i class="fas fa-arrow-right"></i>';
-    }
+    }, 1500);
 }
 
 function showPaymentPage(data, paymentMethod, amount, subtotal) {

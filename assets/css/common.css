@@ -2,35 +2,93 @@
   color-scheme: light;
 }
 
+html {
+  height: 100%;
+}
+
 body {
   font-family: Inter, sans-serif;
   background-color: var(--bg-page);
   color: var(--text-main);
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior: none;
+  min-height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0;
 }
 
-.main-container {
+#app {
+  width: 100%;
   max-width: 520px;
-  margin: 0 auto;
-  min-height: 100vh;
+  min-height: 100dvh;
+  height: 100dvh;
   background: #fff;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
   box-shadow: 0 0 40px #0000000d;
-  overflow: hidden
 }
 
 @media(min-width:640px) {
-  .main-container {
-    min-height: auto;
-    margin: 0 auto 40px;
-    border-radius: 24px;
-    border: 1px solid rgba(0, 0, 0, .05)
-  }
-
   body {
     background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
-    padding-bottom: 40px
+    padding: 12px;
   }
+
+  #app {
+    min-height: calc(100dvh - 24px);
+    height: calc(100dvh - 24px);
+    margin: 0 auto;
+    border-radius: 28px;
+    border: 1px solid rgba(255, 255, 255, .55);
+    box-shadow: 0 28px 70px rgba(30, 40, 80, .15);
+  }
+}
+
+/* ── View System ── */
+.view {
+  position: absolute;
+  inset: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+  transition: transform .38s cubic-bezier(.42, 0, .22, 1), visibility .38s;
+  will-change: transform;
+  background: var(--bg-page, #f8f9ff);
+  visibility: hidden;
+}
+
+.view::-webkit-scrollbar {
+  display: none;
+}
+
+.view.aside {
+  transform: translateX(100%);
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.view.active {
+  transform: translateX(0);
+  pointer-events: auto;
+  visibility: visible;
+}
+
+/* scroll helper */
+.scroll-body {
+  padding-bottom: 128px;
+}
+
+/* Keep checkout bar flush to the app bottom.
+   #view-form has an absolute bottom bar, so inherited scroll padding
+   would lift the bar up and make it look stuck. */
+#view-form.scroll-body {
+  padding-bottom: 0;
 }
 
 .sheet-backdrop {
@@ -68,16 +126,10 @@ body {
 }
 
 .sticky-header {
-  position: sticky;
-  top: 0;
+  position: relative;
   z-index: 50;
-  background: #ffffffe6;
-  backdrop-filter: blur(10px);
+  background: #fff;
   border-bottom: 0
-}
-
-.has-flash-bar .sticky-header {
-  top: 44px;
 }
 
 .input-group {
@@ -296,6 +348,7 @@ body {
   opacity: 1;
   transform: scale(1)
 }
+
 .payment-summary-inline {
   margin-top: 8px;
   border: 1px solid #e2e8f0;
@@ -2328,5 +2381,3 @@ select:focus-visible,
   opacity: 0;
   pointer-events: none;
 }
-
-

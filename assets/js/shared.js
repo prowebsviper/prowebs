@@ -1,4 +1,4 @@
-// SHARED UTILITIES & LOGIC — ULTIMATE VERSION
+﻿// SHARED UTILITIES & LOGIC â€” ULTIMATE VERSION
 
 // --- PERFORMANCE UTILS ---
 function runWhenVisible(elementId, callback) {
@@ -184,6 +184,891 @@ function crc16ccitt(str) {
     return (crc & 0xFFFF).toString(16).toUpperCase().padStart(4, "0");
 }
 
+function drawRoundedRect(ctx, x, y, width, height, radius) {
+    const r = Math.min(radius, width / 2, height / 2);
+    ctx.beginPath();
+    ctx.moveTo(x + r, y);
+    ctx.arcTo(x + width, y, x + width, y + height, r);
+    ctx.arcTo(x + width, y + height, x, y + height, r);
+    ctx.arcTo(x, y + height, x, y, r);
+    ctx.arcTo(x, y, x + width, y, r);
+    ctx.closePath();
+}
+
+function formatRupiah(value) {
+    const num = Number(value);
+    if (!Number.isFinite(num)) return '-';
+    return `Rp ${Math.round(num).toLocaleString('id-ID')}`;
+}
+
+/**
+ * Returns a formatted date-time string always in WIB (UTC+7) with "WIB" label.
+ * @param {Date} [date] - date to format, defaults to now
+ * @returns {string} e.g. "06/03/2026 - 15.00 WIB"
+ */
+function getIndonesianTimeText(date) {
+    const d = date instanceof Date ? date : (date ? new Date(date) : new Date());
+    // Convert to WIB (UTC+7) regardless of device timezone
+    const wibOffset = 7 * 60; // minutes
+    const utcMinutes = d.getTime() / 60000 + d.getTimezoneOffset();
+    const wib = new Date((utcMinutes + wibOffset) * 60000);
+    const pad = n => String(n).padStart(2, '0');
+    return `${pad(wib.getDate())}/${pad(wib.getMonth() + 1)}/${wib.getFullYear()} - ${pad(wib.getHours())}.${pad(wib.getMinutes())} WIB`;
+}
+
+function getCssVar(name, fallback) {
+    try {
+        const value = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+        return value || fallback;
+    } catch (e) {
+        return fallback;
+    }
+}
+
+function colorFromPrimaryRgb(alpha) {
+    const primaryRgb = getCssVar('--primary-rgb', '').replace(/\s+/g, '');
+    if (/^\d{1,3},\d{1,3},\d{1,3}$/.test(primaryRgb)) {
+        return `rgba(${primaryRgb}, ${alpha})`;
+    }
+    return `rgba(26, 115, 232, ${alpha})`;
+}
+
+function truncateTextToWidth(ctx, text, maxWidth) {
+    if (!text) return '';
+    if (ctx.measureText(text).width <= maxWidth) return text;
+    const ellipsis = '...';
+    let left = text.slice(0, Math.ceil(text.length * 0.55));
+    let right = text.slice(Math.floor(text.length * 0.75));
+    let candidate = `${left}${ellipsis}${right}`;
+    while (candidate.length > 0 && ctx.measureText(candidate).width > maxWidth && left.length > 8) {
+        left = left.slice(0, -1);
+        right = right.slice(1);
+        candidate = `${left}${ellipsis}${right}`;
+    }
+    return candidate;
+}
+
+function truncateTextEndToWidth(ctx, text, maxWidth) {
+    const content = String(text || '');
+    if (!content) return '';
+    if (ctx.measureText(content).width <= maxWidth) return content;
+    const ellipsis = '...';
+    let out = content;
+    while (out.length > 0 && ctx.measureText(out + ellipsis).width > maxWidth) {
+        out = out.slice(0, -1);
+    }
+    return out ? (out + ellipsis) : ellipsis;
+}
+
+function wrapTextLines(ctx, text, maxWidth) {
+    const content = String(text || '').trim();
+    if (!content) return ['-'];
+    const words = content.split(/\s+/);
+    const lines = [];
+    let line = '';
+    for (let i = 0; i < words.length; i++) {
+        const testLine = line ? `${line} ${words[i]}` : words[i];
+        if (ctx.measureText(testLine).width <= maxWidth) {
+            line = testLine;
+        } else {
+            if (line) lines.push(line);
+            line = words[i];
+        }
+    }
+    if (line) lines.push(line);
+    return lines.length ? lines : ['-'];
+}
+
+function drawInvoiceInfoRow(ctx, x, y, width, label, value) {
+    ctx.fillStyle = '#64748b';
+    ctx.font = '600 22px Inter, Arial, sans-serif';
+    ctx.textAlign = 'left';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(label, x, y);
+
+    ctx.fillStyle = '#0f172a';
+    ctx.font = '600 24px Inter, Arial, sans-serif';
+    const safeValue = truncateTextToWidth(ctx, String(value || '-'), width);
+    ctx.fillText(safeValue, x + 220, y);
+}
+
+function getExportTheme() {
+    return {
+        p: getCssVar('--primary', '#6366f1'),
+        p2: getCssVar('--secondary', '#818cf8'),
+        pDark: getCssVar('--primary-dark', '#4338ca'),
+        surface: '#ffffff',
+        surface2: getCssVar('--bg-page', '#f8f9ff'),
+        border: colorFromPrimaryRgb(0.25),
+        text1: getCssVar('--text-main', '#0f172a'),
+        text2: getCssVar('--text-secondary', '#475569'),
+        text3: '#94a3b8',
+        font: 'Inter, Arial, sans-serif'
+    };
+}
+
+function trimExportText(text, maxLen) {
+    const t = String(text || '').trim();
+    if (!t) return '-';
+    return t.length > maxLen ? `${t.slice(0, maxLen - 3)}...` : t;
+}
+
+function getPayBadgeColor(payId) {
+    const id = String(payId || '').toLowerCase();
+    if (id === 'qris') return '#16a34a';
+    if (id === 'gopay') return '#00aed6';
+    if (id === 'ovo') return '#4c3494';
+    if (id === 'bca') return '#0059a8';
+    if (id === 'bri') return '#00529c';
+    if (id === 'permata') return '#0ea5a8';
+    if (id === 'seabank') return '#f59e0b';
+    return '#334155';
+}
+
+function getPayMonogram(pay) {
+    const id = String((pay && pay.id) || '').trim().toLowerCase();
+    const hardcoded = {
+        qris: 'QR',
+        gopay: 'GP',
+        ovo: 'OVO',
+        bca: 'BCA',
+        bri: 'BRI',
+        permata: 'PMT',
+        seabank: 'SEA'
+    };
+    if (hardcoded[id]) return hardcoded[id];
+
+    const rawName = String((pay && pay.name) || '').trim();
+    if (!rawName) return 'PAY';
+    const spaced = rawName
+        .replace(/([a-z0-9])([A-Z])/g, '$1 $2')
+        .replace(/[^A-Za-z0-9]+/g, ' ')
+        .trim();
+    const words = spaced.split(/\s+/).filter(Boolean);
+    if (words.length >= 2) return (words[0][0] + words[1][0]).toUpperCase();
+    const upper = words[0] ? words[0].toUpperCase() : '';
+    if (!upper) return 'PAY';
+    if (upper.length <= 3) return upper;
+    if (upper.endsWith('PAY')) return upper[0] + 'P';
+    return upper.slice(0, 3);
+}
+
+function getPayFallbackLogoDataUri(pay) {
+    const mono = getPayMonogram(pay);
+    const color = getPayBadgeColor(pay && pay.id);
+    const svg = `
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160">
+  <circle cx="80" cy="80" r="76" fill="${color}22" stroke="${color}66" stroke-width="4"/>
+  <circle cx="80" cy="80" r="62" fill="${color}"/>
+  <text x="80" y="88" text-anchor="middle" dominant-baseline="middle" fill="#ffffff" font-size="42" font-weight="800" font-family="Inter,Arial,sans-serif">${mono}</text>
+</svg>`;
+    return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
+}
+
+function loadCanvasImage(src, timeoutMs = 5000) {
+    return new Promise(resolve => {
+        const cleanSrc = String(src || '').trim();
+        if (!cleanSrc) return resolve(null);
+        const img = new Image();
+        let done = false;
+        const finish = value => {
+            if (done) return;
+            done = true;
+            resolve(value);
+        };
+        const timer = setTimeout(() => finish(null), timeoutMs);
+        img.crossOrigin = 'anonymous';
+        img.referrerPolicy = 'no-referrer';
+        img.onload = () => {
+            clearTimeout(timer);
+            finish(img);
+        };
+        img.onerror = () => {
+            clearTimeout(timer);
+            finish(null);
+        };
+        img.src = cleanSrc;
+    });
+}
+
+async function loadPayLogoForCanvas(pay) {
+    const remoteSrc = String((pay && pay.logo) || '').trim();
+    const remoteImg = remoteSrc ? await loadCanvasImage(remoteSrc) : null;
+    if (remoteImg) return remoteImg;
+    return loadCanvasImage(getPayFallbackLogoDataUri(pay));
+}
+
+function drawPayMethodBadge(ctx, theme, pay, logoImg, x, y, w, h) {
+    const badgeColor = getPayBadgeColor(pay && pay.id);
+    drawRoundedRect(ctx, x, y, w, h, 22);
+    ctx.fillStyle = theme.surface2;
+    ctx.fill();
+    ctx.strokeStyle = theme.border;
+    ctx.lineWidth = 1.2;
+    ctx.stroke();
+
+    const iconBoxSize = h - 28;
+    const iconX = x + 14;
+    const iconY = y + 14;
+    drawRoundedRect(ctx, iconX, iconY, iconBoxSize, iconBoxSize, 16);
+    ctx.fillStyle = '#ffffff';
+    ctx.fill();
+    ctx.strokeStyle = theme.border;
+    ctx.stroke();
+
+    if (logoImg) {
+        ctx.drawImage(logoImg, iconX + 8, iconY + 8, iconBoxSize - 16, iconBoxSize - 16);
+    } else {
+        ctx.fillStyle = badgeColor;
+        ctx.beginPath();
+        ctx.arc(iconX + (iconBoxSize / 2), iconY + (iconBoxSize / 2), (iconBoxSize / 2) - 10, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.fillStyle = '#ffffff';
+        ctx.textAlign = 'center';
+        ctx.font = `800 24px ${theme.font}`;
+        ctx.fillText(getPayMonogram(pay), iconX + (iconBoxSize / 2), iconY + (iconBoxSize / 2) + 9);
+    }
+
+    const tx = iconX + iconBoxSize + 22;
+    ctx.textAlign = 'left';
+    ctx.fillStyle = theme.text3;
+    ctx.font = `600 22px ${theme.font}`;
+    ctx.fillText('Metode Pembayaran', tx, y + 44);
+    ctx.fillStyle = theme.text1;
+    ctx.font = `800 32px ${theme.font}`;
+    ctx.fillText(trimExportText((pay && pay.name) || '-', 22), tx, y + 86);
+}
+
+function getExportMarkerPalette(seed) {
+    const base = [
+        [31, 119, 228],
+        [255, 159, 10],
+        [52, 199, 89],
+        [255, 55, 95],
+        [90, 200, 250],
+        [250, 210, 90]
+    ];
+    const shift = Math.abs((seed || 0) % base.length);
+    return [...base.slice(shift), ...base.slice(0, shift)];
+}
+
+function drawMarkerPattern(ctx, startX, startY, palette) {
+    palette.forEach((rgb, i) => {
+        const x = startX + (i % 3) * 6;
+        const y = startY + Math.floor(i / 3) * 6;
+        ctx.fillStyle = `rgb(${rgb[0]},${rgb[1]},${rgb[2]})`;
+        ctx.fillRect(x, y, 4, 4);
+    });
+}
+
+function drawExportMarker(ctx, x, y, seedText) {
+    const seed = parseInt(crc16ccitt(String(seedText || '0')), 16);
+    const palette = getExportMarkerPalette(seed);
+    drawMarkerPattern(ctx, x, y, palette);
+}
+
+function prepareExportCanvas(canvas) {
+    return canvas;
+}
+
+function cropCanvasHeight(canvas, usedHeight, extraBottom = 20) {
+    const targetH = Math.min(canvas.height, Math.max(200, Math.ceil(usedHeight + extraBottom)));
+    if (targetH >= canvas.height) return canvas;
+    const out = document.createElement('canvas');
+    out.width = canvas.width;
+    out.height = targetH;
+    const ctx = out.getContext('2d');
+    if (!ctx) return canvas;
+    ctx.drawImage(canvas, 0, 0, out.width, out.height);
+    return out;
+}
+
+function buildSecurityCode(invoiceId, amountText, createdText) {
+    const raw = `${invoiceId}|${amountText}|${createdText}`;
+    const hash = crc16ccitt(raw);
+    return `SEC-${hash.slice(0, 2)}${hash.slice(2, 4)}-${hash.slice(-4)}`;
+}
+
+async function downloadInvoiceImage(invoice = {}) {
+    const theme = getExportTheme();
+    const payload = getCurrentInvoicePayload();
+    const forceNoQr = Boolean(invoice.forceNoQr);
+    const isSuccess = forceNoQr;
+    const brandName = invoice.brandName
+        || document.querySelector('.sticky-header h1')?.textContent?.trim()
+        || document.title
+        || 'Invoice Pembayaran';
+
+    const invoiceId = String(invoice.invoiceId || payload.invoiceId || `INV-${Date.now()}`);
+    const paymentMethod = invoice.paymentMethod || payload.paymentMethod || '-';
+    const paymentType = invoice.paymentType || payload.paymentType || '';
+    const paymentTarget = invoice.paymentTarget || payload.paymentTarget || '-';
+    const paymentHolder = invoice.paymentHolder || payload.paymentHolder || '-';
+    const packageName = invoice.packageName || payload.packageName || '-';
+    const customerName = invoice.customerName || payload.customerName || '-';
+    const whatsapp = invoice.whatsapp || payload.whatsapp || '-';
+    const email = invoice.email || payload.email || '-';
+    const totalText = invoice.totalTransferText || invoice.amountText || payload.totalTransferText || formatRupiah(invoice.amount || payload.amount || 0);
+    const createdText = invoice.createdAtText
+        || getIndonesianTimeText(invoice.createdAt ? new Date(invoice.createdAt) : new Date());
+    const securityCode = buildSecurityCode(invoiceId, totalText, createdText);
+
+    const pay = {
+        id: invoice.paymentId || payload.paymentId || paymentMethod,
+        name: paymentMethod,
+        logo: invoice.paymentLogo || payload.paymentLogo || ''
+    };
+    const payLogoImg = await loadPayLogoForCanvas(pay);
+
+    const isQris = String(paymentMethod).toLowerCase().includes('qris')
+        || String(paymentType).toLowerCase() === 'qr';
+    const qrCanvas = invoice.qrCanvas || document.querySelector('#qrcode-canvas canvas');
+    const showQrisPanel = !forceNoQr && !!(isQris && qrCanvas);
+    const showTransferPanel = !forceNoQr && !showQrisPanel;
+    const titleText = invoice.titleText || (forceNoQr ? 'Konfirmasi Pembayaran' : 'Invoice Pembayaran');
+
+    const details = [
+        ['No. Invoice', invoiceId],
+        ['Nama Pembeli', customerName],
+        ['WhatsApp', whatsapp],
+        ['Email', email],
+        ['Paket', packageName],
+        ['Metode Bayar', paymentMethod],
+        ['Waktu Bayar', createdText]
+    ];
+    if (showTransferPanel) {
+        details.splice(6, 0, ['Nomor Tujuan', paymentTarget], ['Atas Nama', paymentHolder]);
+    }
+
+    const CARD_X = 64;
+    const CARD_Y = 64;
+    const CARD_W = 1200 - 128;
+    const HEADER_H = 220;
+    const AMOUNT_H = 170;
+    const PAY_BADGE_H = 112;
+    const MID_PANEL_H = showQrisPanel ? 620 : (showTransferPanel ? 200 : 0);
+    const DETAIL_H = 80 + details.length * 64;
+    const FOOTER_H = 68;
+    const GAP = 28;
+    const INNER_PAD_X = 56;
+    const INNER_PAD_Y = 32;
+
+    const contentH = INNER_PAD_Y + HEADER_H + GAP + AMOUNT_H + GAP + PAY_BADGE_H
+        + (MID_PANEL_H ? GAP + MID_PANEL_H : 0)
+        + GAP + DETAIL_H
+        + GAP + FOOTER_H + INNER_PAD_Y;
+    const H = CARD_Y + contentH + CARD_Y;
+
+    const out = document.createElement('canvas');
+    out.width = 1200;
+    out.height = H;
+    const ctx = out.getContext('2d');
+    if (!ctx) return;
+
+    const W = out.width;
+    const bg = ctx.createLinearGradient(0, 0, W, H);
+    bg.addColorStop(0, isSuccess ? '#ecfdf5' : '#eef2ff');
+    bg.addColorStop(1, '#eaf0ff');
+    ctx.fillStyle = bg;
+    ctx.fillRect(0, 0, W, H);
+
+    drawRoundedRect(ctx, CARD_X, CARD_Y, CARD_W, contentH, 38);
+    ctx.fillStyle = '#ffffff';
+    ctx.fill();
+    ctx.strokeStyle = 'rgba(99,102,241,0.16)';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+
+    let curY = CARD_Y + INNER_PAD_Y;
+
+    const headColor = isSuccess ? '#059669' : (invoice.primaryColor || theme.pDark);
+    drawRoundedRect(ctx, CARD_X + 32, curY, CARD_W - 64, HEADER_H, 26);
+    ctx.fillStyle = headColor;
+    ctx.fill();
+
+    ctx.textAlign = 'left';
+    ctx.fillStyle = '#ffffff';
+    ctx.font = `700 36px ${theme.font}`;
+    ctx.fillText(trimExportText(brandName, 26), CARD_X + INNER_PAD_X, curY + 66);
+    if (isSuccess) {
+        const successTitle = 'Transaksi Berhasil';
+        let successFontSize = 72;
+        const successMaxWidth = Math.max(360, CARD_W - (INNER_PAD_X * 2) - 360);
+        while (successFontSize > 52) {
+            ctx.font = `800 ${successFontSize}px ${theme.font}`;
+            if (ctx.measureText(successTitle).width <= successMaxWidth) break;
+            successFontSize -= 2;
+        }
+        ctx.font = `800 ${successFontSize}px ${theme.font}`;
+        ctx.fillText(successTitle, CARD_X + INNER_PAD_X, curY + 164);
+    } else {
+        let titleFontSize = 52;
+        const titleY = curY + 178;
+        const titleMaxWidth = Math.max(520, CARD_W - (INNER_PAD_X * 2));
+        while (titleFontSize > 40) {
+            ctx.font = `800 ${titleFontSize}px ${theme.font}`;
+            if (ctx.measureText(titleText).width <= titleMaxWidth) break;
+            titleFontSize -= 2;
+        }
+        ctx.font = `800 ${titleFontSize}px ${theme.font}`;
+        const safeHeaderTitle = truncateTextEndToWidth(ctx, titleText, titleMaxWidth);
+        ctx.fillText(safeHeaderTitle, CARD_X + INNER_PAD_X, titleY);
+    }
+    ctx.textAlign = 'right';
+    ctx.fillStyle = 'rgba(255,255,255,0.80)';
+    ctx.font = `600 24px ${theme.font}`;
+    ctx.fillText(createdText, CARD_X + CARD_W - INNER_PAD_X, isSuccess ? (curY + 62) : (curY + 58));
+    ctx.fillStyle = '#ffffff';
+    ctx.font = `800 32px ${theme.font}`;
+    ctx.fillText(trimExportText(invoiceId, 26), CARD_X + CARD_W - INNER_PAD_X, isSuccess ? (curY + 108) : (curY + 98));
+    curY += HEADER_H + GAP;
+
+    drawRoundedRect(ctx, CARD_X + 32, curY, CARD_W - 64, AMOUNT_H, 22);
+    ctx.fillStyle = isSuccess ? '#f0fdf4' : '#f8faff';
+    ctx.fill();
+    ctx.strokeStyle = isSuccess ? 'rgba(22,163,74,0.22)' : 'rgba(99,102,241,0.16)';
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
+    drawRoundedRect(ctx, CARD_X + 32, curY, 7, AMOUNT_H, 4);
+    ctx.fillStyle = isSuccess ? '#16a34a' : (invoice.primaryColor || theme.p);
+    ctx.fill();
+    ctx.textAlign = 'center';
+    ctx.fillStyle = '#94a3b8';
+    ctx.font = `600 30px ${theme.font}`;
+    ctx.fillText('Total Pembayaran', W / 2, curY + 64);
+    drawExportMarker(ctx, Math.floor(W / 2) - 9, curY + 74, `${invoiceId}|${totalText}`);
+    ctx.fillStyle = isSuccess ? '#15803d' : '#0f172a';
+    ctx.font = `800 68px ${theme.font}`;
+    ctx.fillText(totalText, W / 2, curY + 146);
+    curY += AMOUNT_H + GAP;
+
+    drawPayMethodBadge(ctx, theme, pay, payLogoImg, CARD_X + 32, curY, CARD_W - 64, PAY_BADGE_H);
+    curY += PAY_BADGE_H;
+
+    if (MID_PANEL_H) {
+        curY += GAP;
+        drawRoundedRect(ctx, CARD_X + 32, curY, CARD_W - 64, MID_PANEL_H, 22);
+        ctx.fillStyle = '#f8faff';
+        ctx.fill();
+        ctx.strokeStyle = 'rgba(99,102,241,0.16)';
+        ctx.lineWidth = 1.5;
+        ctx.stroke();
+
+        if (showQrisPanel) {
+            const qrSize = 470;
+            const qx = (W - qrSize) / 2;
+            const qy = curY + 56;
+            ctx.textAlign = 'center';
+            ctx.fillStyle = '#64748b';
+            ctx.font = `600 24px ${theme.font}`;
+            ctx.fillText('Scan kode QR untuk menyelesaikan pembayaran', W / 2, curY + 40);
+            drawRoundedRect(ctx, qx - 16, qy - 16, qrSize + 32, qrSize + 32, 18);
+            ctx.fillStyle = '#ffffff';
+            ctx.fill();
+            ctx.strokeStyle = 'rgba(99,102,241,0.18)';
+            ctx.lineWidth = 1;
+            ctx.stroke();
+            ctx.imageSmoothingEnabled = false;
+            ctx.drawImage(qrCanvas, qx, qy, qrSize, qrSize);
+            ctx.imageSmoothingEnabled = true;
+            ctx.fillStyle = '#94a3b8';
+            ctx.font = `500 22px ${theme.font}`;
+            ctx.fillText('Bisa dibayar via e-wallet dan m-banking', W / 2, curY + MID_PANEL_H - 26);
+        } else {
+            ctx.textAlign = 'left';
+            ctx.fillStyle = '#64748b';
+            ctx.font = `600 30px ${theme.font}`;
+            ctx.fillText('Nomor Rekening / Tujuan', CARD_X + 72, curY + 72);
+            ctx.fillStyle = '#0f172a';
+            ctx.font = `800 56px ${theme.font}`;
+            ctx.fillText(trimExportText(paymentTarget, 28), CARD_X + 72, curY + 138);
+            if (paymentHolder && paymentHolder !== '-') {
+                ctx.fillStyle = '#475569';
+                ctx.font = `600 28px ${theme.font}`;
+                ctx.fillText(`a.n ${trimExportText(paymentHolder, 30)}`, CARD_X + 72, curY + 180);
+            }
+        }
+        curY += MID_PANEL_H;
+    }
+
+    curY += GAP;
+    drawRoundedRect(ctx, CARD_X + 32, curY, CARD_W - 64, DETAIL_H, 22);
+    ctx.fillStyle = '#ffffff';
+    ctx.fill();
+    ctx.strokeStyle = 'rgba(99,102,241,0.12)';
+    ctx.lineWidth = 1.2;
+    ctx.stroke();
+    ctx.textAlign = 'left';
+    ctx.fillStyle = '#0f172a';
+    ctx.font = `700 34px ${theme.font}`;
+    ctx.fillText('Detail Pembayaran', CARD_X + 64, curY + 52);
+    ctx.strokeStyle = isSuccess ? '#16a34a' : (invoice.primaryColor || theme.p);
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.moveTo(CARD_X + 64, curY + 64);
+    ctx.lineTo(CARD_X + 280, curY + 64);
+    ctx.stroke();
+
+    let rowY = curY + 96;
+    details.forEach((row, idx) => {
+        if (idx % 2 === 1) {
+            drawRoundedRect(ctx, CARD_X + 48, rowY - 24, CARD_W - 96, 52, 10);
+            ctx.fillStyle = 'rgba(241,245,249,0.88)';
+            ctx.fill();
+        }
+        ctx.fillStyle = '#94a3b8';
+        ctx.font = `500 27px ${theme.font}`;
+        ctx.textAlign = 'left';
+        ctx.fillText(row[0], CARD_X + 60, rowY + 8);
+        ctx.fillStyle = '#0f172a';
+        ctx.font = `700 30px ${theme.font}`;
+        ctx.textAlign = 'right';
+        ctx.fillText(trimExportText(row[1], 44), CARD_X + CARD_W - 60, rowY + 8);
+        if (idx < details.length - 1) {
+            ctx.strokeStyle = 'rgba(226,232,240,0.85)';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(CARD_X + 56, rowY + 32);
+            ctx.lineTo(CARD_X + CARD_W - 56, rowY + 32);
+            ctx.stroke();
+        }
+        rowY += 64;
+    });
+    curY += DETAIL_H + GAP;
+
+    drawRoundedRect(ctx, CARD_X + 32, curY, CARD_W - 64, FOOTER_H, 16);
+    ctx.fillStyle = isSuccess ? 'rgba(16,185,129,0.08)' : 'rgba(99,102,241,0.08)';
+    ctx.fill();
+    ctx.strokeStyle = isSuccess ? 'rgba(16,185,129,0.20)' : 'rgba(99,102,241,0.14)';
+    ctx.lineWidth = 1;
+    ctx.stroke();
+    ctx.textAlign = 'left';
+    ctx.fillStyle = isSuccess ? '#047857' : (invoice.primaryColor || theme.pDark);
+    ctx.font = `700 24px ${theme.font}`;
+    ctx.fillText(`Kode Ref Dokumen: ${securityCode}`, CARD_X + 64, curY + 43);
+    ctx.textAlign = 'right';
+    ctx.fillStyle = '#94a3b8';
+    ctx.font = `600 22px ${theme.font}`;
+    ctx.fillText(createdText, CARD_X + CARD_W - 64, curY + 43);
+
+    const compactCanvas = cropCanvasHeight(out, out.height, 0);
+    const finalCanvas = prepareExportCanvas(compactCanvas);
+    const link = document.createElement('a');
+    link.download = invoice.fileName || `Invoice-${invoiceId}.png`;
+    link.href = finalCanvas.toDataURL('image/png');
+    link.click();
+}
+
+function setupInvoiceDownloadButton(invoice = {}) {
+    const waBtn = document.getElementById('wa-confirm-btn');
+    if (!waBtn || !waBtn.parentElement) return;
+
+    let button = document.getElementById('download-invoice-btn');
+    if (!button) {
+        button = document.createElement('button');
+        button.type = 'button';
+        button.id = 'download-invoice-btn';
+        button.className = 'block mt-4 w-full border-2 font-bold py-4 rounded-xl text-center shadow-sm transition-all';
+        button.style.borderColor = 'var(--primary)';
+        button.style.color = 'var(--primary)';
+        button.style.background = '#fff';
+        button.innerHTML = '<i class="fas fa-file-invoice mr-2"></i> Unduh Invoice';
+        waBtn.parentElement.insertBefore(button, waBtn);
+    }
+
+    button.onclick = () => {
+        downloadInvoiceImage({
+            ...invoice,
+            fileName: invoice.fileName || `Invoice-${invoice.invoiceId || Date.now()}.png`
+        });
+    };
+}
+
+function getCurrentInvoicePayload() {
+    const order = (typeof currentOrderDetails !== 'undefined' && currentOrderDetails) ? currentOrderDetails : {};
+    const selectedPaymentId = (typeof currentPayment !== 'undefined' && currentPayment)
+        || document.getElementById('selectedPayment')?.value
+        || '';
+    const method = (typeof paymentMethods !== 'undefined' && Array.isArray(paymentMethods))
+        ? (paymentMethods.find(p => p.id === selectedPaymentId) || {})
+        : {};
+    const amountText = document.getElementById('payment-amount')?.innerText || formatRupiah(order.totalPrice || 0);
+
+    return {
+        invoiceId: order.paymentId || '-',
+        customerName: order.nama || '-',
+        whatsapp: order.whatsapp || '-',
+        email: order.email || '-',
+        packageName: order.pkg || '-',
+        paymentId: method.id || selectedPaymentId || '',
+        paymentLogo: method.logo || '',
+        paymentMethod: method.name || '-',
+        paymentTarget: method.number || '-',
+        paymentHolder: method.holder || '-',
+        paymentType: method.type || '',
+        amount: Number(order.totalPrice) || 0,
+        amountText,
+        totalTransferText: amountText,
+        orderDetails: order.orderDetails || order.pkg || '-'
+    };
+}
+
+function ensureSuccessView() {
+    let view = document.getElementById('view-success');
+    if (view) return view;
+
+    const paymentView = document.getElementById('view-payment');
+    const parent = paymentView?.parentElement;
+    if (!parent) return null;
+
+    view = document.createElement('div');
+    view.id = 'view-success';
+    view.className = 'view aside scroll-body bg-gray-50';
+    parent.appendChild(view);
+    return view;
+}
+
+function renderSuccessPageContent() {
+    const payload = getCurrentInvoicePayload();
+    const view = ensureSuccessView();
+    if (!view) return;
+
+    const nowText = getIndonesianTimeText(new Date());
+
+    view.innerHTML = `
+        <div class="bg-white p-4 sticky top-0 z-10 border-b flex items-center gap-3 shadow-sm">
+            <button onclick="backToForm()" class="text-gray-500 hover:text-black">
+                <i class="fas fa-arrow-left text-lg"></i>
+            </button>
+            <h2 class="font-bold text-lg">Status Pembayaran</h2>
+        </div>
+        <div style="padding:16px 16px 20px;background:#f8fafc;display:flex;flex-direction:column;gap:12px;">
+            <div style="padding:18px 18px 16px;border-radius:16px;background:linear-gradient(145deg,var(--primary),var(--primary-dark));color:#fff;">
+                <div class="flex items-center justify-between gap-3">
+                    <div class="flex items-center gap-3">
+                        <div style="width:36px;height:36px;border-radius:10px;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <div style="font-weight:700;letter-spacing:.2px;">Transaksi Terverifikasi</div>
+                    </div>
+                </div>
+                <div style="margin-top:14px;text-align:center;">
+                    <div style="width:64px;height:64px;border-radius:999px;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 10px;">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <h3 style="font-size:24px;line-height:1.2;font-weight:800;margin:0;">Pembayaran Terkonfirmasi</h3>
+                    <p style="font-size:13px;opacity:.92;margin:6px 0 0;">Pembayaran telah diverifikasi dan pesanan sedang diproses.</p>
+                </div>
+            </div>
+            <div style="background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:12px 12px 10px;">
+                    <div class="flex justify-between items-center gap-3" style="padding-bottom:10px;border-bottom:1px solid #eef2f7;">
+                        <div>
+                            <div style="font-size:11px;color:#64748b;">No. Invoice</div>
+                            <div style="font-size:15px;font-weight:800;color:#0f172a;">${payload.invoiceId || '-'}</div>
+                        </div>
+                        <div style="text-align:right;">
+                            <div style="font-size:11px;color:#64748b;">Total Bayar</div>
+                            <div style="font-size:17px;font-weight:800;color:#16a34a;">${payload.totalTransferText || '-'}</div>
+                        </div>
+                    </div>
+                    <div style="padding-top:10px;display:grid;gap:8px;">
+                        <div class="flex justify-between gap-3"><span style="font-size:12px;color:#64748b;">Nama</span><strong style="font-size:13px;color:#0f172a;">${payload.customerName || '-'}</strong></div>
+                        <div class="flex justify-between gap-3"><span style="font-size:12px;color:#64748b;">Paket</span><strong style="font-size:13px;color:#0f172a;text-align:right;">${payload.packageName || '-'}</strong></div>
+                        <div class="flex justify-between gap-3"><span style="font-size:12px;color:#64748b;">Metode</span><strong style="font-size:13px;color:#0f172a;">${payload.paymentMethod || '-'}</strong></div>
+                        <div class="flex justify-between gap-3"><span style="font-size:12px;color:#64748b;">Waktu</span><strong style="font-size:13px;color:#0f172a;">${nowText}</strong></div>
+                    </div>
+                </div>
+                        <div style="background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:12px;">
+                <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px;">
+                    <div style="font-size:11px;color:#64748b;font-weight:800;letter-spacing:.5px;">STATUS PEMROSESAN</div>
+                    <span id="processing-realtime-badge" style="font-size:10px;font-weight:700;color:#2563eb;background:#eff6ff;border:1px solid #bfdbfe;padding:3px 8px;border-radius:999px;">REALTIME</span>
+                </div>
+                <div id="processing-timeline" style="display:grid;gap:12px;">
+                    <div data-proc-step style="display:grid;grid-template-columns:24px 1fr;gap:10px;">
+                        <div style="display:flex;flex-direction:column;align-items:center;">
+                            <span data-proc-dot style="width:24px;height:24px;border-radius:999px;background:#f8fafc;color:#94a3b8;border:1px solid #cbd5e1;display:flex;align-items:center;justify-content:center;font-size:11px;"><i data-proc-icon class='far fa-circle'></i></span>
+                            <span data-proc-line style="width:2px;height:24px;background:#cbd5e1;margin-top:4px;"></span>
+                        </div>
+                        <div style="padding-top:1px;">
+                            <div data-proc-title style="font-size:13px;color:#334155;font-weight:700;">Pembayaran Terverifikasi</div>
+                            <div data-proc-meta style="font-size:11px;color:#94a3b8;line-height:1.45;">Dana telah diterima dan tervalidasi sistem pada ${nowText}.</div>
+                        </div>
+                    </div>
+                    <div data-proc-step style="display:grid;grid-template-columns:24px 1fr;gap:10px;">
+                        <div style="display:flex;flex-direction:column;align-items:center;">
+                            <span data-proc-dot style="width:24px;height:24px;border-radius:999px;background:#f8fafc;color:#94a3b8;border:1px solid #cbd5e1;display:flex;align-items:center;justify-content:center;font-size:11px;"><i data-proc-icon class='far fa-circle'></i></span>
+                            <span data-proc-line style="width:2px;height:24px;background:#cbd5e1;margin-top:4px;"></span>
+                        </div>
+                        <div style="padding-top:1px;">
+                            <div data-proc-title style="font-size:13px;color:#334155;font-weight:700;">Pesanan Berhasil Diproses</div>
+                            <div data-proc-meta style="font-size:11px;color:#94a3b8;line-height:1.45;">Pesanan Anda telah dieksekusi secara otomatis oleh sistem.</div>
+                        </div>
+                    </div>
+                    <div data-proc-step style="display:grid;grid-template-columns:24px 1fr;gap:10px;">
+                        <div style="display:flex;align-items:flex-start;justify-content:center;">
+                            <span data-proc-dot style="width:24px;height:24px;border-radius:999px;background:#f8fafc;color:#94a3b8;border:1px solid #cbd5e1;display:flex;align-items:center;justify-content:center;font-size:11px;"><i data-proc-icon class='far fa-circle'></i></span>
+                        </div>
+                        <div style="padding-top:1px;">
+                            <div data-proc-title style="font-size:13px;color:#334155;font-weight:700;">Simpan Invoice Sebagai Bukti Transaksi</div>
+                            <div data-proc-meta style="font-size:11px;color:#94a3b8;line-height:1.45;">Gunakan dokumen invoice resmi untuk arsip pembayaran dan kebutuhan verifikasi layanan.</div>
+                        </div>
+                    </div>
+                </div>
+            </div><div style="display:grid;gap:8px;">
+                <button type="button" onclick="downloadSuccessInvoiceImage()" style="width:100%;border:none;background:var(--primary);color:#fff;font-weight:800;padding:12px 14px;border-radius:12px;cursor:pointer;">
+                    <i class="fas fa-download mr-2"></i>Download Invoice
+                </button>
+            </div>
+        </div>
+    `;
+}
+
+let processingTimelineTimers = [];
+
+function clearProcessingTimelineTimers() {
+    if (!processingTimelineTimers.length) return;
+    processingTimelineTimers.forEach(id => clearTimeout(id));
+    processingTimelineTimers = [];
+}
+
+function setProcessingStepVisual(stepEl, state) {
+    if (!stepEl) return;
+    const dot = stepEl.querySelector('[data-proc-dot]');
+    const icon = stepEl.querySelector('[data-proc-icon]');
+    const line = stepEl.querySelector('[data-proc-line]');
+    const title = stepEl.querySelector('[data-proc-title]');
+    const meta = stepEl.querySelector('[data-proc-meta]');
+    if (!dot || !icon) return;
+
+    if (state === 'active') {
+        dot.style.background = '#eff6ff';
+        dot.style.color = '#2563eb';
+        dot.style.border = '1px solid #93c5fd';
+        icon.className = 'fas fa-circle-notch fa-spin';
+        if (line) line.style.background = '#93c5fd';
+        if (title) title.style.color = '#0f172a';
+        if (meta) meta.style.color = '#64748b';
+        return;
+    }
+
+    if (state === 'done') {
+        dot.style.background = '#dcfce7';
+        dot.style.color = '#15803d';
+        dot.style.border = '1px solid #86efac';
+        icon.className = 'fas fa-check';
+        if (line) line.style.background = '#86efac';
+        if (title) title.style.color = '#0f172a';
+        if (meta) meta.style.color = '#64748b';
+        return;
+    }
+
+    dot.style.background = '#f8fafc';
+    dot.style.color = '#94a3b8';
+    dot.style.border = '1px solid #cbd5e1';
+    icon.className = 'far fa-circle';
+    if (line) line.style.background = '#cbd5e1';
+    if (title) title.style.color = '#334155';
+    if (meta) meta.style.color = '#94a3b8';
+}
+
+function animateSuccessProcessingTimeline() {
+    clearProcessingTimelineTimers();
+    const timeline = document.getElementById('processing-timeline');
+    if (!timeline) return;
+
+    const steps = Array.from(timeline.querySelectorAll('[data-proc-step]'));
+    if (!steps.length) return;
+    const badge = document.getElementById('processing-realtime-badge');
+
+    steps.forEach(step => setProcessingStepVisual(step, 'pending'));
+    if (badge) {
+        badge.textContent = 'REALTIME';
+        badge.style.color = '#2563eb';
+        badge.style.background = '#eff6ff';
+        badge.style.border = '1px solid #bfdbfe';
+    }
+
+    const startDelay = 260;
+    const stepDuration = 20000; // 20 detik per proses
+
+    const runStep = idx => {
+        if (idx >= steps.length) {
+            if (badge) {
+                badge.textContent = 'SELESAI';
+                badge.style.color = '#15803d';
+                badge.style.background = '#dcfce7';
+                badge.style.border = '1px solid #86efac';
+            }
+            return;
+        }
+
+        setProcessingStepVisual(steps[idx], 'active');
+        const timerId = setTimeout(() => {
+            setProcessingStepVisual(steps[idx], 'done');
+            runStep(idx + 1); // langsung lanjut loading step berikutnya
+        }, stepDuration);
+        processingTimelineTimers.push(timerId);
+    };
+
+    processingTimelineTimers.push(setTimeout(() => {
+        if (!steps.length) return;
+        setProcessingStepVisual(steps[0], 'done');
+        runStep(1);
+    }, startDelay));
+}
+
+window.downloadSuccessInvoiceImage = function () {
+    const payload = getCurrentInvoicePayload();
+    downloadInvoiceImage({
+        ...payload,
+        forceNoQr: true,
+        fileName: `Konfirmasi-Pembayaran-${payload.invoiceId || Date.now()}.png`
+    });
+};
+
+window.copySuccessInvoice = function () {
+    const payload = getCurrentInvoicePayload();
+    const text = [
+        `Invoice: ${payload.invoiceId || '-'}`,
+        `Nama: ${payload.customerName || '-'}`,
+        `Paket: ${payload.packageName || '-'}`,
+        `Metode: ${payload.paymentMethod || '-'}`,
+        `Total: ${payload.totalTransferText || '-'}`,
+        `WhatsApp: ${payload.whatsapp || '-'}`
+    ].join('\n');
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => {
+            showModal('Berhasil', 'Ringkasan invoice berhasil disalin.');
+        }).catch(() => {
+            showModal('Info', 'Gagal menyalin ringkasan invoice.');
+        });
+        return;
+    }
+    showModal('Info', text);
+};
+
+function downloadQrisCardImage(qrCanvas, options = {}) {
+    if (!qrCanvas) return;
+    const payload = getCurrentInvoicePayload();
+    const invoiceId = options.invoiceId || payload.invoiceId || '-';
+    const amountText = options.amountText || payload.totalTransferText || formatRupiah(options.amount || payload.amount || 0);
+    const fileName = options.fileName || `QRIS-Pembayaran-${invoiceId || Date.now()}.png`;
+
+    downloadInvoiceImage({
+        ...payload,
+        ...options,
+        qrCanvas,
+        invoiceId,
+        amountText,
+        totalTransferText: amountText,
+        paymentType: 'qr',
+        paymentMethod: options.paymentMethod || payload.paymentMethod || 'QRIS',
+        titleText: options.titleText || 'QRIS Payment Snapshot',
+        fileName
+    });
+}
+
 // --- RENDERERS ---
 
 function renderPaymentMethods() {
@@ -352,13 +1237,44 @@ function openImageModal(url) {
 // --- PAYMENT PAGE LOGIC ---
 
 function backToForm() {
-    document.getElementById('view-payment').classList.add('hidden');
-    document.getElementById('view-form').classList.remove('hidden');
+    clearProcessingTimelineTimers();
+    const paymentView = document.getElementById('view-payment');
+    const successView = document.getElementById('view-success');
+    const formView = document.getElementById('view-form');
+    if (paymentView) {
+        paymentView.classList.remove('active');
+        paymentView.classList.add('aside');
+    }
+    if (successView) {
+        successView.classList.remove('active');
+        successView.classList.add('aside');
+    }
+    if (formView) {
+        formView.classList.remove('aside');
+        formView.classList.add('active');
+    }
     window.scrollTo(0, 0);
 }
 
 // --- OCR LOGIC ---
 let selectedFile = null;
+
+function normalizeOCRText(input) {
+    return String(input || '')
+        .toLowerCase()
+        .replace(/[^a-z0-9]/g, '')
+        .replace(/[o0q]/g, '0')
+        .replace(/[i1l|!]/g, '1')
+        .replace(/[s5]/g, '5')
+        .replace(/[b8]/g, '8')
+        .replace(/[t7]/g, '7')
+        .replace(/[z2]/g, '2')
+        .replace(/[g9]/g, '9');
+}
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 async function handleImageUpload(event) {
     const file = event.target.files[0];
@@ -396,6 +1312,49 @@ async function verifyPaymentWithOCR() {
         worker = null;
         clearTimeout(timeoutId);
 
+        // Reject screenshot internal invoice/QR (mirip mekanisme flash.html)
+        const ocrCanon = normalizeOCRText(text);
+        const activeInv = String(currentOrderDetails?.paymentId || '').replace('#', '').trim();
+        const invCanon = normalizeOCRText(activeInv);
+        const invHead = invCanon.slice(0, 3);
+        const invTail = invCanon.slice(-4);
+        const hasActiveInvoice = invCanon.length >= 6 && (
+            ocrCanon.includes(invCanon) ||
+            (invHead.length >= 3 && invTail.length >= 4 && ocrCanon.includes(invHead) && ocrCanon.includes(invTail))
+        );
+        const hasInternalMarkers = [
+            // QRIS image markers
+            'verifikasipembayaranqris',
+            'scankodedibawahini',
+            'didukungsemuadompet',
+            'kodekeamanan',
+            'dokumeninidilindungi',
+            'totaldibayar',
+            'totalyangharusdibayar',
+            // Invoice / payment proof markers
+            'ringkasantransaksi',
+            'detailpembayaran',
+            'koderefdokumen',
+            'bukitpembayaranresmi',
+            'buktipembayaranresmi',
+            'transakasiberhasil',
+            'transakberhasil',
+            // Legacy markers (kept for backwards compatibility)
+            'invoicepembayaran',
+            'qrispaymentsnapshot',
+            'scanqruntukbayar',
+            'scanmenggunakanaplikasi',
+            'securitycode',
+            'refsec',
+            'simpangambarinisebagaibuktipembayaran',
+            'metodepembayaran',
+            'langkahpembayaran'
+        ].some(k => ocrCanon.includes(normalizeOCRText(k)));
+        if (hasActiveInvoice || hasInternalMarkers) {
+            showOCRFailure("Bukti pembayaran tidak valid. Upload screenshot mutasi/transaksi dari aplikasi pembayaran.");
+            return;
+        }
+
         let cleanedText = text
             .replace(/O|o/g, '0')
             .replace(/I|l/g, '1')
@@ -406,6 +1365,8 @@ async function verifyPaymentWithOCR() {
         const expectedAmount = currentOrderDetails.totalPrice.toString();
 
         if (digitsOnly.includes(expectedAmount)) {
+            const successDelayMs = 1500 + Math.floor(Math.random() * 501); // 1.5s - 2.0s
+            await sleep(successDelayMs);
             onPaymentSuccess();
         } else {
             showOCRFailure("Bukti pembayaran tidak valid. Silakan upload kembali atau verifikasi manual via WhatsApp.");
@@ -439,35 +1400,6 @@ function retryOCRUpload() {
     document.getElementById('payment-proof-input').click();
 }
 
-function onPaymentSuccess() {
-    const scanningState = document.getElementById('ocr-scanning-state');
-    const initialState = document.getElementById('ocr-initial-state');
-    const container = document.getElementById('ocr-container');
-
-    if (scanningState) scanningState.classList.add('hidden');
-
-    if (container) {
-        container.classList.add('border-green-500', 'bg-green-50');
-        container.classList.remove('border-blue-200', 'hover:bg-blue-50', 'cursor-pointer');
-        container.onclick = null;
-    }
-
-    if (initialState) {
-        initialState.innerHTML = `
-            <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-3">
-                <i class="fas fa-check"></i>
-            </div>
-            <p class="text-sm font-bold text-green-700">Bukti Terkirim</p>
-         `;
-        initialState.classList.remove('hidden');
-    }
-
-    const modal = document.getElementById('ocrSuccessModal');
-    if (modal) modal.classList.add('active');
-
-    sendPaymentConfirmationToBackend();
-}
-
 async function sendPaymentConfirmationToBackend() {
     const payload = {
         action: 'confirm_payment',
@@ -475,18 +1407,13 @@ async function sendPaymentConfirmationToBackend() {
         sheetName: currentOrderDetails.sheetName
     };
 
-    console.log("Sending confirmation payload:", payload);
+    console.log("Queuing confirmation payload:", payload);
 
     try {
-        await fetch(SCRIPT_URL, {
-            method: 'POST',
-            mode: 'no-cors',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload)
-        });
-        console.log("Confirmation sent to backend (no-cors mode)");
+        await pushConfirmation(payload);
+        console.log("Confirmation queued to Firebase successfully.");
     } catch (e) {
-        console.error("Failed to send confirmation", e);
+        console.error("Failed to queue confirmation:", e);
     }
 }
 
@@ -616,7 +1543,7 @@ function initSheetLogic() {
 
         listContainer.innerHTML = features.map(feat => `
             <li class="flex gap-2">
-                <span class="mt-0.5 grid h-5 w-5 place-items-center rounded-full bg-emerald-100 text-emerald-700 font-bold text-xs shrink-0">✓</span>
+                <span class="mt-0.5 grid h-5 w-5 place-items-center rounded-full bg-emerald-100 text-emerald-700 font-bold text-xs shrink-0">âœ“</span>
                 <span class="leading-tight">${feat}</span>
             </li>
         `).join('');
@@ -757,7 +1684,7 @@ function showDetailsModal(event) {
 }
 
 // ============================================================
-//  ULTIMATE UPGRADE — NEW & MODIFIED SHARED FUNCTIONS
+//  ULTIMATE UPGRADE â€” NEW & MODIFIED SHARED FUNCTIONS
 // ============================================================
 
 // --- UTM CAPTURE ---
@@ -896,7 +1823,7 @@ function initInputMask() {
             if (result.isValid) {
                 markInputValid('whatsapp');
                 hint.style.color = '#10b981';
-                hint.textContent = '✓ Nomor valid';
+                hint.textContent = '\u2713 Nomor valid';
             } else if (digits.length >= 12) {
                 showInlineError('whatsapp', result.message);
                 hint.style.display = 'none';
@@ -1064,16 +1991,16 @@ function placeHeaderAtTop() {
     const formView = document.getElementById('view-form');
     const header = formView ? formView.querySelector('.sticky-header') : null;
     const flash = document.getElementById('flash-bar');
-    const progress = document.getElementById('progress-stepper');
     const live = document.getElementById('live-visitor-badge');
-    if (!formView || !header || !progress || !live) return;
+    if (!formView || !header) return;
 
-    // Keep flash promo bar first, then brand header, then stepper + live badge.
+    // Place flash promo bar first inside view, then brand header, then live badge.
     if (flash) {
         formView.insertAdjacentElement('afterbegin', flash);
     }
-    header.insertAdjacentElement('afterend', progress);
-    progress.insertAdjacentElement('afterend', live);
+    if (live) {
+        header.insertAdjacentElement('afterend', live);
+    }
 }
 
 // --- WA FLOAT BUTTON ---
@@ -1107,15 +2034,15 @@ function initExitIntent() {
     if (sessionStorage.getItem(SESSION_KEY)) return; // Already shown this session
 
     const config = (typeof EXIT_POPUP_CONFIG !== 'undefined') ? EXIT_POPUP_CONFIG : {
-        title: 'Tunggu! Jangan Pergi Dulu 👋',
+        title: 'Tunggu! Jangan Pergi Dulu ðŸ‘‹',
         desc: 'Kamu hampir melewatkan penawaran terbaik hari ini!',
-        badge: '⚡ HARGA SPESIAL',
+        badge: 'âš¡ HARGA SPESIAL',
         cta: 'Yuk, Ambil Penawarannya!'
     };
 
     overlay.innerHTML = `
         <div class="exit-popup-box" role="dialog" aria-modal="true" aria-labelledby="exit-popup-title">
-            <button class="exit-popup-close" onclick="closeExitPopup()" aria-label="Tutup popup">✕</button>
+            <button class="exit-popup-close" onclick="closeExitPopup()" aria-label="Tutup popup">âœ•</button>
             <div class="exit-popup-badge">${config.badge}</div>
             <h3 id="exit-popup-title" style="font-size:18px;font-weight:800;color:#111827;margin:0 0 8px;">${config.title}</h3>
             <p style="font-size:13px;color:#6b7280;margin:0 0 4px;line-height:1.5;">${config.desc}</p>
@@ -1155,7 +2082,7 @@ function closeExitPopup() {
     if (overlay) overlay.classList.remove('active');
 }
 
-// --- MODIFIED: startCountdown — pakai sessionStorage (persist antar reload) ---
+// --- MODIFIED: startCountdown â€” pakai sessionStorage (persist antar reload) ---
 function startCountdown() {
     const TIMER_KEY = 'payment_expiry_time';
     const TIMER_DURATION = 24 * 60 * 60 * 1000; // 24 jam
@@ -1190,7 +2117,7 @@ function startCountdown() {
     }, 1000);
 }
 
-// --- MODIFIED: initNotifications — baca TOAST_MESSAGES ---
+// --- MODIFIED: initNotifications â€” baca TOAST_MESSAGES ---
 function initNotifications() {
     // Prefer page-specific TOAST_MESSAGES, fallback to FIRST_NAMES
     const hasToastMessages = typeof TOAST_MESSAGES !== 'undefined' && TOAST_MESSAGES.length > 0;
@@ -1222,7 +2149,7 @@ function initNotifications() {
     setInterval(showNext, 15000 + Math.random() * 10000);
 }
 
-// --- MODIFIED: renderTestimonials — supports avatar photo + verified badge ---
+// --- MODIFIED: renderTestimonials â€” supports avatar photo + verified badge ---
 function renderTestimonials() {
     const container = document.getElementById('testimonial-container');
     if (!container) return;
@@ -1237,7 +2164,7 @@ function renderTestimonials() {
     // Small delay for perceived performance
     requestAnimationFrame(() => {
         if (typeof testimonialImages !== 'undefined') {
-            // Kurmer style — image only
+            // Kurmer style â€” image only
             const images = [...testimonialImages, ...testimonialImages];
             container.innerHTML = `
                 <div class="testimonial-track">
@@ -1258,7 +2185,7 @@ function renderTestimonials() {
                     ? `<img src="${item.avatar}" alt="${item.name}" class="t-avatar-img" loading="lazy">`
                     : `<div class="t-avatar">${item.name.charAt(0)}</div>`;
                 const verifiedBadge = item.verified
-                    ? `<span class="t-verified-badge">✓ Verified</span>`
+                    ? `<span class="t-verified-badge">âœ“ Verified</span>`
                     : '';
                 return `
                             <div class="testimonial-item">
@@ -1283,7 +2210,7 @@ function renderTestimonials() {
     });
 }
 
-// --- MODIFIED: onPaymentSuccess — tambah FB Purchase tracking ---
+// --- MODIFIED: onPaymentSuccess â€” tambah FB Purchase tracking ---
 function onPaymentSuccess() {
     const scanningState = document.getElementById('ocr-scanning-state');
     const initialState = document.getElementById('ocr-initial-state');
@@ -1312,11 +2239,19 @@ function onPaymentSuccess() {
         trackFBPurchaseVerified(currentOrderDetails);
     }
 
-    const modal = document.getElementById('ocrSuccessModal');
-    if (modal) modal.classList.add('active');
+    renderSuccessPageContent();
+    const paymentView = document.getElementById('view-payment');
+    const successView = document.getElementById('view-success');
+    if (paymentView) {
+        paymentView.classList.remove('active');
+        paymentView.classList.add('aside');
+    }
+    if (successView) {
+        successView.classList.remove('aside');
+        successView.classList.add('active');
+    }
+    animateSuccessProcessingTimeline();
+    window.scrollTo(0, 0);
 
     sendPaymentConfirmationToBackend();
 }
-
-
-

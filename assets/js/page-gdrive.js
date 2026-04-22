@@ -1,6 +1,5 @@
 // PAGE SPECIFIC DATA & LOGIC
 
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbySaAB2WT0D59UlLyZcXliWvNURCnHcRrqz5P8C2LCQbVdk0hn3Qkl1glGiLJSql_Wh/exec';
 const uniqueCode = Math.floor(Math.random() * (500 - 100 + 1)) + 100;
 
 // -- ULTIMATE CONFIG ------------------------------------------
@@ -22,7 +21,7 @@ const TOAST_MESSAGES = [
 ];
 const EXIT_POPUP_CONFIG = {
     title: '?? Jangan Lewatkan Google Drive 2TB Lifetime!',
-    desc: 'Hanya Rp 250.000 sekali bayar, seumur hidup � hemat Rp 1,3 juta!',
+    desc: 'Hanya Rp 250.000 sekali bayar, seumur hidup â€” hemat Rp 1,3 juta!',
     badge: '? PENAWARAN TERBATAS',
     cta: 'Oke, Saya Mau Simpan!'
 };
@@ -320,16 +319,10 @@ async function handleFormSubmit() {
         sheetName: formData.get('sheetName')
     };
 
-    // Send to Google Script
+    // Send to Firebase queue
     try {
-        fetch(SCRIPT_URL, {
-            method: 'POST',
-            mode: 'no-cors',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(dataToSend)
-        }).catch(error => console.error('Error:', error));
+        await pushOrder(dataToSend);
 
-        await new Promise(resolve => setTimeout(resolve, 1500));
         showPaymentPage(dataToSend, payment, totalPrice);
     } finally {
         btn.disabled = false;
@@ -352,8 +345,10 @@ async function showPaymentPage(data, paymentMethod, amount) {
     };
 
     // Hide Form, Show Payment
-    document.getElementById('view-form').classList.add('hidden');
-    document.getElementById('view-payment').classList.remove('hidden');
+    document.getElementById('view-form').classList.remove('active');
+    document.getElementById('view-form').classList.add('aside');
+    document.getElementById('view-payment').classList.remove('aside');
+    document.getElementById('view-payment').classList.add('active');
     window.scrollTo(0, 0);
     initProgressStepper(2);
     trackFBReachedPayment(currentOrderDetails);
@@ -379,6 +374,22 @@ async function showPaymentPage(data, paymentMethod, amount) {
         `Total: ${data.totalTransfer}\n\n` +
         `Mohon segera diproses.`;
     document.getElementById('wa-confirm-btn').href = `https://wa.me/6285602152097?text=${encodeURIComponent(waMsg)}`;
+    setupInvoiceDownloadButton({
+        invoiceId: data.idPembayaran,
+        customerName: data.nama,
+        whatsapp: data.whatsapp,
+        email: data.email,
+        packageName: data.paket,
+        paymentMethod: paymentMethod.name,
+        paymentTarget: paymentMethod.number || '-',
+        paymentHolder: paymentMethod.holder || '-',
+        amount,
+        amountText: document.getElementById('payment-amount')?.innerText || formatRupiah(amount),
+        totalTransferText: data.totalTransfer || document.getElementById('payment-amount')?.innerText || formatRupiah(amount),
+        orderDetails: (typeof currentOrderDetails !== 'undefined' && currentOrderDetails && currentOrderDetails.orderDetails)
+            ? currentOrderDetails.orderDetails
+            : data.paket
+    });
 
     // Render Payment Details
     const detailsContainer = document.getElementById('payment-details-content');
@@ -430,10 +441,12 @@ async function showPaymentPage(data, paymentMethod, amount) {
                         const dlBtn = document.getElementById('download-qris-btn');
                         if (dlBtn) {
                             dlBtn.addEventListener('click', () => {
-                                const link = document.createElement('a');
-                                link.download = `QRIS-Pembayaran-${data.idPembayaran}.png`;
-                                link.href = canvas.toDataURL('image/png');
-                                link.click();
+                                downloadQrisCardImage(canvas, {
+                                    amount,
+                                    amountText: document.getElementById('payment-amount')?.innerText || formatRupiah(amount),
+                                    invoiceId: data.idPembayaran,
+                                    fileName: `QRIS-Pembayaran-${data.idPembayaran}.png`
+                                });
                             });
                         }
                     });
